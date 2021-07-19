@@ -1,0 +1,29 @@
+button.slick-next.slick-arrow {
+  top: 40% ;
+  right: 15% ;
+}
+button.slick-prev.slick-arrow {
+  left: 7.5% ;
+  top: 40% ;
+}
+
+button.slick-arrow{
+  z-index: 1000;
+}
+
+.slick-dots {
+  text-align: unset !important;
+}
+.slick-next:before,
+.slick-prev:before {
+  opacity: 1 !important;
+}
+
+.slick-next:before {
+  content: url(./../../asset/home/category/next.png) !important;
+}
+
+.slick-prev:before {
+  content: url(./../../asset/home/category/prev.png) !important;
+  transform: rotate(180deg) !important;
+}

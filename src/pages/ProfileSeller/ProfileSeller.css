@@ -1,0 +1,234 @@
+.center-logo-sidebar { 
+  position: relative;
+  left: 35%;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+.sidebar-toggler {
+  position: relative;
+  right: 50%;
+}
+
+.sidebar-menu{
+  list-style: none;
+  padding: 0px;
+}
+
+.sidebar-menu>li>label,
+.sidebar-menu>li>a {
+  text-decoration: none;
+  color: black;
+}
+
+.sidebar-menu>li  {
+  padding-bottom: 15px;
+}
+
+.midlle-nav-login {
+  display: none;
+}
+
+
+.sidebar-menu-icon-background {
+  margin-right: 10px;
+} 
+/* 
+.store-icon {
+  background: #456BF3;
+}
+
+.package-icon {
+  background: #F36F45;
+}
+
+.cart-icon {
+  background: #F3456F;
+}
+
+.sidebar-menu-icon{
+  height: 20px;
+  width: 20px;
+} */
+
+
+/* sidebar submenu */
+.sidebar-submenu{
+  max-height: 0;
+  list-style: none;
+  padding: 0px;
+  transform: scaleY(0);
+}
+
+
+
+.sidebar-submenu > li {
+  padding-top: 10px;
+  padding-left: 42px;
+  font-size: 14px;
+}
+
+.sidebar-submenu>li>a,
+.sidebar-submenu>li>label {
+  text-decoration: none;
+  color: black;
+}
+
+.arrow-menu{
+  width: 20px;
+  height: 20px;
+  padding-right: 3rem;
+  background-image: url("../../asset/profile/arrow_down.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+.sidebar-collapse{
+  position: absolute;
+  left: -9999px;
+}
+.sidebar-collapse:checked~.sidebar-submenu {
+  max-height: 100%; 
+  transform: scaleY(1);
+}
+
+.sidebar-collapse:checked ~ label > .arrow-menu {
+  background-image: url("../../asset/profile/arrow_up.png");
+} 
+/* /* sidebar submenu */
+
+
+
+.user-profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.wrapper {
+  overflow-x: hidden;
+  /* background: #F5F5F5; */
+}
+
+.sidebar {
+  padding-top: 80px;
+  box-sizing: border-box;
+  display: none;
+  padding-left: 12rem;
+  /* flex-wrap: wrap; */
+ 
+  flex-shrink: 0;
+  overflow-y: auto;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.sidebar-active {
+  width: 70%;
+  display: flex;
+}
+
+.main-panel {
+  flex-shrink: 0;
+  /* padding-top: 61px; */
+  padding-top: 55px;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  
+
+}
+
+div.card-header-as.bg-transparent {
+  padding: 30px;
+}
+
+label.col-sm-3.col-form-label.text-black-50 {
+  text-align: right;
+}
+
+.btn-select-image {
+  border: 1px solid #9B9B9B;
+box-sizing: border-box;
+border-radius: 24px;
+padding: 8px 26px;
+margin-top: 27px;
+background-color: transparent;
+}
+
+.btn-profile-save {
+  padding: 8px 25px;
+  background: #DB3022;
+border-radius: 25px;
+color: #fff;
+border: unset;
+}
+
+.card-as {
+  background: #FFFFFF;
+  width: 85%;
+}
+
+@media (min-width: 576px) {
+  .sidebar-active {
+      width: 50%;
+      display: flex !important;
+  }
+ 
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .card-as {
+    background: #FFFFFF;
+    width: 100%;
+  }
+  label.col-sm-3.col-form-label.text-black-50 {
+    text-align: unset;
+  }
+}
+
+@media (min-width: 768px) {
+  .center-logo-sidebar{
+      position: static;
+  }
+
+  .sidebar-toggler{
+      display: none;
+  }
+  .sidebar {
+      display: flex;
+      width: 35%;
+  }
+
+  .sidebar-active {
+      width: 35%;
+      display: none !important;
+  }
+
+  .main-panel {
+      width: 70%;
+  }
+
+
+
+}
+
+@media (min-width: 992px) {
+  .sidebar-active {
+      width: 25%;
+      display: none !important;
+  }
+  
+  .sidebar {
+      width: 25%;
+      display: flex;
+  }
+
+
+  .main-panel{
+      width: 75%;
+  }
+}

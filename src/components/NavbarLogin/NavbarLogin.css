@@ -1,0 +1,33 @@
+.header-right {
+  margin-left: 42px;
+}
+
+.btn-mail {
+  margin-left: 42px;
+}
+
+.btn-profile {
+  margin-left: 42px;
+}
+ @media screen and (max-width: 670px) {
+  .header-right {
+    display: flex;
+    padding-top: 10px;
+    justify-content: center;
+    margin: 0;
+    gap: 25px;
+}
+
+  .header-right {
+    margin:0;
+}
+
+.btn-mail {
+    margin: 0;
+}
+
+.btn-profile {
+    margin: 0;
+}
+} 
+

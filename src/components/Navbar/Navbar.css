@@ -1,0 +1,172 @@
+.form-select {
+  border: none;
+  padding: 0;
+}
+
+.form-select:focus {
+  border-color: #DB3022;
+  box-shadow: none
+}
+
+a.login:hover {
+  color: #fff;
+}
+
+a.btn:focus {
+  box-shadow: none;
+}
+
+a.btn-primary:hover {
+  background-color: #DB3022;
+}
+
+.navbar-collapse {
+  flex-grow: unset;
+}
+
+.btn-check:active+.btn-primary:focus, 
+.btn-check:checked+.btn-primary:focus, 
+.btn-primary.active:focus, .btn-primary:active:focus, 
+.show>.btn-primary.dropdown-toggle:focus {
+  box-shadow: none;
+}
+
+.btn-check:active+.btn-primary, 
+.btn-check:checked+.btn-primary, 
+.btn-primary.active, .btn-primary:active, 
+.show>.btn-primary.dropdown-toggle {
+  background-color: #DB3022;
+}
+
+.btn-check:active+.btn-primary, 
+.btn-check:checked+.btn-primary, 
+.btn-primary.active, .btn-primary:active, 
+.show>.btn-primary.dropdown-toggle {
+  border-color: none;
+}
+
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+  background-color: #DB3022;
+}
+.btn-primary:hover {
+  background-color: #DB3022;
+  border-color: none;
+}
+
+.btn-check:focus+.btn, .btn:focus {
+  box-shadow: none;
+}
+
+.search {
+  position: relative;
+}
+
+.nav-items .search .form-control {
+  position: relative;
+}
+
+.search {
+  margin-left: 41px;
+}
+
+.search input{
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 20px;
+  /* padding-right: 293px; */
+  padding-right: 18rem;
+  /* min-width: 507px; */
+  width: 100%;
+  border-radius: 25px;
+}
+
+.search .btn-search {
+  position: absolute;
+  top: 50%;
+  margin-top: -14px;
+  right: 4%;
+  background-color: transparent;
+  border: none;
+}
+
+.btn-filter {
+  width: 40px;
+  height: 40px;
+  background: #FFFFFF;
+  border: 1px solid #8E8E93;
+  border-radius: 8px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.btn-cart {
+  width: 40px;
+  height: 40px;
+  margin-left: 119px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  width: 100px;
+  height: 36px;
+  box-sizing: border-box;
+  border-radius: 24px;
+}
+
+.btn-login-signup {
+  display: flex;
+  margin-left: 21px;
+}
+
+.login {
+  background-color: #DB3022;
+  color: white;
+}
+
+.signup {
+  margin-left: 20px;
+  color: #9B9B9B;
+  border: 1px solid #9B9B9B;
+}
+
+
+
+
+/* nav end */
+
+@media (min-width: 320px) and (max-width: 480px) {
+/* navbar start */
+    .midlle-nav {
+        margin-top: 5%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .search, .btn-filter, .btn-cart, .btn-login-signup {
+        margin: 0;
+    }
+
+
+   ul .nav-item .search .form-control {
+      padding-right: 10rem;
+   }
+
+
+    .btn-filter {
+        margin-left: 1rem;
+    }
+
+    .navbar-nav .btn-login-signup {
+        margin-top: 5%;   
+    }
+
+    .btn-login-signup a {
+        /* width: 40%; */
+        width: 100%;
+    }
+
+  }

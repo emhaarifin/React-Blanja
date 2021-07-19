@@ -1,0 +1,27 @@
+.filter-title {
+  font-size: 16px;
+  color: #222;
+  font-weight: bolder;
+}
+
+.sum-item {
+  /* margin-left: 110px; */
+  align-items: center;
+  display: flex;
+}
+
+.sum-item p {
+  font-size: 16px;
+  margin: 0 17px;
+  font-weight: bold 
+}
+
+.set-size-total {
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 14px;
+}
+
+.total {
+  margin-left: 20px;
+}

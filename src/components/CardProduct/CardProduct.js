@@ -1,0 +1,31 @@
+/* eslint-disable no-undef */
+import React from "react";
+import { Link } from "react-router-dom";
+import rating from "../../asset/home/new/star.svg";
+import "./CardProduct.css";
+
+function CardProduct(props) {
+  const { products } = props;
+  return products.map((item, index) => (
+    <div className="card" key={index}>
+      <Link to={{ pathname: `/products/${item.id}` }}>
+        <img src={item.image} className="card-img-top" alt="..."></img>
+        <div className="card-body">
+          <p className="card-text">{item.name}</p>
+          <p className="card-price">Rp {item.price}</p>
+          <p className="card-seller">{item.brand}</p>
+          <div className="rating-list">
+            <img src={rating} alt="rating"></img>
+            <img src={rating} alt="rating"></img>
+            <img src={rating} alt="rating"></img>
+            <img src={rating} alt="rating"></img>
+            <img src={rating} alt="rating"></img>
+          </div>
+          <p className="sold">(10)</p>
+        </div>
+      </Link>
+    </div>
+  ));
+}
+
+export default CardProduct;

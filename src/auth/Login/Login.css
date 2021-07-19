@@ -1,0 +1,71 @@
+
+.auth-form {
+  margin-bottom: 40px;
+}
+
+.heading-auth {
+  font-size: 18px;
+  line-height: 18px;
+  color: #222222;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.confirm-notification {
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #F01F0E;
+  margin-top: 22px;
+  margin-bottom: 50px;
+}
+
+.confirm-login-notification {
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #9B9B9B;
+  margin-top: 22px;
+  margin-bottom: 50px;
+}
+
+.auth-wrapper {
+  margin-top: 100px;
+  max-width: 400px;
+  /* min-height: 100vh; */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+
+.tab-auth {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.field-group-inline {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-bottom: 26px;
+  font-size: 14px;
+}
+
+.footnote-wrapper {
+  font-size: 14px;
+  text-align: center;
+}
+
+
+
+
+
+@media screen and (max-width: 670px) {
+  .auth-wrapper {
+    width: 90%;
+  }
+}

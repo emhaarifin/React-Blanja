@@ -1,0 +1,72 @@
+.card-as-seller {
+  background: #FFFFFF;
+  width: 85%;
+  padding: 10px 20px;
+}
+
+
+.data .type-data {
+  font-size: 14px;
+  line-height: 24px;
+  color: #9B9B9B;
+}
+
+.toggle-profile {
+  border-bottom: 1px solid #D4D4D4;;
+}
+
+.data thead th {
+  padding: 10px;
+  background: #F7F7F7;
+}
+
+.product-empty {
+  margin: 145px 0 30px 0;
+}
+
+.icon-search-profile {
+position: absolute;
+left:2%;
+top: 30%;
+}
+form.search-profile{
+
+  position: relative;
+}
+
+#search-product {
+  background: #FFFFFF;
+  border: 1px solid #D4D4D4;
+  border-radius: 23px;
+  padding: 8px 0;
+
+  padding-left: 40px;
+  padding-right: 20px;
+  /* max-width:230px;
+  
+  max-height: 36px; */
+}
+
+table,th {
+  border:none;
+}
+
+table {
+  border: 1px solid #D4D4D4;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.text-center p{
+  padding-bottom: 90px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .card-as-seller {
+    background: #FFFFFF;
+    width: 100%;
+  }
+  label.col-sm-3.col-form-label.text-black-50 {
+    text-align: unset;
+  }
+}

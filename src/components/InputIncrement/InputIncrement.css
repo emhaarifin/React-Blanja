@@ -1,0 +1,20 @@
+.btn-quantity {
+  padding: 11px 17px;
+  border: none !important;
+  border-radius: 50%;
+}
+
+.input-quantity {
+  border: none;
+  text-align: center;
+  max-width: 40px;
+}
+
+.dec {
+  background-color: #d4d4d4;
+}
+
+.inc {
+  background: #FFFFFF;
+box-shadow: 0px 0px 4px rgba(142, 142, 142, 0.25);
+}

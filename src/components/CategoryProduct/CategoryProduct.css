@@ -1,0 +1,42 @@
+.category-item p, .category-item img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.category-item div {
+  padding: 110px 80px;
+  position: relative;
+  margin-left: 8px;
+  margin-right: 8px;
+  border-radius: 8px;
+}
+
+
+ .category-item p {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+
+
+button.slick-next.slick-arrow {
+  top: 40%;
+right: 2%;
+}
+
+button.slick-prev.slick-arrow {
+display: none !important;
+}
+
+
+.slick-next:before {
+  content: url(./../../asset/home/category/next.png) !important;
+}

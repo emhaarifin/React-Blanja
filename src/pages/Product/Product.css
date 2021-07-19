@@ -1,0 +1,256 @@
+.list-rating-product li {
+  list-style: none;
+  margin: 0 2px;
+}
+
+.list-rating-product {
+  display: flex;
+  flex-direction: row;
+  margin: 0 -2px;
+  align-items: baseline;
+}
+
+.total {
+  margin-left: 20px;
+}
+
+.title-name {
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 28px;
+  color: #222222;
+}
+
+/* .total{
+  margin-left: 159px;
+} */
+
+.subtitle-price-product {
+  font-size: 16px;
+  line-height: 16px;
+  color: #9B9B9B; 
+}
+
+
+.title .subtitle {
+  font-size: 16px;
+  line-height: 16px;
+  color: #9B9B9B; 
+}
+
+.price-item-product {
+  font-size: 33px;
+  line-height: 33px;
+  color: #222222;
+  font-weight: bold;
+}
+
+.price-total .subtitle {
+  margin-top: 30px;
+  font-size: 16px;
+  line-height: 16px;
+  color: #9B9B9B; 
+  margin-bottom: 10px;
+}
+
+.min {
+  padding: 17px 11px;
+  background: #D5D5D5;
+  border-radius: 50%;
+}
+.add {
+  padding: 6px 6px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 4px rgba(142, 142, 142, 0.25);
+}
+
+
+.sum-item {
+  /* margin-left: 110px; */
+  align-items: center;
+  display: flex;
+}
+
+.sum-item p {
+  font-size: 16px;
+  margin: 0 17px;
+  font-weight: bold 
+}
+
+.set-size-total {
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 14px;
+}
+
+.color-choice {
+  margin-top: 40px;
+  margin-bottom: 9px;
+}
+
+.btn-bold {
+  padding: 8px 31px;
+  box-sizing: border-box;
+  border-radius: 24px;
+}
+
+.btn-secondary-bold {
+  padding: 8px 66px;
+  color: #222;
+  font-size: 14px;
+  background-color: transparent;
+  margin-right: 20px;
+  border: 1.5px solid #222222;
+  box-sizing: border-box;
+  border-radius: 24px;
+  font-weight: bold;
+}
+
+.btn-primary-bold {
+  font-size: 14px;
+  border-radius: 24px;
+  box-sizing: border-box;
+  padding: 8px 120px;
+  color: #fff;
+  background-color: #DB3022;
+  border: none;
+}
+
+.information-product-wrapper {
+  margin-top: 38px;;
+}
+
+.the-condition {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  color: #DB3022;
+}
+
+.the-description {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #9B9B9B;
+}
+
+.btn-choice {
+  margin-top: 47px;
+}
+
+.choice-color {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  margin-right: 24px;
+
+}
+
+.choice-color-product {
+  padding: 18px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.btn-black{
+  background-color: #222;
+}
+
+.btn-white{ 
+  background-color: #fff;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.btn-red {
+  background-color: #B82222;
+}
+
+.btn-grey {
+  background-color: #BEA9A9;
+}
+
+.btn-brown {
+  background-color: #E2BB8D;
+}
+
+.btn-blue {
+  background-color: #151867;
+}
+
+.btn-green {
+  background-color: #42D86C;
+}
+
+
+
+.btn-check:checked+.btn-green,
+.btn-check:active+.btn-green,
+.btn-green:active,
+.btn-green.active {
+  border: 2px solid #fff;
+  box-shadow:  0 0 0 1px #db3022;
+}
+
+.btn-check:checked+.btn-black,
+.btn-check:active+.btn-black,
+.btn-black:active,
+.btn-black.active {
+  border: 2px solid #fff;
+  box-shadow:  0 0 0 1px #db3022;
+}
+
+.btn-check:checked+.btn-white,
+.btn-check:active+.btn-white,
+.btn-white:active,
+.btn-white.active {
+  border: 2px solid #fff;
+  box-shadow:  0 0 0 1px #db3022;
+}
+
+.btn-check:checked+.btn-red,
+.btn-check:active+.btn-red,
+.btn-red:active,
+.btn-red.active {
+  border: 2px solid #fff;
+  box-shadow:  0 0 0 1px #db3022;
+}
+
+.btn-check:checked+.btn-grey,
+.btn-check:active+.btn-grey,
+.btn-grey:active,
+.btn-grey.active {
+  border: 2px solid #fff;
+  box-shadow:  0 0 0 1px #db3022;
+}
+
+.btn-check:checked+.btn-brown,
+.btn-check:active+.btn-brown,
+.btn-brown:active,
+.btn-brown.active {
+  border: 2px solid #fff;
+  box-shadow:  0 0 0 1px #db3022;
+}
+
+.btn-check:checked+.btn-blue,
+.btn-check:active+.btn-blue,
+.btn-blue:active,
+.btn-blue.active {
+  border: 2px solid #fff;
+  box-shadow:  0 0 0 1px #db3022;
+}
+
+@media screen and (max-width: 670px) {
+  .title-name{
+    margin-top: 20px;
+  }
+
+  .btn-bold {
+    width: 100%;
+  }
+  
+  .btn-secondary-bold {
+margin-bottom: 5%;
+  }
+}
