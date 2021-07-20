@@ -8,7 +8,7 @@ import StoreIcon from "../../asset/profile/store.png";
 import IconCart from "../../asset/profile/order.png";
 import { Link } from "react-router-dom";
 import TabButton from "../../components/TabButton/TabButton";
-
+import "./CustOrder.css";
 class CustOrder extends Component {
   constructor(properties) {
     super(properties);
@@ -120,14 +120,11 @@ class CustOrder extends Component {
                   <div className="card-header-as bg-transparent">
                     <div className="text-black-20px fw-bold">My Order</div>
                   </div>
-                  <div
-                    className="card-body-as d-flex flex-sm-wrap"
-                    style={{ height: "70vh" }}
-                  >
+                  <div className="card-body-as" style={{ height: "70vh" }}>
                     <div>
                       <div
-                        className="ms-4 toggle-profile d-flex justify-content-between"
-                        style={{ width: "85%" }}
+                        className="ms-4 cardCustOrder toggle-profile"
+                        id="cardCustOrder"
                       >
                         <TabButton
                           toggleTab={() => this.toggleTab(1)}
