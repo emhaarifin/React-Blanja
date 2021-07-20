@@ -21,14 +21,11 @@ export class Login extends Component {
             <Link to="/auth/forgot_password">Forgot password?</Link>
           </section>
 
-          <Button
-            // to="/auth/confirm_password"
-            className="button"
-            styling="button--submit"
-            onCLick={() => this.buttonHandler()}
-          >
-            PRIMARY
-          </Button>
+          <Link to="/auth/confirm_password">
+            <Button className="button" styling="button--submit">
+              PRIMARY
+            </Button>
+          </Link>
 
           <section className="footnote-wrapper">
             Don't have a Tokopedia account?

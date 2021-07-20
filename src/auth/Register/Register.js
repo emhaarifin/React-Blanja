@@ -3,7 +3,6 @@ import Logo from "../../components/logo/logo";
 import Input from "../../components/input/input";
 import Button from "../../components/Button/Button";
 import TabButton from "../../components/TabButton/TabButton";
-// import "./Register.css";
 import { Link } from "react-router-dom";
 
 export class Register extends Component {
@@ -15,12 +14,10 @@ export class Register extends Component {
   }
   toggleTab(index) {
     this.setState({ toggleState: index });
-    // console.log(index);
   }
 
   render() {
     const { toggleState } = this.state;
-    // console.log(toggleState);
     return (
       <>
         <main className="auth-wrapper">
@@ -29,7 +26,6 @@ export class Register extends Component {
           <p className="heading-auth">Please sign up with your account</p>
           <section className="tab-auth">
             <TabButton
-              // typeTab={"active-tabs"}
               toggleTab={() => this.toggleTab(1)}
               typeTab={
                 toggleState === 1
@@ -107,17 +103,14 @@ export class Register extends Component {
           )}
 
           <section className="field-group-inline">
-            <Link to="forgot_password">Forgot password?</Link>
+            <Link to="/auth/forgot_password">Forgot password?</Link>
           </section>
 
-          <Button
-            className="button"
-            styling="button--submit"
-            onCLick={() => this.loginHandler()}
-          >
-            PRIMARY
-          </Button>
-
+          <Link to="/auth.login">
+            <Button className="button" styling="button--submit">
+              PRIMARY
+            </Button>
+          </Link>
           <section className="footnote-wrapper">
             Don't have a Tokopedia account?
             <Link to="/auth/login"> Login</Link>

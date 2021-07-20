@@ -1,10 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
-// import AsideProfile from "../../components/AsideProfile/AsideProfile";
+import React, { useState } from "react";
 import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import "./AddProduct.css";
 import Input from "../../components/input/input";
 import AvatarMini from "../../asset/profile-mini.png";
-import Avatar from "../../asset/profile.png";
 import Button from "../../components/Button/Button";
 import IconPackage from "../../asset/profile/product.png";
 import StoreIcon from "../../asset/profile/store.png";
@@ -86,7 +84,7 @@ function AddProduct() {
                 </label>
                 <ul className="sidebar-submenu" id="submenu1">
                   <li>
-                    <a href="./profileSeller.html">Store profile</a>
+                    <Link to="/profile/seller">Store profile</Link>
                   </li>
                 </ul>
               </li>
@@ -120,9 +118,12 @@ function AddProduct() {
                     </Link>
                   </li>
                   <li>
-                    <a href="./sellingProducts.html" className="text-black-50">
+                    <Link
+                      to="/profile/seller/add_product"
+                      className="text-black-50"
+                    >
                       Selling products
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -148,14 +149,20 @@ function AddProduct() {
                 </label>
                 <ul className="sidebar-submenu" id="submenu2">
                   <li>
-                    <a href="./myOrderSeller.html" className="text-black-50">
+                    <Link
+                      to="/profile/seller/myorderseller"
+                      className="text-black-50"
+                    >
                       My order
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="./orderCancel.html" className="text-black-50">
+                    <Link
+                      to="/profile/seller/myorderseller"
+                      className="text-black-50"
+                    >
                       Order cancel
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -356,7 +363,7 @@ function AddProduct() {
               <Button
                 type="submit"
                 onClick={handleSubmit}
-                styling="btn-profile-save"
+                styling="btn-product-save"
               >
                 Jual
               </Button>

@@ -5,6 +5,7 @@ import "./Product.css";
 import CountBuyProduct from "../../components/CountBuyProduct/CountBuyProduct";
 import Button from "../../components/Button/Button";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import CardProduct from "../../components/CardProduct/CardProduct";
 import rating from "../../asset/home/new/star.svg";
@@ -45,6 +46,7 @@ export class Product extends Component {
 
   async getAllProduct() {
     const response = await axios.get(`http://localhost:4000/products`);
+    console.log(response);
     try {
       this.setState({
         products: response.data.data,
@@ -59,11 +61,28 @@ export class Product extends Component {
     const { productsbyId } = this.state;
     console.log(productsbyId);
     return productsbyId.map((product, index) => {
-      const { id, name, brand, price, description, image } = product;
+      const { id, name, brand, price, category, description, image } = product;
       return (
         <>
           <Navbar />
           <div className="container mt-5">
+            <nav className="breadcrumb" aria-label="breadcrumb">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link style={{ color: "#9B9B9B" }} to="/">
+                    Home
+                  </Link>
+                </li>
+                <li className="breadcrumb-item">
+                  <Link style={{ color: "#9B9B9B" }} to="/">
+                    Category
+                  </Link>
+                </li>
+                <li className="breadcrumb-item active" aria-current="page">
+                  {category}
+                </li>
+              </ol>
+            </nav>
             <div className="row" key={index}>
               <div className="col-lg-4 col-md-8 images-product">
                 <div className="row image-product-main">
@@ -161,11 +180,11 @@ export class Product extends Component {
                   >
                     Add Bag
                   </button>
-                  <a href="./mybag.html">
+                  <Link href="/mybag">
                     <button type="button" className="btn-bold btn-primary-bold">
                       Buy Now
                     </button>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="information-product-wrapper">

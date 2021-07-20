@@ -15,11 +15,6 @@ export class Login extends Component {
   }
   toggleTab(index) {
     this.setState({ toggleState: index });
-    // console.log(index);
-  }
-
-  loginHandler() {
-    <Link to="http://192.168.1.2:3002/"></Link>;
   }
 
   render() {
@@ -74,12 +69,8 @@ export class Login extends Component {
               <Link to="/auth/forgot_password">Forgot password?</Link>
             </section>
 
-            <Link to="/">
-              <Button
-                className="button"
-                styling="button--submit"
-                onClick={() => this.loginHandler()}
-              >
+            <Link to="/profile/seller">
+              <Button className="button" styling="button--submit">
                 PRIMARY
               </Button>
             </Link>

@@ -71,3 +71,19 @@ Link, a{
   border: 1px solid #D4D4D4;
   border-radius: 24px;
 }
+
+.btn-product-save {
+  margin-top: 2rem;
+  margin-right: 12rem;
+  padding: 8px 25px;
+  background: #DB3022;
+  border-radius: 25px;
+  color: #fff;
+  border: unset;
+}
+
+@media screen and (max-width: 670px) {
+  .btn-product-save {
+    margin-right: 0.5rem;
+  }
+} 

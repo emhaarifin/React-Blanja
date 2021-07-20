@@ -56,7 +56,7 @@ function ProfileSeller() {
                 </label>
                 <ul className="sidebar-submenu" id="submenu1">
                   <li>
-                    <a href="./profileSeller.html">Store profile</a>
+                    <Link to="/profile/seller">Store profile</Link>
                   </li>
                 </ul>
               </li>
@@ -90,9 +90,12 @@ function ProfileSeller() {
                     </Link>
                   </li>
                   <li>
-                    <a href="./sellingProducts.html" className="text-black-50">
+                    <Link
+                      to="/profile/seller/add_product"
+                      className="text-black-50"
+                    >
                       Selling products
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -118,14 +121,20 @@ function ProfileSeller() {
                 </label>
                 <ul className="sidebar-submenu" id="submenu2">
                   <li>
-                    <a href="./myOrderSeller.html" className="text-black-50">
+                    <Link
+                      to="/profile/seller/myorderseller"
+                      className="text-black-50"
+                    >
                       My order
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="./orderCancel.html" className="text-black-50">
+                    <Link
+                      to="/profile/seller/myorderseller"
+                      className="text-black-50"
+                    >
                       Order cancel
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>

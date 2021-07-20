@@ -14,7 +14,6 @@ import IconCart from "../../asset/profile/order.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Search from "../../asset/search.png";
-import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
 
 class ProductSeller extends Component {
   constructor(properties) {
@@ -60,7 +59,6 @@ class ProductSeller extends Component {
         message: response.data.message,
         totalPage: response.data.pageDetail.totalPage,
       });
-      // console.log(this.state.sortBy);
       console.log("try", response);
     } catch (error) {
       this.setState({
@@ -255,7 +253,7 @@ class ProductSeller extends Component {
                   </label>
                   <ul className="sidebar-submenu" id="submenu1">
                     <li>
-                      <Link to="">Store profile</Link>
+                      <Link to="/profile/seller">Store profile</Link>
                     </li>
                   </ul>
                 </li>
@@ -289,7 +287,10 @@ class ProductSeller extends Component {
                       </Link>
                     </li>
                     <li>
-                      <Link to="" className="text-black-50">
+                      <Link
+                        to="/profile/seller/add_product"
+                        className="text-black-50"
+                      >
                         Selling products
                       </Link>
                     </li>
@@ -317,12 +318,18 @@ class ProductSeller extends Component {
                   </label>
                   <ul className="sidebar-submenu" id="submenu2">
                     <li>
-                      <Link to="./myOrderSeller.html" className="text-black-50">
+                      <Link
+                        to="/profile/seller/myorderseller"
+                        className="text-black-50"
+                      >
                         My order
                       </Link>
                     </li>
                     <li>
-                      <Link to="" className="text-black-50">
+                      <Link
+                        to="/profile/seller/myorderseller"
+                        className="text-black-50"
+                      >
                         Order cancel
                       </Link>
                     </li>
@@ -386,10 +393,10 @@ class ProductSeller extends Component {
                         <tr>
                           <th>Image</th>
                           <th onClick={this.getSortByName}>
-                            Name <i class="fa fa-caret-down"></i>
+                            Name <i class="fa fa-sort"></i>
                           </th>
                           <th onClick={this.getSortByPrice}>
-                            Price <i class="fa fa-caret-down"></i>
+                            Price <i class="fa fa-sort"></i>
                           </th>
                           <th>Action</th>
                         </tr>
