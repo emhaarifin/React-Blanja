@@ -4,13 +4,17 @@ import img from "./../../asset/home/category/jacket.svg";
 import "./CategoryProduct.css";
 import { Link } from "react-router-dom";
 
-export default class MultipleItems extends Component {
+export default class CenterMode extends Component {
   render() {
     const settings = {
-      // className: "center",
+      className: "center",
       infinite: true,
       slidesToShow: 5,
       arrows: true,
+      slidesToScroll: 1,
+      autoplay: true,
+      speed: 2000,
+      autoplaySpeed: 2000,
       responsive: [
         {
           breakpoint: 576,
@@ -43,4 +47,4 @@ export default class MultipleItems extends Component {
   }
 }
 
-// export default MultipleItems
+// export default MultipleItems;

@@ -12,6 +12,10 @@ export default class CenterMode extends Component {
       centerPadding: "155px",
       arrows: true,
       dots: true,
+      slidesToScroll: 1,
+      autoplay: true,
+      speed: 2000,
+      autoplaySpeed: 50,
       slidesToShow: 2,
       responsive: [
         {

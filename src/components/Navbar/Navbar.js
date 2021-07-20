@@ -11,7 +11,9 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
       <div className="container">
-        <LOGO />
+        <Link to="/">
+          <LOGO />
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -44,15 +46,15 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <button
-                data-bs-toggle="modal"
-                data-bs-target="#"
+                // data-bs-toggle="modal"
+                // data-bs-target="#"
                 className="btn-filter"
               >
                 <img src={Filter} className="filter" alt=""></img>
               </button>
             </li>
             <li className="nav-item">
-              <Link className="nav-link btn-cart" to="/">
+              <Link to="/mybag" className="nav-link btn-cart">
                 <img src={IconCart} alt=""></img>
               </Link>
             </li>

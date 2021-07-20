@@ -15,7 +15,7 @@
 }
 
 
- .category-item p {
+.category-item p {
   position: absolute;
   top: 50%;
   width: 100%;
@@ -30,7 +30,7 @@
 button.slick-next.slick-arrow {
   top: 40%;
 right: 2%;
-}
+} */
 
 button.slick-prev.slick-arrow {
 display: none !important;
