@@ -17,15 +17,14 @@ function Home() {
     getAllCategory();
   }, []);
 
-  const getAllProducts = () => {
-    axios
-      .get(`${url}products`)
-      .then((response) => {
-        const allProducts = response.data.data;
-        // console.log(response);
-        setProducts(allProducts);
-      })
-      .catch(console.error());
+  const getAllProducts = async () => {
+    try {
+      const response = await axios.get(`${url}products`);
+      const allProducts = response.data.data;
+      setProducts(allProducts);
+    } catch {
+      console.error();
+    }
   };
 
   const getAllCategory = async () => {

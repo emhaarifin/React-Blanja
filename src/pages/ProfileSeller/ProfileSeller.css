@@ -3,9 +3,9 @@
   left: 35%;
 }
 
-body {
+/* body {
   background-color: #f5f5f5;
-}
+} */
 
 .sidebar-toggler {
   position: relative;
@@ -210,6 +210,7 @@ border: unset;
 
   .main-panel {
       width: 70%;
+      background: #F5F5F5;
   }
 
 

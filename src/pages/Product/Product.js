@@ -57,6 +57,7 @@ export class Product extends Component {
 
   render() {
     const { productsbyId } = this.state;
+    console.log(productsbyId);
     return productsbyId.map((product, index) => {
       const { id, name, brand, price, description, image } = product;
       return (

@@ -45,7 +45,7 @@ function Navbar() {
             <li className="nav-item">
               <button
                 data-bs-toggle="modal"
-                // data-bs-target="#"
+                data-bs-target="#"
                 className="btn-filter"
               >
                 <img src={Filter} className="filter" alt=""></img>

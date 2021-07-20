@@ -8,6 +8,8 @@ const input = (props) => {
         className={"custom-input"}
         id={props.id}
         type={props.type}
+        name={props.name}
+        onChange={props.onChange}
         placeholder={props.placeholder}
         value={props.value}
       />
