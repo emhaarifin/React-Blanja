@@ -1,10 +1,6 @@
 import React from "react";
-// import AsideProfile from "../../components/AsideProfile/AsideProfile";
 import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
-import Input from "../../components/input/input";
 import AvatarMini from "../../asset/profile-mini.png";
-import Avatar from "../../asset/profile.png";
-import Button from "../../components/Button/Button";
 import IconPackage from "../../asset/profile/product.png";
 import StoreIcon from "../../asset/profile/store.png";
 import IconCart from "../../asset/profile/order.png";

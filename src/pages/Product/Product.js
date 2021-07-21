@@ -180,7 +180,7 @@ export class Product extends Component {
                   >
                     Add Bag
                   </button>
-                  <Link href="/mybag">
+                  <Link to="/mybag">
                     <button type="button" className="btn-bold btn-primary-bold">
                       Buy Now
                     </button>

@@ -34,6 +34,12 @@ Link, a{
   color: #61dafb;
 }
 
+input[type=search]  {
+  outline-offset: unset !important;
+  outline: unset;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

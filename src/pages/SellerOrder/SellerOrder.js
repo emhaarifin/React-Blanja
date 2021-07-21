@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-// import AsideProfile from "../../components/AsideProfile/AsideProfile";
 import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
-import Input from "../../components/input/input";
 import AvatarMini from "../../asset/profile-mini.png";
 import IconPackage from "../../asset/profile/product.png";
 import StoreIcon from "../../asset/profile/store.png";
@@ -242,7 +240,7 @@ class SellerOrder extends Component {
                       </div>
                       <div className="no__order-image">
                         <div>
-                          <img src={NotFoundImg}></img>
+                          <img src={NotFoundImg} alt="not found data"></img>
                         </div>
                         <p>The are no orders yet</p>
                       </div>

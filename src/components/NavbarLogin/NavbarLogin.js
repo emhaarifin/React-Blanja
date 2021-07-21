@@ -13,7 +13,9 @@ function NavbarLogin(props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
       <div className="container">
-        <LOGO />
+        <Link to="/">
+          <LOGO />
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -53,8 +55,6 @@ function NavbarLogin(props) {
                 <img src={Filter} className="filter" alt=""></img>
               </button>
             </li>
-            {/* </ul> */}
-            {/* <ul className="navbar-nav custom-nav-right"> */}
             <li className="nav-item">
               <a className="nav-link btn-cart" href="./pages/mybag.html">
                 <img src={IconCart} alt=""></img>
@@ -70,7 +70,7 @@ function NavbarLogin(props) {
                 <Link to="" className="btn-mail">
                   <img src={ImageMail} alt=""></img>
                 </Link>
-                <Link className="btn-profile" to="/profile/seller">
+                <Link to="/profile/custommer" className="btn-profile">
                   <img src={ImageProfile} alt=""></img>
                 </Link>
               </div>

@@ -10,11 +10,6 @@ h1, h2, h3, h4, h5, h6, p, div {
     box-sizing: border-box;
 }
 
-/* navigation */
-.container {
-    max-width: 1170px;
-}
-
 
 .form-select {
     border: none;

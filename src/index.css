@@ -19,6 +19,14 @@ body {
     sans-serif;
 }
 
+input[type=search] {
+  outline-offset: unset !important;
+  outline: unset;
+}
+.form-control:focus {
+  border-color: unset !important;
+  box-shadow: unset !important;
+}
 
 /*
 code {
