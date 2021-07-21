@@ -69,11 +69,11 @@ function CheckOut() {
                 <div className="sum-price">
                   <div className="price order">
                     <p id="title-price">Order</p>
-                    <p id="price">$ 40.0</p>
+                    <p id="price-checkout">$ 40.0</p>
                   </div>
                   <div className="price delivery">
                     <p id="title-price">Delivery</p>
-                    <p id="price">$ 5.0</p>
+                    <p id="price-checkout">$ 5.0</p>
                   </div>
                 </div>
                 <hr className="line-sum"></hr>
@@ -217,11 +217,11 @@ function CheckOut() {
                       <div className="sum-price">
                         <div className="price order">
                           <p id="title-price">Order</p>
-                          <p id="price">$ 40.0</p>
+                          <p id="price-checkout">$ 40.0</p>
                         </div>
                         <div className="price delivery">
                           <p id="title-price">Delivery</p>
-                          <p id="price">$ 5.0</p>
+                          <p id="price-checkout">$ 5.0</p>
                         </div>
                       </div>
                     </div>

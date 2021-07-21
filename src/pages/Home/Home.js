@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
+import "./home.css";
 import Navbar from "../../components/Navbar/Navbar";
 import BannerCarousel from "../../components/BannerCarousel/BannerCarousel";
 import CategoryProduct from "../../components/CategoryProduct/CategoryProduct";
 import CardProduct from "../../components/CardProduct/CardProduct";
-import "./home.css";
 import axios from "axios";
+import { BASE_URL } from "../../configs/db";
 
 function Home() {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
-
-  const url = "http://localhost:4000/";
 
   useEffect(() => {
     getAllProducts();
@@ -19,7 +18,7 @@ function Home() {
 
   const getAllProducts = async () => {
     try {
-      const response = await axios.get(`${url}products`);
+      const response = await axios.get(`${BASE_URL}/products`);
       const allProducts = response.data.data;
       setProducts(allProducts);
     } catch {
@@ -29,7 +28,7 @@ function Home() {
 
   const getAllCategory = async () => {
     try {
-      const response = await axios.get(`${url}category`);
+      const response = await axios.get(`${BASE_URL}/category`);
       const allCategory = response.data.result;
       setCategory(allCategory);
     } catch (error) {

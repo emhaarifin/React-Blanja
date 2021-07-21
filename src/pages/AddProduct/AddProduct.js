@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import "./AddProduct.css";
 import Input from "../../components/input/input";
@@ -20,6 +20,7 @@ function AddProduct() {
       [e.target.name]: e.target.value,
     });
   };
+
   const [products, setProducts] = useState({
     name: "",
     brand: "",
@@ -38,9 +39,10 @@ function AddProduct() {
       })
       .catch(() => alert("failed"));
   };
-  useEffect(() => {
-    document.title = "Tambah Produk Untuk Dijual";
-  });
+
+  // useEffect(() => {
+  //   document.title = "Tambah Produk Untuk Dijual";
+  // });
 
   return (
     <div>
@@ -219,7 +221,7 @@ function AddProduct() {
                   <div className="col-lg-8 col-md-12 col-12 order-lg-0 order-1">
                     <div className="col ms-4 mb-4">
                       <label
-                        htmlFor="prices"
+                        htmlFor="price"
                         className="text-start col-sm-3 col-form-label text-black-50"
                       >
                         Unit price
@@ -228,7 +230,7 @@ function AddProduct() {
                         <Input
                           id="prices"
                           type="text"
-                          name="prices"
+                          name="price"
                           onChange={handleChange}
                           element="input"
                         />

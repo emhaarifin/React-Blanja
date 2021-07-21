@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import Input from "../../components/input/input";
@@ -33,21 +34,24 @@ function AddProduct() {
 
   let history = useHistory();
 
-  const handleSubmit = () => {
-    axios
-      .put(`${url}products/${id}`, products)
-      .then((res) => {
-        alert("succs");
-        return history.push("/profile/seller/product");
-      })
-      .catch(() => alert("failed"));
+  const handleSubmit = async () => {
+    try {
+      await axios.put(`${url}products/${id}`, products);
+      alert("res");
+      return history.push("/profile/seller/product");
+    } catch (error) {
+      console.log(error);
+    }
   };
-
+  //
+  // useEffect(() => {
+  //   getAllProductsByID();
+  //   console.log();
+  // });
   useEffect(() => {
     document.title = "Perbarui Produk";
     getAllProductsByID();
-    console.log();
-  });
+  }, []);
 
   const getAllProductsByID = async () => {
     try {
@@ -219,7 +223,7 @@ function AddProduct() {
                       </label>
                       <div className="col-sm-9">
                         <Input
-                          value={products.name}
+                          defaultValue={products.name}
                           id="name"
                           type="text"
                           name="name"
@@ -245,7 +249,7 @@ function AddProduct() {
                   <div className="col-lg-8 col-md-12 col-12 order-lg-0 order-1">
                     <div className="col ms-4 mb-4">
                       <label
-                        htmlFor="prices"
+                        htmlFor="price"
                         className="text-start col-sm-3 col-form-label text-black-50"
                       >
                         Unit price
@@ -253,9 +257,9 @@ function AddProduct() {
                       <div className="col-sm-9">
                         <Input
                           value={products.price}
-                          id="prices"
+                          id="price"
                           type="text"
-                          name="prices"
+                          name="price"
                           onChange={handleChange}
                           element="input"
                         />
@@ -371,7 +375,7 @@ function AddProduct() {
                                 "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
                             }}
                             value={products.description}
-                            onChange={(e) =>
+                            onMouseEnter={(e) =>
                               setProducts({
                                 ...products,
                                 description: e.target

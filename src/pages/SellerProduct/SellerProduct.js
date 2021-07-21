@@ -48,7 +48,7 @@ class ProductSeller extends Component {
     console.log(this.state.sort, this.state.sortBy);
   }
 
-  async getAllProduct(props) {
+  async getAllProduct() {
     const response = await axios.get(
       `http://localhost:4000/products?page=${this.state.pageNumber}&search=${this.state.search}&sortBy=${this.state.sortBy}&sort=${this.state.sort}`
     );
@@ -78,7 +78,7 @@ class ProductSeller extends Component {
       await this.setState({
         pageNumber: pageNumberState,
       });
-      this.getAllProduct(pageNumberState);
+      this.getAllProduct();
     }
   };
 
@@ -91,7 +91,7 @@ class ProductSeller extends Component {
       await this.setState({
         pageNumber: pageNumberState,
       });
-      this.getAllProduct(pageNumberState);
+      this.getAllProduct();
     }
   };
 
@@ -121,12 +121,12 @@ class ProductSeller extends Component {
         sort: "DESC",
         sortBy: "name",
       });
-      await this.getAllProduct(this.state.sortBy, this.state.sort);
+      await this.getAllProduct();
     } else {
       this.setState({
         sort: "ASC",
       });
-      await this.getAllProduct(this.state.sortBy, this.state.sort);
+      await this.getAllProduct();
     }
   };
 
@@ -136,12 +136,12 @@ class ProductSeller extends Component {
         sort: "DESC",
         sortBy: "price",
       });
-      await this.getAllProduct(this.state.sortBy, this.state.sort);
+      await this.getAllProduct();
     } else {
       this.setState({
         sort: "ASC",
       });
-      await this.getAllProduct(this.state.sortBy, this.state.sort);
+      await this.getAllProduct();
     }
   };
 

@@ -18,7 +18,7 @@ import ProfileCust from "./pages/ProfileCust/ProfileCust";
 import ShippingAddressCust from "./pages/ShippingAddressCust/ShippingAddressCust";
 import CustOrder from "./pages/CustOrder/CustOrder";
 import SellerOrder from "./pages/SellerOrder/SellerOrder";
-require("dotenv").config();
+
 export class App extends Component {
   render() {
     return (
