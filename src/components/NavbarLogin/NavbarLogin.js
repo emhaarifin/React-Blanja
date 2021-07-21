@@ -9,7 +9,7 @@ import ImageMail from "../../asset/mybag/icon-mail.png";
 import IconCart from "../../asset/shopping-cart.svg";
 import IconNotification from "../../asset/mybag/icon-notification.png";
 import "./NavbarLogin.css";
-function NavbarLogin() {
+function NavbarLogin(props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
       <div className="container">
@@ -26,7 +26,7 @@ function NavbarLogin() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav midlle-nav-login">
+          <ul className={`navbar-nav ${props.className}`}>
             <li className="nav-item">
               <form className="search">
                 <input

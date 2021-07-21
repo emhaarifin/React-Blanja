@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 function ProfileSeller() {
   return (
     <div>
-      <NavbarLogin />
+      <NavbarLogin className="midlle-nav-login" />
       <div className="d-flex wrapper  flex-nowrap">
         <div className="sidebar  flex-column">
           <div className="user-profile d-flex flex-wrap mb-5">

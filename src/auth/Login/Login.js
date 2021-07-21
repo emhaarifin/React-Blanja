@@ -17,6 +17,14 @@ export class Login extends Component {
     this.setState({ toggleState: index });
   }
 
+  handleLogin() {
+    if (this.state.toggleState === 1) {
+      <Link to="/profile/seller"></Link>;
+    } else {
+      <Link to="/profile/custommer"></Link>;
+    }
+  }
+
   render() {
     const { toggleState } = this.state;
     return (

@@ -17,6 +17,7 @@ import CheckOut from "./pages/CheckOut/CheckOut";
 import ProfileCust from "./pages/ProfileCust/ProfileCust";
 import ShippingAddressCust from "./pages/ShippingAddressCust/ShippingAddressCust";
 import CustOrder from "./pages/CustOrder/CustOrder";
+import SellerOrder from "./pages/SellerOrder/SellerOrder";
 export class App extends Component {
   render() {
     return (
@@ -50,8 +51,9 @@ export class App extends Component {
             path="/profile/seller/update_product/:id"
             component={UpdateProduct}
           />
-          <Route path="/profile/seller" component={ProfileSeller} />
+          <Route exact path="/profile/seller" component={ProfileSeller} />
           <Route path="/category/:id" component={Category} />
+          <Route path="/profile/seller/myorderseller" component={SellerOrder} />
         </Switch>
       </BrowserRouter>
     );

@@ -81,6 +81,39 @@ class ProductSeller extends Component {
     }
   };
 
+  nextHandlerButton = async () => {
+    if (
+      this.state.pageNumber <
+      Math.ceil(this.state.pageDetail.total / this.state.pageDetail.per_page)
+    ) {
+      const pageNumberState = this.state.pageNumber + 1;
+      await this.setState({
+        pageNumber: pageNumberState,
+      });
+      this.getAllProduct(pageNumberState);
+    }
+  };
+
+  handlePagination = () => {
+    if (this.state.pageNumber > 1) {
+      this.prevHandlerButton();
+    } else {
+      this.nextHandlerButton();
+    }
+  };
+
+  async deleteProduct(id) {
+    const response = await axios.delete(`http://localhost:4000/products/${id}`);
+    try {
+      this.setState({
+        products: response.data.data,
+        isLoading: false,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   getSortByName = async () => {
     if (this.state.sort === "ASC") {
       this.setState({
@@ -110,39 +143,6 @@ class ProductSeller extends Component {
       await this.getAllProduct(this.state.sortBy, this.state.sort);
     }
   };
-
-  handlePagination = () => {
-    if (this.state.pageNumber > 1) {
-      this.prevHandlerButton();
-    } else {
-      this.nextHandlerButton();
-    }
-  };
-
-  nextHandlerButton = async () => {
-    if (
-      this.state.pageNumber <
-      Math.ceil(this.state.pageDetail.total / this.state.pageDetail.per_page)
-    ) {
-      const pageNumberState = this.state.pageNumber + 1;
-      await this.setState({
-        pageNumber: pageNumberState,
-      });
-      this.getAllProduct(pageNumberState);
-    }
-  };
-
-  async deleteProduct(id) {
-    const response = await axios.delete(`http://localhost:4000/products/${id}`);
-    try {
-      this.setState({
-        products: response.data.data,
-        isLoading: false,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   getSearchResult = async () => {
     await this.getAllProduct(this.state.search);
@@ -210,7 +210,7 @@ class ProductSeller extends Component {
     };
     return (
       <div>
-        <NavbarLogin />
+        <NavbarLogin className="midlle-nav-login" />
         <div className="d-flex wrapper  flex-nowrap">
           <div className="sidebar  flex-column">
             <div className="user-profile d-flex flex-wrap mb-5">

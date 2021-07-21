@@ -122,10 +122,7 @@ class CustOrder extends Component {
                   </div>
                   <div className="card-body-as" style={{ height: "70vh" }}>
                     <div>
-                      <div
-                        className="ms-4 cardCustOrder toggle-profile"
-                        id="cardCustOrder"
-                      >
+                      <div className="ms-4 cardCustOrder toggle-profile">
                         <TabButton
                           toggleTab={() => this.toggleTab(1)}
                           typeTab={
