@@ -1,14 +1,37 @@
 button.slick-next.slick-arrow {
   top: 40% ;
-  right: 15% ;
+  right: 13% ;
 }
 button.slick-prev.slick-arrow {
-  left: 7.5% ;
+  left: 10% ;
   top: 40% ;
 }
 
 button.slick-arrow{
   z-index: 1000;
+}
+
+
+.banner-carousel .banner {
+  margin: 0 25px;
+  /* margin-right: 25px; */
+  position: relative;
+}
+
+
+.banner-carousel .banner p {
+  position: absolute;
+  top: 44%;
+  width: 100%;
+  text-align: center;
+  font-size: 38px;
+  font-weight: bold;
+  line-height: 38px;  
+  color: #FFFFFF;
+}
+
+.banner-carousel .banner img {
+  border-radius: 8px;
 }
 
 .slick-dots {

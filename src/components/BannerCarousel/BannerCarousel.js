@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import img from "./../../asset/home/carousel/benjamin-voros-TnNo84AJJ5A-unsplash.png";
+import img2 from "./../../asset/home/carousel/ian-dooley-10ca-K3e6Ko-unsplash.png";
 import "./BannerCarousel.css";
 
 export default class CenterMode extends Component {
@@ -30,25 +31,27 @@ export default class CenterMode extends Component {
       ],
     };
     return (
-      <div className="container mt-5">
+      <div className="container banner-carousel mt-5">
         <Slider {...settings}>
-          <div>
+          <div className="banner">
             <img src={img} alt="img"></img>
+            <p>Trend In 2020</p>
           </div>
-          <div>
-            <img src={img} alt="img"></img>
+          <div className="banner">
+            <img src={img2} alt="img"></img>
+            <p>Black Edition</p>
           </div>
-          <div>
+          <div className="banner">
             <img src={img} alt="img"></img>
+            <p>Trend In 2020</p>
           </div>
-          <div>
-            <img src={img} alt="img"></img>
+          <div className="banner">
+            <img src={img2} alt="img"></img>
+            <p>Black Edition</p>
           </div>
-          <div>
+          <div className="banner">
             <img src={img} alt="img"></img>
-          </div>
-          <div>
-            <img src={img} alt="img"></img>
+            <p>Trend In 2020</p>
           </div>
         </Slider>
       </div>
