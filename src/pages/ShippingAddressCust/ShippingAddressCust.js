@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import AvatarMini from "../../asset/profile-mini.png";
 import IconPackage from "../../asset/profile/product.png";
@@ -7,6 +7,9 @@ import IconCart from "../../asset/profile/order.png";
 import { Link } from "react-router-dom";
 
 function ShippingAddressCust() {
+  useEffect(() => {
+    document.title = "Atur Alamat Tujuan";
+  });
   return (
     <>
       <div>

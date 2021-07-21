@@ -25,6 +25,10 @@ export class Login extends Component {
     }
   }
 
+  componentDidMount() {
+    document.title = "Login";
+  }
+
   render() {
     const { toggleState } = this.state;
     return (

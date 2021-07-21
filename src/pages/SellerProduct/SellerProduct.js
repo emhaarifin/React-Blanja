@@ -34,6 +34,7 @@ class ProductSeller extends Component {
   }
 
   componentDidMount() {
+    document.title = "Produk Yang Kamu Jual";
     this.getAllProduct();
   }
 

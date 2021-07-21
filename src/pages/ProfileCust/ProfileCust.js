@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import AsideProfile from "../../components/AsideProfile/AsideProfile";
 import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import "./ProfileCust.css";
@@ -12,6 +12,9 @@ import IconCart from "../../asset/profile/order.png";
 import { Link } from "react-router-dom";
 import CustomRadio from "../../components/CustomRadio/CustomRadio";
 function ProfileCust() {
+  useEffect(() => {
+    document.title = "Profile Custommer";
+  });
   return (
     <div>
       <NavbarLogin />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import "./CheckOut.css";
@@ -8,6 +8,9 @@ import PosIndonesia from "../../asset/checkout/posindonesia.png";
 import Jas from "../../asset/mybag/jas.png";
 import Jacket from "../../asset/mybag/jacket.png";
 function CheckOut() {
+  useEffect(() => {
+    document.title = "Yuk Bayar!";
+  });
   return (
     <div>
       <Navbar />

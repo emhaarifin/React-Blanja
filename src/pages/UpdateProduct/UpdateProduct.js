@@ -44,6 +44,7 @@ function AddProduct() {
   };
 
   useEffect(() => {
+    document.title = "Perbarui Produk";
     getAllProductsByID();
     console.log();
   });
@@ -244,7 +245,7 @@ function AddProduct() {
                   <div className="col-lg-8 col-md-12 col-12 order-lg-0 order-1">
                     <div className="col ms-4 mb-4">
                       <label
-                        htmlFor="price"
+                        htmlFor="prices"
                         className="text-start col-sm-3 col-form-label text-black-50"
                       >
                         Unit price
@@ -252,9 +253,9 @@ function AddProduct() {
                       <div className="col-sm-9">
                         <Input
                           value={products.price}
-                          id="price"
+                          id="prices"
                           type="text"
-                          name="price"
+                          name="prices"
                           onChange={handleChange}
                           element="input"
                         />

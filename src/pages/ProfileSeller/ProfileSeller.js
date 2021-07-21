@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import AsideProfile from "../../components/AsideProfile/AsideProfile";
 import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import "./ProfileSeller.css";
@@ -11,6 +11,9 @@ import StoreIcon from "../../asset/profile/store.png";
 import IconCart from "../../asset/profile/order.png";
 import { Link } from "react-router-dom";
 function ProfileSeller() {
+  useEffect(() => {
+    document.title = "Profile Seller";
+  });
   return (
     <div>
       <NavbarLogin className="midlle-nav-login" />

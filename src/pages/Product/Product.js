@@ -20,6 +20,7 @@ export class Product extends Component {
 
   componentDidMount() {
     this.getPoductsById();
+    document.title = "Produk pilihanmu";
     this.getAllProduct();
   }
 
@@ -59,7 +60,6 @@ export class Product extends Component {
 
   render() {
     const { productsbyId } = this.state;
-    console.log(productsbyId);
     return productsbyId.map((product, index) => {
       const { id, name, brand, price, category, description, image } = product;
       return (

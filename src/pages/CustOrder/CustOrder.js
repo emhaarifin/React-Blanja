@@ -17,6 +17,10 @@ class CustOrder extends Component {
   toggleTab(index) {
     this.setState({ toggleState: index });
   }
+
+  componentDidMount() {
+    document.title = "Riwayat order";
+  }
   render() {
     const { toggleState } = this.state;
     return (

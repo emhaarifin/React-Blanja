@@ -6,6 +6,9 @@ import "./MyBag.css";
 import { Link } from "react-router-dom";
 import InputIncrement from "../../components/InputIncrement/InputIncrement";
 export class MyBag extends Component {
+  componentDidMount() {
+    document.title = "Keranjang belanja";
+  }
   render() {
     return (
       <div>

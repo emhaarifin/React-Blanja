@@ -16,6 +16,9 @@ class SellerOrder extends Component {
       toggleState: 1,
     };
   }
+  componentDidMount() {
+    document.title = "Produk Yang Dibeli";
+  }
   toggleTab(index) {
     this.setState({ toggleState: index });
   }

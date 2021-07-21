@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-
-// import AsideProfile from "../../components/AsideProfile/AsideProfile";
 import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import "./ProductSeller.css";
-// import Input from "../../components/input/input";
 import AvatarMini from "../../asset/profile-mini.png";
-// import Avatar from "../../asset/profile.png";
-// import Button from "../../components/Button/Button";
 import IconPackage from "../../asset/profile/product.png";
 import StoreIcon from "../../asset/profile/store.png";
 import IconCart from "../../asset/profile/order.png";
@@ -16,7 +11,7 @@ class ProductSeller extends Component {
   render() {
     return (
       <div>
-        <NavbarLogin />
+        <NavbarLogin className="midlle-nav-login" />
         <div className="d-flex wrapper  flex-nowrap">
           <div className="sidebar  flex-column">
             <div className="user-profile d-flex flex-wrap mb-5">

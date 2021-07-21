@@ -15,6 +15,9 @@ export class Register extends Component {
   toggleTab(index) {
     this.setState({ toggleState: index });
   }
+  componentDidMount() {
+    document.title = "Register";
+  }
 
   render() {
     const { toggleState } = this.state;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import "./AddProduct.css";
 import Input from "../../components/input/input";
@@ -38,6 +38,9 @@ function AddProduct() {
       })
       .catch(() => alert("failed"));
   };
+  useEffect(() => {
+    document.title = "Tambah Produk Untuk Dijual";
+  });
 
   return (
     <div>

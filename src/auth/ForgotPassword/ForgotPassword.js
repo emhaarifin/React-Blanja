@@ -6,6 +6,9 @@ import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
 
 export class Login extends Component {
+  componentDidMount() {
+    document.title = "Lupa password";
+  }
   render() {
     return (
       <>
