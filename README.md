@@ -12,6 +12,6 @@ This is my frist time project from html and css into React Create App.
 
 ## Requirements
 
-- [`React`]
-- [`Pagination`]
-- [`Search`]
+- `React`
+- `Pagination`
+- `Search`
