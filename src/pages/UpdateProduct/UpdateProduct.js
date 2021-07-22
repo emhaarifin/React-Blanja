@@ -43,15 +43,10 @@ function AddProduct() {
       console.log(error);
     }
   };
-  //
-  // useEffect(() => {
-  //   getAllProductsByID();
-  //   console.log();
-  // });
   useEffect(() => {
     document.title = "Perbarui Produk";
     getAllProductsByID();
-  }, []);
+  }, [id]);
 
   const getAllProductsByID = async () => {
     try {
@@ -223,7 +218,7 @@ function AddProduct() {
                       </label>
                       <div className="col-sm-9">
                         <Input
-                          defaultValue={products.name}
+                          value={products.name}
                           id="name"
                           type="text"
                           name="name"
@@ -374,8 +369,7 @@ function AddProduct() {
                               content_style:
                                 "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
                             }}
-                            value={products.description}
-                            onMouseEnter={(e) =>
+                            value={(e) =>
                               setProducts({
                                 ...products,
                                 description: e.target
