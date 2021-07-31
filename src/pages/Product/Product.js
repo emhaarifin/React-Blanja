@@ -33,7 +33,7 @@ export class Product extends Component {
 
   async getPoductsById() {
     const response = await axios.get(
-      `http://localhost:4000/products/${this.props.match.params.id}`
+      `http://localhost:4000/v1/products/${this.props.match.params.id}`
     );
     try {
       this.setState({
@@ -46,7 +46,7 @@ export class Product extends Component {
   }
 
   async getAllProduct() {
-    const response = await axios.get(`http://localhost:4000/products`);
+    const response = await axios.get(`http://localhost:4000/v1/products`);
     console.log(response);
     try {
       this.setState({

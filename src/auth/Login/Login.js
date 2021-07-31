@@ -4,26 +4,50 @@ import Input from "../../components/input/input";
 import Button from "../../components/Button/Button";
 import TabButton from "../../components/TabButton/TabButton";
 import "./Login.css";
+import { connect } from "react-redux";
+import { login } from "../../redux/action/user";
 import { Link } from "react-router-dom";
 
+const mapStateToProps = (user) => {
+  return {
+    user,
+  };
+};
 export class Login extends Component {
   constructor(properties) {
     super(properties);
     this.state = {
       toggleState: 1,
+      email: "",
+      password: "",
+      id: "",
+      name: "",
     };
   }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
   toggleTab(index) {
     this.setState({ toggleState: index });
   }
 
-  handleLogin() {
-    if (this.state.toggleState === 1) {
-      <Link to="/profile/seller"></Link>;
-    } else {
-      <Link to="/profile/custommer"></Link>;
-    }
-  }
+  postLogin = (event) => {
+    // if (this.state.toggleState === 1) {
+    //   <Link to="/profile/seller"></Link>;
+    // } else {
+    //   <Link to="/profile/custommer"></Link>;
+    // }
+    event.preventDefault();
+    const { email, password } = this.state;
+    const data = {
+      email,
+      password,
+    };
+    this.props.dispatch(login(data, this.props.history));
+  };
 
   componentDidMount() {
     document.title = "Login";
@@ -61,32 +85,40 @@ export class Login extends Component {
                 Seller
               </TabButton>
             </section>
+            <form action="" method="post">
+              <section className="field-group">
+                <Input
+                  id="email"
+                  type="text"
+                  name="email"
+                  element="input"
+                  placeholder="EMAIL"
+                  onChange={this.handleChange}
+                />
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  element="input"
+                  placeholder="PASSWORD"
+                  onChange={this.handleChange}
+                />
+              </section>
 
-            <section className="field-group">
-              <Input
-                id="email"
-                type="text"
-                element="input"
-                placeholder="EMAIL"
-              />
-              <Input
-                id="password"
-                type="password"
-                element="input"
-                placeholder="PASSWORD"
-              />
-            </section>
+              <section className="field-group-inline">
+                <Link to="/auth/forgot_password">Forgot password?</Link>
+              </section>
 
-            <section className="field-group-inline">
-              <Link to="/auth/forgot_password">Forgot password?</Link>
-            </section>
-
-            <Link to="/profile/seller">
-              <Button className="button" styling="button--submit">
+              {/* <Link to="/profile/seller"> */}
+              <Button
+                className="button"
+                styling="button--submit"
+                onClick={(event) => this.postLogin(event)}
+              >
                 PRIMARY
               </Button>
-            </Link>
-
+              {/* </Link> */}
+            </form>
             <section className="footnote-wrapper">
               Don't have a Tokopedia account?
               <Link to="/auth/register"> Register</Link>
@@ -98,4 +130,4 @@ export class Login extends Component {
   }
 }
 
-export default Login;
+export default connect(mapStateToProps)(Login);

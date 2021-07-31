@@ -14,7 +14,7 @@ class Category extends Component {
 
   async getCategoryProduct() {
     const response = await axios.get(
-      `http://localhost:4000/category/${this.props.match.params.id}`
+      `http://localhost:4000/v1/category/${this.props.match.params.id}`
     );
     try {
       console.log(response.data.data);

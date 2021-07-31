@@ -7,14 +7,14 @@ import "./CardProduct.css";
 function CardProduct(props) {
   const { products } = props;
   return products.map((item, index) => (
-    <div className="card" key={index}>
+    <div className="card-product-item" key={index}>
       <Link to={{ pathname: `/products/${item.id}` }}>
-        <img src={item.image} className="card-img-top" alt="..."></img>
-        <div className="card-body">
-          <p className="card-text">{item.name}</p>
-          <p className="card-price">Rp {item.price}</p>
-          <p className="card-seller">{item.brand}</p>
-          <div className="rating-list">
+        <img src={item.image} className="card__img__top" alt="..."></img>
+        <div className="card__body">
+          <p className="card__text">{item.name}</p>
+          <p className="card__price">Rp {item.price}</p>
+          <p className="card__seller">{item.brand}</p>
+          <div className="rating__list">
             <img src={rating} alt="rating"></img>
             <img src={rating} alt="rating"></img>
             <img src={rating} alt="rating"></img>

@@ -18,7 +18,9 @@ function Home() {
 
   const getAllProducts = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/products`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/v1/products`
+      );
       const allProducts = response.data.data;
       setProducts(allProducts);
     } catch {
@@ -28,7 +30,7 @@ function Home() {
 
   const getAllCategory = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/category`);
+      const response = await axios.get(`${BASE_URL}/v1/category`);
       const allCategory = response.data.result;
       setCategory(allCategory);
     } catch (error) {

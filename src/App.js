@@ -27,7 +27,11 @@ export class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/mybag" component={MyBag} />
           <Route path="/checkout" component={CheckOut} />
-          <Route exact path="/auth/login" component={Login} />
+          <Route
+            exact
+            path="/auth/login"
+            render={(props) => <Login {...props} />}
+          />
           <Route path="/auth/register" component={Register} />
           <Route path="/auth/forgot_password" component={ForgotPassword} />
           <Route path="/auth/confirm_password" component={ConfirmPassword} />

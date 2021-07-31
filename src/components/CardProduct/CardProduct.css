@@ -1,11 +1,11 @@
-.card {
+.card-product-item {
   max-width: 208px;
   margin-bottom: 20px;
   background: #FFFFFF;
   box-shadow: 0px 0px 14px rgba(173, 173, 173, 0.25);
   border-radius: 8px;
 }
-.card img {
+.card-product-item img{
   max-height: 136px;
   max-width: 238px;
   width: 100%;
@@ -18,12 +18,12 @@ a, a:hover {
   color: #DB3022;
 }
 
-.card-body {
+.card__body {
   box-sizing: border-box;
     padding: 10px 12px 21px 12px;
 }
 
-.card-text {
+.card__text {
   font-size: 16px;
   line-height: 24px;
   color: #000000;
@@ -37,21 +37,21 @@ a, a:hover {
 }
 
 
-.card-price {
+.card__price {
   font-size: 16px;
   line-height: 16px;
   color: #DB3022;
   margin: 6px 0;
 }
 
-.card-seller {
+.card__seller {
   font-size: 12px;
   line-height: 12px;
   color: #9B9B9B;
   margin-bottom: 11px;
 }
 
-.rating-list {
+.rating__list {
     float: left;
     display: flex;
 }
@@ -62,7 +62,7 @@ a, a:hover {
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
-  .card {
+  .card-product-item {
     width: 48%;
   }
 
