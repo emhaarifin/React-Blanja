@@ -1,15 +1,12 @@
 import axios from "axios";
 import { BASE_URL } from "../../configs/db";
 
-export const login = (body, history) => {
+export const login = (body, history) => (dispatch) => {
   return {
     type: "POST_LOGIN",
     payload: axios
       .post(`${BASE_URL}/v2/auth/login/`, body)
       .then((result) => {
-        console.log(body, "body");
-        console.log(result, "result");
-
         if (result.status === 200) {
           alert(result.data.message);
           try {

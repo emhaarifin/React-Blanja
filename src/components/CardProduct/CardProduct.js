@@ -7,7 +7,7 @@ import "./CardProduct.css";
 function CardProduct(props) {
   const { products } = props;
   return products.map((item, index) => (
-    <div className="card-product-item" key={index}>
+    <div className="card__product-item" key={index}>
       <Link to={{ pathname: `/products/${item.id}` }}>
         <img src={item.image} className="card__img__top" alt="..."></img>
         <div className="card__body">

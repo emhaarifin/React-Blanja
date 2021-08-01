@@ -1,6 +1,6 @@
 const initialValue = {
-  data: {},
-  errorMsg: {},
+  data: [],
+  errorMsg: [],
   isPending: false,
   isRejected: false,
   isFulfilled: false,

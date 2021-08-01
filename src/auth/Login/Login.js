@@ -35,11 +35,6 @@ export class Login extends Component {
   }
 
   postLogin = (event) => {
-    // if (this.state.toggleState === 1) {
-    //   <Link to="/profile/seller"></Link>;
-    // } else {
-    //   <Link to="/profile/custommer"></Link>;
-    // }
     event.preventDefault();
     const { email, password } = this.state;
     const data = {
@@ -51,6 +46,7 @@ export class Login extends Component {
 
   componentDidMount() {
     document.title = "Login";
+    console.log(this.props.history);
   }
 
   render() {
