@@ -2,27 +2,20 @@ import axios from "axios";
 import { BASE_URL } from "../../configs/db";
 
 export const login = (body, history) => (dispatch) => {
-  return {
-    type: "POST_LOGIN",
-    payload: axios
-      .post(`${BASE_URL}/v2/auth/login/`, body)
-      .then((result) => {
-        if (result.status === 200) {
-          alert(result.data.message);
-          try {
-            localStorage.setItem("KEY_TOKEN", result.data.result.token);
-            localStorage.setItem("id", result.daya.result.id);
-            localStorage.setItem("name", result.data.result.name);
-            history.push("/");
-          } catch (error) {
-            console.log(error, " cek");
-          }
-        }
-      })
-      .catch((error) => {
-        alert(error.response.data.message);
-      }),
-  };
+  axios
+    .post(`${BASE_URL}/v2/auth/login/`, body)
+    .then((result) => {
+      const userData = result.data.result;
+      dispatch({ type: "POST_LOGIN", payload: userData });
+      alert(result.data.message);
+      localStorage.setItem("KEY_TOKEN", userData.token);
+      localStorage.setItem("id", userData.id);
+      localStorage.setItem("name", userData.name);
+      history.push("/");
+    })
+    .catch((error) => {
+      alert(error.response.data.message);
+    });
 };
 
 export const registerCus = (body, history) => {
@@ -33,7 +26,6 @@ export const registerCus = (body, history) => {
       .then((result) => {
         if (result.status === 200) {
           alert(result.data.message);
-          // console.log(result);
         }
       }),
   };

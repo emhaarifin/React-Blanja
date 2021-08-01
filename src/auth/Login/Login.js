@@ -18,16 +18,21 @@ export class Login extends Component {
     super(properties);
     this.state = {
       toggleState: 1,
-      email: "",
-      password: "",
+      form: {
+        email: "",
+        password: "",
+      },
       id: "",
       name: "",
     };
   }
 
-  handleChange = (e) => {
+  changeText = (e) => {
     this.setState({
-      [e.target.name]: e.target.value,
+      form: {
+        ...this.state.form,
+        [e.target.name]: e.target.value,
+      },
     });
   };
   toggleTab(index) {
@@ -46,11 +51,10 @@ export class Login extends Component {
 
   componentDidMount() {
     document.title = "Login";
-    console.log(this.props.history);
   }
 
   render() {
-    const { toggleState } = this.state;
+    const { toggleState, email, password } = this.state;
     return (
       <>
         <main className="auth-wrapper">
@@ -81,40 +85,40 @@ export class Login extends Component {
                 Seller
               </TabButton>
             </section>
-            <form action="" method="post">
-              <section className="field-group">
-                <Input
-                  id="email"
-                  type="text"
-                  name="email"
-                  element="input"
-                  placeholder="EMAIL"
-                  onChange={this.handleChange}
-                />
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  element="input"
-                  placeholder="PASSWORD"
-                  onChange={this.handleChange}
-                />
-              </section>
+            <section className="field-group">
+              <Input
+                id="email"
+                type="text"
+                name="email"
+                value={email}
+                element="input"
+                placeholder="EMAIL"
+                onChange={this.changeText}
+              />
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                value={password}
+                element="input"
+                placeholder="PASSWORD"
+                onChange={this.changeText}
+              />
+            </section>
 
-              <section className="field-group-inline">
-                <Link to="/auth/forgot_password">Forgot password?</Link>
-              </section>
+            <section className="field-group-inline">
+              <Link to="/auth/forgot_password">Forgot password?</Link>
+            </section>
 
-              {/* <Link to="/profile/seller"> */}
-              <Button
-                className="button"
-                styling="button--submit"
-                onClick={(event) => this.postLogin(event)}
-              >
-                PRIMARY
-              </Button>
-              {/* </Link> */}
-            </form>
+            <Button
+              className="button"
+              styling="button--submit"
+              type="submit"
+              onClick={(event) => this.postLogin(event)}
+            >
+              PRIMARY
+            </Button>
+
             <section className="footnote-wrapper">
               Don't have a Tokopedia account?
               <Link to="/auth/register"> Register</Link>
