@@ -1,5 +1,6 @@
 const initialValue = {
   userData: {},
+  userDataID: {},
   errorMsg: {},
 };
 
@@ -24,6 +25,11 @@ const userReducers = (state = initialValue, action) => {
       return {
         ...state,
         errorMsg: action.payload,
+      };
+    case "GET_USER_BY_ID":
+      return {
+        ...state,
+        userDataID: action.payload,
       };
     default:
       return state;

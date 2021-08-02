@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-// import AsideProfile from "../../components/AsideProfile/AsideProfile";
-import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import "./ProfileCust.css";
 import Input from "../../components/input/input";
 import AvatarMini from "../../asset/profile-mini.png";
@@ -11,13 +9,14 @@ import StoreIcon from "../../asset/profile/store.png";
 import IconCart from "../../asset/profile/order.png";
 import { Link } from "react-router-dom";
 import CustomRadio from "../../components/CustomRadio/CustomRadio";
+import Navbar from "../../components/Navbar/Navbar";
 function ProfileCust() {
   useEffect(() => {
     document.title = "Profile Custommer";
   });
   return (
     <div>
-      <NavbarLogin />
+      <Navbar />
       <div className="d-flex wrapper  flex-nowrap">
         <div className="sidebar  flex-column">
           <div className="user-profile d-flex flex-wrap mb-5">

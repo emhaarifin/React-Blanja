@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-// import AsideProfile from "../../components/AsideProfile/AsideProfile";
-import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import "./ProfileSeller.css";
 import Input from "../../components/input/input";
 import AvatarMini from "../../asset/profile-mini.png";
@@ -10,13 +8,15 @@ import IconPackage from "../../asset/profile/product.png";
 import StoreIcon from "../../asset/profile/store.png";
 import IconCart from "../../asset/profile/order.png";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 function ProfileSeller() {
   useEffect(() => {
     document.title = "Profile Seller";
   });
   return (
     <div>
-      <NavbarLogin className="midlle-nav-login" />
+      {/* <NavbarLogin className="midlle-nav-login" /> */}
+      <Navbar className="midlle-nav-login" />
       <div className="d-flex wrapper  flex-nowrap">
         <div className="sidebar  flex-column">
           <div className="user-profile d-flex flex-wrap mb-5">

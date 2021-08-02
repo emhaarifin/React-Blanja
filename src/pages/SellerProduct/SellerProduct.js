@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-
-// import AsideProfile from "../../components/AsideProfile/AsideProfile";
-import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import "./SellerProduct.css";
 // import Input from "../../components/input/input";
 import AvatarMini from "../../asset/profile-mini.png";
@@ -14,6 +11,7 @@ import IconCart from "../../asset/profile/order.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Search from "../../asset/search.png";
+import Navbar from "../../components/Navbar/Navbar";
 
 class ProductSeller extends Component {
   constructor(properties) {
@@ -211,7 +209,7 @@ class ProductSeller extends Component {
     };
     return (
       <div>
-        <NavbarLogin className="midlle-nav-login" />
+        <Navbar className="midlle-nav-login" />
         <div className="d-flex wrapper  flex-nowrap">
           <div className="sidebar  flex-column">
             <div className="user-profile d-flex flex-wrap mb-5">

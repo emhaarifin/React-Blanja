@@ -37,3 +37,15 @@ export const registerSel = (body, history) => (dispatch) => {
       alert(error.response.data.message);
     });
 };
+
+export const getUserById = (id) => (dispatch) => {
+  axios
+    .post(`http://localhost:4000/v2/auth/profile/${id}`)
+    .then((result) => {
+      // dispatch({ type: "GET_USER_BY_ID", payload: });
+      console.log(result);
+    })
+    .catch((error) => {
+      alert(error);
+    });
+};

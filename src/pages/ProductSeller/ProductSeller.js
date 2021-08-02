@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import "./ProductSeller.css";
 import AvatarMini from "../../asset/profile-mini.png";
 import IconPackage from "../../asset/profile/product.png";
 import StoreIcon from "../../asset/profile/store.png";
 import IconCart from "../../asset/profile/order.png";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 
 class ProductSeller extends Component {
   render() {
     return (
       <div>
-        <NavbarLogin className="midlle-nav-login" />
+        <Navbar />
         <div className="d-flex wrapper  flex-nowrap">
           <div className="sidebar  flex-column">
             <div className="user-profile d-flex flex-wrap mb-5">

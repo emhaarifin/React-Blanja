@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import AvatarMini from "../../asset/profile-mini.png";
 import IconPackage from "../../asset/profile/product.png";
 import StoreIcon from "../../asset/profile/store.png";
@@ -9,6 +8,7 @@ import TabButton from "../../components/TabButton/TabButton";
 import Search from "../../asset/search.png";
 import NotFoundImg from "../../asset/profile/emptyImg.png";
 import "./SellerOrder.css";
+import Navbar from "../../components/Navbar/Navbar";
 class SellerOrder extends Component {
   constructor(properties) {
     super(properties);
@@ -27,7 +27,7 @@ class SellerOrder extends Component {
     return (
       <>
         <div>
-          <NavbarLogin />
+          <Navbar className="midlle-nav-login" />
           <div className="d-flex wrapper flex-nowrap">
             <div className="sidebar  flex-column">
               <div className="user-profile d-flex flex-wrap mb-5">

@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import NavbarLogin from "../../components/NavbarLogin/NavbarLogin";
 import Input from "../../components/input/input";
 import AvatarMini from "../../asset/profile-mini.png";
 import Button from "../../components/Button/Button";
@@ -12,6 +11,7 @@ import CustomRadio from "../../components/CustomRadio/CustomRadio";
 import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 function AddProduct() {
   const url = "http://localhost:4000/";
   const { id } = useParams();
@@ -68,7 +68,7 @@ function AddProduct() {
 
   return (
     <div>
-      <NavbarLogin className="midlle-nav-login" />
+      <Navbar className="midlle-nav-login" />
       <div className="d-flex wrapper  flex-nowrap">
         <div className="sidebar  flex-column">
           <div className="user-profile d-flex flex-wrap mb-5">
