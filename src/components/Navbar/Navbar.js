@@ -10,21 +10,11 @@ import ImageMail from "../../asset/mybag/icon-mail.png";
 import IconNotification from "../../asset/mybag/icon-notification.png";
 import "./NavbarLogin.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { getUserById } from "../../redux/action/user";
 
 function Navbar(props) {
   const isAuth = localStorage.getItem("KEY_TOKEN");
-  const idUser = localStorage.getItem("id");
-  console.log(idUser, "id user");
-  const dispatch = useDispatch();
-  const toProfile = async () => {
-    dispatch(getUserById(idUser));
-  };
   const { roles } = useSelector((state) => state.user.userData);
-  console.log("roles", roles);
-  console.log(roles, "tes userdata");
   const Navbar = !isAuth ? (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
       <div className="container">

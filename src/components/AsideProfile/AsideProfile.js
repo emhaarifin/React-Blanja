@@ -1,46 +1,144 @@
-import React, { useState } from "react";
+import React from "react";
 // import * as FaIcons from "react-icons/fa";
 // import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { SidebarData } from "./AsideData";
-import "./AsideProfile.css";
+
+import AvatarMini from "../../asset/profile-mini.png";
+// import Button from "../../components/Button/Button";
+import IconPackage from "../../asset/profile/product.png";
+import StoreIcon from "../../asset/profile/store.png";
+import IconCart from "../../asset/profile/order.png";
 // import { IconContext } from "react-icons";
 
-function Navbar() {
-  const [sidebar, setSidebar] = useState(false);
+function AsideProfile() {
+  // const [sidebar, setSidebar] = useState(false);
 
-  const showSidebar = () => setSidebar(!sidebar);
+  // const showSidebar = () => setSidebar(!sidebar);
 
   return (
     <>
-      {/* <IconContext.Provider value={{ color: "#fff" }}> */}
-      <div className="navbar">
-        <Link to="#" className="menu-bars">
-          {/* <FaIcons.FaBars onClick={showSidebar} /> */}
-        </Link>
+      <div className="sidebar  flex-column">
+        <div className="user-profile d-flex flex-wrap mb-5">
+          <img
+            src={AvatarMini}
+            className="user-profile-img"
+            alt="user-profile-img"
+          ></img>
+          <div className="d-flex flex-column ps-3 pt-1">
+            <div className="text-black-16px font-semi-bold">Johanes Mikael</div>
+            <div className="text-black-14px text-black-50">
+              <img src="../asset/img/icon/pensil.svg" alt=""></img> Ubah profile
+            </div>
+          </div>
+        </div>
+        <div>
+          <ul className="sidebar-menu">
+            <li>
+              <input
+                type="checkbox"
+                className="sidebar-collapse"
+                id="sidebar-collapse1"
+              ></input>
+              <label
+                for="sidebar-collapse1"
+                className="d-flex align-items-center"
+              >
+                <div className="sidebar-menu-icon-background store-icon">
+                  <img
+                    className="sidebar-menu-icon"
+                    src={StoreIcon}
+                    alt=""
+                  ></img>
+                </div>
+                Store
+                <span className="arrow-menu ms-auto"></span>
+              </label>
+              <ul className="sidebar-submenu" id="submenu1">
+                <li>
+                  <Link to="/profile/seller">Store profile</Link>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                className="sidebar-collapse"
+                id="sidebar-collapse2"
+              ></input>
+              <label
+                for="sidebar-collapse2"
+                className="d-flex align-items-center text-black-50"
+              >
+                <div className="sidebar-menu-icon-background package-icon">
+                  <img
+                    className="sidebar-menu-icon"
+                    src={IconPackage}
+                    alt=""
+                  ></img>
+                </div>
+                Product
+                <span className=" arrow-menu ms-auto"></span>
+              </label>
+              <ul className="sidebar-submenu" id="submenu2">
+                <li>
+                  <Link to="/profile/seller/product" className="text-black-50">
+                    My Products
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/profile/seller/add_product"
+                    className="text-black-50"
+                  >
+                    Selling products
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                className="sidebar-collapse"
+                id="sidebar-collapse3"
+              ></input>
+              <label
+                for="sidebar-collapse3"
+                className="d-flex align-items-center text-black-50"
+              >
+                <div className="sidebar-menu-icon-background cart-icon">
+                  <img
+                    className="sidebar-menu-icon"
+                    src={IconCart}
+                    alt=""
+                  ></img>
+                </div>
+                Order
+                <span className=" arrow-menu ms-auto"></span>
+              </label>
+              <ul className="sidebar-submenu" id="submenu2">
+                <li>
+                  <Link
+                    to="/profile/seller/myorderseller"
+                    className="text-black-50"
+                  >
+                    My order
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/profile/seller/myorderseller"
+                    className="text-black-50"
+                  >
+                    Order cancel
+                  </Link>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-      <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-        <ul className="nav-menu-items" onClick={showSidebar}>
-          <li className="navbar-toggle">
-            <Link to="#" className="menu-bars">
-              {/* <AiIcons.AiOutlineClose /> */}
-            </Link>
-          </li>
-          {SidebarData.map((item, index) => {
-            return (
-              <li key={index} className={item.cName}>
-                <Link to={item.path}>
-                  {item.icon}
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-      {/* </IconContext.Provider> */}
     </>
   );
 }
 
-export default Navbar;
+export default AsideProfile;

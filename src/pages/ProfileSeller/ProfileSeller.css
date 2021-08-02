@@ -35,24 +35,6 @@
 .sidebar-menu-icon-background {
   margin-right: 10px;
 } 
-/* 
-.store-icon {
-  background: #456BF3;
-}
-
-.package-icon {
-  background: #F36F45;
-}
-
-.cart-icon {
-  background: #F3456F;
-}
-
-.sidebar-menu-icon{
-  height: 20px;
-  width: 20px;
-} */
-
 
 /* sidebar submenu */
 .sidebar-submenu{
@@ -86,8 +68,9 @@
   background-position: center center;
 }
 .sidebar-collapse{
-  position: absolute;
-  left: -9999px;
+  display: none;
+  /* position: absolute;
+  left: -9999px; */
 }
 .sidebar-collapse:checked~.sidebar-submenu {
   max-height: 100%; 
@@ -97,8 +80,6 @@
 .sidebar-collapse:checked ~ label > .arrow-menu {
   background-image: url("../../asset/profile/arrow_up.png");
 } 
-/* /* sidebar submenu */
-
 
 
 .user-profile-img {
@@ -108,7 +89,6 @@
 }
 .wrapper {
   overflow-x: hidden;
-  /* background: #F5F5F5; */
 }
 
 .sidebar {
@@ -116,8 +96,6 @@
   box-sizing: border-box;
   display: none;
   padding-left: 12rem;
-  /* flex-wrap: wrap; */
- 
   flex-shrink: 0;
   overflow-y: auto;
   height: 100vh;
@@ -167,6 +145,10 @@ color: #fff;
 border: unset;
 }
 
+.btn__save-product {
+  display: flex;
+  justify-content: flex-end;
+}
 .card-as {
   background: #FFFFFF;
   width: 85%;
@@ -187,6 +169,42 @@ border: unset;
   }
   label.col-sm-3.col-form-label.text-black-50 {
     text-align: unset;
+  }
+  div.card-header-as.bg-transparent {
+    padding: unset !important;
+  }
+  .offset-3 {
+    margin: unset !important;
+  }
+  .ms-4,.me-4 {
+    margin: unset !important;
+  }
+  .btn__save-product {
+    display: unset;
+  }
+  .sidebar.flex-column {
+    display: flex;
+    height: 30vh;
+    overflow: unset;
+    flex-direction: row;
+  } 
+  .sidebar-menu {
+    display: flex;
+    flex-direction: row;
+  }
+  .sidebar{
+    padding-left: 1.5rem;
+  }
+  .d-flex.wrapper.flex-nowrap {
+    display: flex;
+    overflow: unset;
+    flex-direction: column;
+  }
+  .main-panel {
+    overflow-y: unset;
+  }
+  .arrow-menu {
+    display: none;
   }
 }
 
@@ -212,9 +230,6 @@ border: unset;
       width: 70%;
       background: #F5F5F5;
   }
-
-
-
 }
 
 @media (min-width: 992px) {
@@ -227,7 +242,6 @@ border: unset;
       width: 25%;
       display: flex;
   }
-
 
   .main-panel{
       width: 75%;
