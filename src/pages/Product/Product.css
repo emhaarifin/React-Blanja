@@ -25,14 +25,9 @@
   margin-left: 159px;
 } */
 
-.subtitle-price-product {
-  font-size: 16px;
-  line-height: 16px;
-  color: #9B9B9B; 
-}
 
 
-.title .subtitle {
+.title .subtitle-seller {
   font-size: 16px;
   line-height: 16px;
   color: #9B9B9B; 
@@ -45,7 +40,7 @@
   font-weight: bold;
 }
 
-.price-total .subtitle {
+.price-total .subtitle-price-product {
   margin-top: 30px;
   font-size: 16px;
   line-height: 16px;
@@ -189,7 +184,7 @@
 .btn-check:active+.btn-green,
 .btn-green:active,
 .btn-green.active {
-  border: 2px solid #fff;
+  /* border: 2px solid #fff; */
   box-shadow:  0 0 0 1px #db3022;
 }
 
@@ -197,7 +192,7 @@
 .btn-check:active+.btn-black,
 .btn-black:active,
 .btn-black.active {
-  border: 2px solid #fff;
+  /* border: 2px solid #fff; */
   box-shadow:  0 0 0 1px #db3022;
 }
 
@@ -205,7 +200,7 @@
 .btn-check:active+.btn-white,
 .btn-white:active,
 .btn-white.active {
-  border: 2px solid #fff;
+  /* border: 2px solid #fff; */
   box-shadow:  0 0 0 1px #db3022;
 }
 
@@ -213,7 +208,7 @@
 .btn-check:active+.btn-red,
 .btn-red:active,
 .btn-red.active {
-  border: 2px solid #fff;
+  /* border: 2px solid #fff; */
   box-shadow:  0 0 0 1px #db3022;
 }
 
@@ -221,7 +216,7 @@
 .btn-check:active+.btn-grey,
 .btn-grey:active,
 .btn-grey.active {
-  border: 2px solid #fff;
+  /* border: 2px solid #fff; */
   box-shadow:  0 0 0 1px #db3022;
 }
 
@@ -229,7 +224,7 @@
 .btn-check:active+.btn-brown,
 .btn-brown:active,
 .btn-brown.active {
-  border: 2px solid #fff;
+  /* border: 2px solid #fff; */
   box-shadow:  0 0 0 1px #db3022;
 }
 
@@ -237,7 +232,7 @@
 .btn-check:active+.btn-blue,
 .btn-blue:active,
 .btn-blue.active {
-  border: 2px solid #fff;
+  /* border: 2px solid #fff; */
   box-shadow:  0 0 0 1px #db3022;
 }
 
@@ -251,6 +246,6 @@
   }
   
   .btn-secondary-bold {
-margin-bottom: 5%;
+    margin-bottom: 5%;
   }
 }

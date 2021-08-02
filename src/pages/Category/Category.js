@@ -34,7 +34,6 @@ class Category extends Component {
 
   render() {
     const { categoryData, categoryName } = this.state;
-    console.log(categoryName);
     return (
       <div>
         <Navbar />

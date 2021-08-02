@@ -2,14 +2,14 @@
   margin-left: 42px;
 }
 
-.btn-mail {
+.btn-mail-auth {
   margin-left: 42px;
 }
 
-.btn-profile {
+.btn-profile-auth {
   margin-left: 42px;
 }
- @media screen and (max-width: 670px) {
+ @media (min-width: 320px) and (max-width: 480px) {
   .header-right {
     display: flex;
     padding-top: 10px;
@@ -22,12 +22,12 @@
     margin:0;
 }
 
-.btn-mail {
+.btn-mail-auth {
     margin: 0;
 }
 
-.btn-profile {
-    margin: 0;
+.btn-profil-auth {
+    margin-left: 0;
 }
 } 
 

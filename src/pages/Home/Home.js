@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./home.css";
+// import { useHistory, useLocation } from "react-router-dom";
+// import { useSelector, useDispatch } from "react-redux";
 import Navbar from "../../components/Navbar/Navbar";
 import BannerCarousel from "../../components/BannerCarousel/BannerCarousel";
 import CategoryProduct from "../../components/CategoryProduct/CategoryProduct";
@@ -8,6 +10,8 @@ import axios from "axios";
 import { BASE_URL } from "../../configs/db";
 
 function Home() {
+  // const dispatch = useDispatch();
+  // const history = useHistory();
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
 
@@ -19,7 +23,7 @@ function Home() {
   const getAllProducts = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/v1/products`
+        `${process.env.REACT_APP_BASE_URL}/v2/products/`
       );
       const allProducts = response.data.data;
       setProducts(allProducts);

@@ -33,7 +33,7 @@ export class Product extends Component {
 
   async getPoductsById() {
     const response = await axios.get(
-      `http://localhost:4000/v1/products/${this.props.match.params.id}`
+      `http://localhost:4000/v2/products/${this.props.match.params.id}`
     );
     try {
       this.setState({
@@ -46,7 +46,7 @@ export class Product extends Component {
   }
 
   async getAllProduct() {
-    const response = await axios.get(`http://localhost:4000/v1/products`);
+    const response = await axios.get(`http://localhost:4000/v2/products`);
     console.log(response);
     try {
       this.setState({
@@ -92,7 +92,7 @@ export class Product extends Component {
               <div className="col-md-8">
                 <div className="row title">
                   <p className="title-name">{name}</p>
-                  <p className="seller subtitle mt-2 mb-3">{brand}</p>
+                  <p className="seller subtitle-seller mt-2 mb-3">{brand}</p>
                   <div className="rating-list">
                     <img src={rating} alt="rating"></img>
                     <img src={rating} alt="rating"></img>

@@ -1,5 +1,5 @@
 const initialValue = {
-  data: {},
+  userData: {},
   errorMsg: {},
 };
 
@@ -8,7 +8,7 @@ const userReducers = (state = initialValue, action) => {
     case "POST_LOGIN":
       return {
         ...state,
-        data: action.payload,
+        userData: action.payload,
       };
     case "POST_LOGIN_ERROR":
       return {

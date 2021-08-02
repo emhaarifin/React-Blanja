@@ -9,8 +9,11 @@ import { login } from "../../redux/action/user";
 import { Link } from "react-router-dom";
 
 const mapStateToProps = (user) => {
+  // console.log(state.user.data, "tes map state to props");
+  // console.log(user.user.userData, "log user");
   return {
-    user,
+    user: user.user,
+    // user: user.user.userData,
   };
 };
 export class Login extends Component {
@@ -32,16 +35,41 @@ export class Login extends Component {
   };
   toggleTab(index) {
     this.setState({ toggleState: index });
+    // console.log();
   }
+
+  // const { email, password } = this.state
+
+  // if(toggleState === 1 )
 
   postLogin = (event) => {
     event.preventDefault();
-    const { email, password } = this.state;
+    const { email, password, toggleState } = this.state;
     const data = {
       email,
       password,
     };
     this.props.dispatch(login(data, this.props.history));
+    const { roles, token, id, name } = this.props.user.userData;
+    console.log(roles);
+    if (roles === "custommer" && toggleState === 1) {
+      return (
+        alert("Login Success"),
+        localStorage.setItem("KEY_TOKEN", token),
+        localStorage.setItem("id", id),
+        localStorage.setItem("name", name),
+        this.props.history.push("/")
+      );
+    }
+    if (roles === "seller" && toggleState === 2) {
+      return (
+        alert("Login Success"),
+        localStorage.setItem("KEY_TOKEN", token),
+        localStorage.setItem("id", id),
+        localStorage.setItem("name", name),
+        this.props.history.push("/")
+      );
+    }
   };
 
   componentDidMount() {
@@ -106,15 +134,13 @@ export class Login extends Component {
                 <Link to="/auth/forgot_password">Forgot password?</Link>
               </section>
 
-              {/* <Link to="/profile/seller"> */}
               <Button
                 className="button"
                 styling="button--submit"
-                onClick={(event) => this.postLogin(event)}
+                onClick={this.postLogin}
               >
                 PRIMARY
               </Button>
-              {/* </Link> */}
             </form>
             <section className="footnote-wrapper">
               Don't have a Tokopedia account?

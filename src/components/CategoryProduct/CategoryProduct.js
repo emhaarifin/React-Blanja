@@ -28,7 +28,6 @@ export default class CenterMode extends Component {
       ],
     };
     const { category } = this.props;
-    console.log(category);
     const displayCategory = category.map((item, index) => {
       return (
         <div className="card-category" key={index}>
