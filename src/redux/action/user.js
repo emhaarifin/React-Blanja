@@ -13,15 +13,27 @@ export const login = (body, history) => (dispatch) => {
     });
 };
 
-// export const registerCus = (body, history) => {
-//   return {
-//     type: "POST_REGISTER",
-//     payload: axios
-//       .post(`${BASE_URL}/v2/auth/register/custommer`, body)
-//       .then((result) => {
-//         if (result.status === 200) {
-//           alert(result.data.message);
-//         }
-//       }),
-//   };
-// };
+export const registerCust = (body, history) => (dispatch) => {
+  axios
+    .post(`http://localhost:4000/v2/auth/register/custommer`, body)
+    .then((result) => {
+      console.log(result, "tes result post regis");
+      const userData = result.data.result;
+      dispatch({ type: "POST_REGISTER", payload: userData });
+    })
+    .catch((error) => {
+      alert(error.response.data.message);
+    });
+};
+export const registerSel = (body, history) => (dispatch) => {
+  axios
+    .post(`http://localhost:4000/v2/auth/register/seller`, body)
+    .then((result) => {
+      console.log(result);
+      const userData = result.data.result;
+      dispatch({ type: "POST_REGISTER", payload: userData });
+    })
+    .catch((error) => {
+      alert(error.response.data.message);
+    });
+};

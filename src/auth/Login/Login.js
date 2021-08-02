@@ -9,11 +9,8 @@ import { login } from "../../redux/action/user";
 import { Link } from "react-router-dom";
 
 const mapStateToProps = (user) => {
-  // console.log(state.user.data, "tes map state to props");
-  // console.log(user.user.userData, "log user");
   return {
     user: user.user,
-    // user: user.user.userData,
   };
 };
 export class Login extends Component {
@@ -23,7 +20,6 @@ export class Login extends Component {
       toggleState: 1,
       email: "",
       password: "",
-      id: "",
       name: "",
     };
   }
@@ -35,12 +31,7 @@ export class Login extends Component {
   };
   toggleTab(index) {
     this.setState({ toggleState: index });
-    // console.log();
   }
-
-  // const { email, password } = this.state
-
-  // if(toggleState === 1 )
 
   postLogin = (event) => {
     event.preventDefault();

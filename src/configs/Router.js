@@ -32,7 +32,10 @@ export class Router extends Component {
             path="/auth/login"
             render={(props) => <Login {...props} />}
           />
-          <Route path="/auth/register" component={Register} />
+          <Route
+            path="/auth/register"
+            render={(props) => <Register {...props} />}
+          />
           <Route path="/auth/forgot_password" component={ForgotPassword} />
           <Route path="/auth/confirm_password" component={ConfirmPassword} />
           <Route
