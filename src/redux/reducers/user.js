@@ -15,6 +15,16 @@ const userReducers = (state = initialValue, action) => {
         ...state,
         errorMsg: action.payload,
       };
+    case "POST_REGISTER":
+      return {
+        ...state,
+        userData: action.payload,
+      };
+    case "POST_REGISTER_ERROR":
+      return {
+        ...state,
+        errorMsg: action.payload,
+      };
     default:
       return state;
   }

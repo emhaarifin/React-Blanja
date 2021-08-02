@@ -60,8 +60,7 @@ export class Login extends Component {
         localStorage.setItem("name", name),
         this.props.history.push("/")
       );
-    }
-    if (roles === "seller" && toggleState === 2) {
+    } else if (roles === "seller" && toggleState === 2) {
       return (
         alert("Login Success"),
         localStorage.setItem("KEY_TOKEN", token),
@@ -69,6 +68,8 @@ export class Login extends Component {
         localStorage.setItem("name", name),
         this.props.history.push("/")
       );
+    } else {
+      return alert(`You account not found`);
     }
   };
 
