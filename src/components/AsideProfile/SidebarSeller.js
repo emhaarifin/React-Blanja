@@ -4,8 +4,10 @@ import AvatarMini from "../../asset/profile-mini.png";
 import IconPackage from "../../asset/profile/product.png";
 import StoreIcon from "../../asset/profile/store.png";
 import IconCart from "../../asset/profile/order.png";
+import { useSelector } from "react-redux";
 
 function AsideProfile() {
+  const name = localStorage.getItem("name");
   return (
     <>
       <div className="sidebar  flex-column">
@@ -16,7 +18,7 @@ function AsideProfile() {
             alt="user-profile-img"
           ></img>
           <div className="d-flex flex-column ps-3 pt-1">
-            <div className="text-black-16px font-semi-bold">Johanes Mikael</div>
+            <div className="text-black-16px font-semi-bold">{name}</div>
             <div className="text-black-14px text-black-50">
               <img src="../asset/img/icon/pensil.svg" alt=""></img> Ubah profile
             </div>
