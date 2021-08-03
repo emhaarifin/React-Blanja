@@ -98,7 +98,7 @@ function CheckOut() {
       <div
         className="modal fade"
         id="change-another-adress"
-        // data-bs-backdrop="static"
+        data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"
         aria-labelledby="staticBackdropLabel"

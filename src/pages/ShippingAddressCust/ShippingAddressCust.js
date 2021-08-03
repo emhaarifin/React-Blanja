@@ -88,7 +88,7 @@ function ShippingAddressCust() {
       <div
         className="modal fade"
         id="add-address"
-        // data-bs-backdrop="static"
+        data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"
         aria-labelledby="staticBackdropLabel"

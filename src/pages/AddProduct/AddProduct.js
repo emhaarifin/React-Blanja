@@ -7,6 +7,7 @@ import Button from "../../components/Button/Button";
 // import StoreIcon from "../../asset/profile/store.png";
 // import IconCart from "../../asset/profile/order.png";
 // import { Link } from "react-router-dom";
+import UploadImg from "../../asset/profile/uploadImg.png";
 import CustomRadio from "../../components/CustomRadio/CustomRadio";
 import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
@@ -169,14 +170,24 @@ function AddProduct() {
                           className="col-sm-9 ms-4 me-4 mt-4 mb-4"
                           style={{ width: "auto" }}
                         >
-                          <Input
+                          <div>
+                            <img src={UploadImg} alt="upload img"></img>
+                          </div>
+                          <Button
+                            type="submit"
+                            // onClick={handleSubmit}
+                            styling="btn-product-save"
+                          >
+                            Upload Image
+                          </Button>
+                          {/* <Input
                             id="image"
                             type="text"
                             name="image"
                             onChange={handleChange}
                             element="input"
                             placeholder="url image product"
-                          />
+                          /> */}
                         </div>
                       </div>
                     </div>
