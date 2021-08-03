@@ -28,8 +28,8 @@ function AddProduct() {
     brand: "",
     description: "",
     stock: 0,
-    categoryId: 2,
-    image: "",
+    categoryId: "",
+    image: [],
     price: 0,
   });
 

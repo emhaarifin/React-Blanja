@@ -1,12 +1,13 @@
 import axios from "axios";
 // import { BASE_URL } from "../../configs/db";
 
-export const login = (body, history) => (dispatch) => {
+export const login = (body, history) => (dispatch, getState) => {
   axios
     .post(`http://localhost:4000/v2/auth/login/`, body)
     .then((result) => {
       const userData = result.data.result;
       dispatch({ type: "POST_LOGIN", payload: userData });
+      console.log(getState);
     })
     .catch((error) => {
       alert(error.response.data.message);
