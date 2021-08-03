@@ -4,7 +4,7 @@ import Search from "../../asset/search.png";
 import NotFoundImg from "../../asset/profile/emptyImg.png";
 import "./SellerOrder.css";
 import Navbar from "../../components/Navbar/Navbar";
-import AsideProfile from "../../components/AsideProfile/AsideProfile";
+import SidebarSeller from "../../components/AsideProfile/SidebarSeller";
 class SellerOrder extends Component {
   constructor(properties) {
     super(properties);
@@ -25,7 +25,7 @@ class SellerOrder extends Component {
         <div>
           <Navbar className="midlle-nav-login" />
           <div className="d-flex wrapper flex-nowrap">
-            <AsideProfile />
+            <SidebarSeller />
             <div className="main-panel">
               <div className="container mb-5">
                 <div className="card-as rounded-3">

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
-import AsideProfile from "../../components/AsideProfile/AsideProfile";
+import SidebarCustommer from "../../components/AsideProfile/SidebarCustommer";
 
 function ShippingAddressCust() {
   useEffect(() => {
@@ -12,7 +12,7 @@ function ShippingAddressCust() {
       <div>
         <Navbar />
         <div className="d-flex wrapper  flex-nowrap">
-          <AsideProfile />
+          <SidebarCustommer />
           <div className="main-panel">
             <div className="container mb-5">
               <div className="card-as rounded-3">

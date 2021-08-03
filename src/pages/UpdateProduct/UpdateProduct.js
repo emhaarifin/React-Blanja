@@ -7,7 +7,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
-import AsideProfile from "../../components/AsideProfile/AsideProfile";
+import SidebarSeller from "../../components/AsideProfile/SidebarSeller";
 function AddProduct() {
   const url = "http://localhost:4000";
   const { id } = useParams();
@@ -68,7 +68,7 @@ function AddProduct() {
     <div>
       <Navbar className="midlle-nav-login" />
       <div className="d-flex wrapper  flex-nowrap">
-        <AsideProfile />
+        <SidebarSeller />
         <div className="main-panel">
           <div className="container mb-5">
             <div className="card-as rounded-3">

@@ -1,20 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProfileSeller.css";
 import Input from "../../components/input/input";
 import Avatar from "../../asset/profile.png";
 import Button from "../../components/Button/Button";
 import Navbar from "../../components/Navbar/Navbar";
-import AsideProfile from "../../components/AsideProfile/AsideProfile";
+import { useDispatch } from "react-redux";
+import SidebarSeller from "../../components/AsideProfile/SidebarSeller";
+import { getUserById } from "../../redux/action/user";
 function ProfileSeller() {
+  const dispatch = useDispatch();
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone_number: "",
+    gender: "",
+    date_of_birth: "",
+  });
+
+  const changeText = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = () => {
+    dispatch(getUserById);
+  };
   useEffect(() => {
     document.title = "Profile Seller";
   });
   return (
     <div>
-      {/* <NavbarLogin className="midlle-nav-login" /> */}
       <Navbar className="midlle-nav-login" />
       <div className="d-flex wrapper  flex-nowrap">
-        <AsideProfile />
+        <SidebarSeller />
         <div className="main-panel">
           <div className="container mb-5">
             <div className="card-as rounded-3">

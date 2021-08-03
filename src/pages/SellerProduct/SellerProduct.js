@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Search from "../../asset/search.png";
 import Navbar from "../../components/Navbar/Navbar";
-import AsideProfile from "../../components/AsideProfile/AsideProfile";
+import SidebarSeller from "../../components/AsideProfile/SidebarSeller";
 
 class ProductSeller extends Component {
   constructor(properties) {
@@ -210,7 +210,7 @@ class ProductSeller extends Component {
       <div>
         <Navbar className="midlle-nav-login" />
         <div className="d-flex wrapper  flex-nowrap">
-          <AsideProfile />
+          <SidebarSeller />
           <div className="main-panel">
             <div className="container mb-5">
               <div className="card-as-seller rounded-3">

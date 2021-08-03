@@ -5,7 +5,7 @@ import Avatar from "../../asset/profile.png";
 import Button from "../../components/Button/Button";
 import CustomRadio from "../../components/CustomRadio/CustomRadio";
 import Navbar from "../../components/Navbar/Navbar";
-import AsideProfile from "../../components/AsideProfile/AsideProfile";
+import SidebarSeller from "../../components/AsideProfile/SidebarSeller";
 function ProfileCust() {
   useEffect(() => {
     document.title = "Profile Custommer";
@@ -14,7 +14,7 @@ function ProfileCust() {
     <div>
       <Navbar />
       <div className="d-flex wrapper  flex-nowrap">
-        <AsideProfile />
+        <SidebarSeller />
         <div className="main-panel">
           <div className="container mb-5">
             <div className="card-as rounded-3">
