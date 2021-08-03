@@ -8,6 +8,7 @@ import axios from "axios";
 // };
 
 export const postProduct = (formData, history) => (dispatch, getState) => {
+  console.log(getState);
   const product = new FormData();
   product.append("name", formData.name);
   product.append("brand", formData.brand);
@@ -19,13 +20,13 @@ export const postProduct = (formData, history) => (dispatch, getState) => {
   axios
     .post(`http://localhost:4000/v2/products/`, product, {
       headers: {
-        Authorization: `Bearer ${getState().user.user.token}`,
+        Authorization: `Bearer ${getState().user.userData.token}`,
         "Content-Type": "multipart/form-data",
       },
     })
     .then((result) => {
-      const userData = result.data.result;
-      dispatch({ type: "POST_LOGIN", payload: userData });
+      const theproduct = result.data.result;
+      dispatch({ type: "POST_PRODUCT", payload: theproduct });
     })
     .catch((error) => {
       alert(error.response.data.message);

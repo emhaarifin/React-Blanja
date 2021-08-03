@@ -7,6 +7,9 @@ export const login = (body, history) => (dispatch, getState) => {
     .then((result) => {
       const userData = result.data.result;
       dispatch({ type: "POST_LOGIN", payload: userData });
+      localStorage.setItem("KEY_TOKEN", userData.token);
+      localStorage.setItem("id", userData.id);
+      localStorage.setItem("name", userData.name);
       console.log(getState);
     })
     .catch((error) => {

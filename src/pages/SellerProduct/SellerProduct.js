@@ -46,7 +46,7 @@ class ProductSeller extends Component {
 
   async getAllProduct() {
     const response = await axios.get(
-      `http://localhost:4000/v2/products?page=${this.state.pageNumber}&search=${this.state.search}&sortBy=${this.state.sortBy}&sort=${this.state.sort}`
+      `http://localhost:4000/v1/products?page=${this.state.pageNumber}&search=${this.state.search}&sortBy=${this.state.sortBy}&sort=${this.state.sort}`
     );
     try {
       this.setState({
@@ -102,7 +102,7 @@ class ProductSeller extends Component {
 
   async deleteProduct(id) {
     const response = await axios.delete(
-      `http://localhost:4000/v2/products/${id}`
+      `http://localhost:4000/v1/products/${id}`
     );
     try {
       this.setState({
@@ -160,8 +160,7 @@ class ProductSeller extends Component {
   }
 
   render() {
-    const { toggleState, products, totalPage, status, message, pageNumber } =
-      this.state;
+    const { toggleState, products, totalPage, pageNumber } = this.state;
     const TotalPage = Array(totalPage).fill();
 
     const getProducts = () => {

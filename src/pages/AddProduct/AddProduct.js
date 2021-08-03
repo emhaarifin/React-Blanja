@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./AddProduct.css";
 import Input from "../../components/input/input";
-// import AvatarMini from "../../asset/profile-mini.png";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/Button/Button";
-// import IconPackage from "../../asset/profile/product.png";
-// import StoreIcon from "../../asset/profile/store.png";
-// import IconCart from "../../asset/profile/order.png";
-// import { Link } from "react-router-dom";
 import UploadImg from "../../asset/profile/uploadImg.png";
 import CustomRadio from "../../components/CustomRadio/CustomRadio";
 import { Editor } from "@tinymce/tinymce-react";
-import axios from "axios";
+// import axios from "axios";
 import Navbar from "../../components/Navbar/Navbar";
 import SidebarSeller from "../../components/AsideProfile/SidebarSeller";
+import { postProduct } from "../../redux/action/products";
 function AddProduct() {
-  const url = "http://localhost:4000";
+  // const url = "http://localhost:4000";
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setProducts({
@@ -22,29 +20,36 @@ function AddProduct() {
       [e.target.name]: e.target.value,
     });
   };
-
+  const { store_name } = useSelector(
+    (state) => state.user.userData.StoreData[0]
+  );
   const [products, setProducts] = useState({
     name: "",
-    brand: "",
+    brand: store_name,
     description: "",
     stock: 0,
-    categoryId: "",
-    image: [],
+    categoryId: 2,
+    image: null,
     price: 0,
+    imagePreview: null,
   });
 
-  const handleSubmit = () => {
-    axios
-      .post(`${url}/v2/products`, products)
-      .then((res) => {
-        alert("succs");
-      })
-      .catch(() => alert("failed"));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(postProduct(products));
   };
 
-  // useEffect(() => {
-  //   document.title = "Tambah Produk Untuk Dijual";
-  // });
+  const handleInputFile = (e) => {
+    console.log(e);
+    setProducts({
+      ...products,
+      image: e.target.files[0],
+      imagePreview: URL.createObjectURL(e.target.files[0]),
+    });
+  };
+  useEffect(() => {
+    document.title = "Tambah Produk Untuk Dijual";
+  });
 
   // const idUser = localStorage.getItem("id");
   // console.log(idUser, "id user");
@@ -56,130 +61,33 @@ function AddProduct() {
       <div className="d-flex wrapper  flex-nowrap">
         <SidebarSeller />
         <div className="main-panel">
-          <div className="container mb-5">
-            <div className="card-as rounded-3">
-              <div
-                className="card-header-as bg-transparent"
-                style={{ padding: "30px 30px 5px 30px" }}
-              >
-                <div className="text-black-20px fw-bold">Inventory</div>
-              </div>
-              <hr className="limit-line"></hr>
-              <div className="card-body-as">
-                <div className="row">
-                  <div className="col-lg-8 col-md-12 col-12 order-lg-0 order-1">
-                    <div className="col ms-4 mb-4">
-                      <label
-                        htmlFor="name"
-                        className="text-start col-sm-3 col-form-label text-black-50"
-                      >
-                        Name of goods
-                      </label>
-                      <div className="col-sm-9">
-                        <Input
-                          id="name"
-                          type="text"
-                          name="name"
-                          onChange={handleChange}
-                          element="input"
-                        />
-                      </div>
-                    </div>
-                  </div>
+          <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <div className="container mb-5">
+              <div className="card-as rounded-3">
+                <div
+                  className="card-header-as bg-transparent"
+                  style={{ padding: "30px 30px 5px 30px" }}
+                >
+                  <div className="text-black-20px fw-bold">Inventory</div>
                 </div>
-              </div>
-            </div>
-            <div className="card-as mt-4 rounded-3">
-              <div
-                className="card-header-as bg-transparent"
-                style={{ padding: "30px 30px 5px 30px" }}
-              >
-                <div className="text-black-20px fw-bold">Item detail</div>
-              </div>
-              <hr className="limit-line"></hr>
-              <div className="card-body-as">
-                <div className="row">
-                  <div className="col-lg-8 col-md-12 col-12 order-lg-0 order-1">
-                    <div className="col ms-4 mb-4">
-                      <label
-                        htmlFor="price"
-                        className="text-start col-sm-3 col-form-label text-black-50"
-                      >
-                        Unit price
-                      </label>
-                      <div className="col-sm-9">
-                        <Input
-                          id="prices"
-                          type="text"
-                          name="price"
-                          onChange={handleChange}
-                          element="input"
-                        />
-                      </div>
-                      <label
-                        htmlFor="stock"
-                        className="text-start col-sm-3 col-form-label text-black-50"
-                      >
-                        Stock
-                      </label>
-                      <div className="col-sm-9">
-                        <Input
-                          id="stock"
-                          type="text"
-                          name="stock"
-                          onChange={handleChange}
-                          element="input"
-                        />
-                      </div>
-                      <div className="ms-2 col-sm-9">
-                        <form>
-                          <p className="text-black-50">Stock</p>
-                          <div className="conditionStock d-flex mt-2">
-                            <CustomRadio nameLabel="Baru" />
-                            <CustomRadio
-                              nameLabel="Bekas"
-                              styling="add-margin-CR"
-                            />
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="card-as mt-4 rounded-3">
-              <div
-                className="card-header-as bg-transparent"
-                style={{ padding: "30px 30px 5px 30px" }}
-              >
-                <div className="text-black-20px fw-bold">Photo of goods</div>
-              </div>
-              <hr className="limit-line"></hr>
-              <div className="card-body-as">
-                <div className="row">
-                  <div className="col-md-12 col-12 order-lg-0 order-1">
-                    <div className="col ms-4 mb-4 me-4">
-                      <div
-                        style={{
-                          border: "1px dashed #d4d4d4",
-                          width: "auto",
-                        }}
-                      >
-                        <div
-                          className="col-sm-9 ms-4 me-4 mt-4 mb-4"
-                          style={{ width: "auto" }}
+                <hr className="limit-line"></hr>
+                <div className="card-body-as">
+                  <div className="row">
+                    <div className="col-lg-8 col-md-12 col-12 order-lg-0 order-1">
+                      <div className="col ms-4 mb-4">
+                        <label
+                          htmlFor="name"
+                          className="text-start col-sm-3 col-form-label text-black-50"
                         >
-                          <div>
-                            <img src={UploadImg} alt="upload img"></img>
-                          </div>
+                          Name of goods
+                        </label>
+                        <div className="col-sm-9">
                           <Input
-                            id="image"
-                            type="file"
-                            name="image"
+                            id="name"
+                            type="text"
+                            name="name"
                             onChange={handleChange}
                             element="input"
-                            placeholder="url image product"
                           />
                         </div>
                       </div>
@@ -187,77 +95,172 @@ function AddProduct() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="card-as mt-4 rounded-3">
-              <div
-                className="card-header-as bg-transparent"
-                style={{ padding: "30px 30px 5px 30px" }}
-              >
-                <div className="text-black-20px fw-bold">Description</div>
-              </div>
-              <hr className="limit-line"></hr>
-              <div className="card-body-as">
-                <div className="row">
-                  <div className="col-md-12 col-12 order-lg-0 order-1">
-                    <div className="col ms-4 mb-4 me-4">
-                      <div
-                        style={{
-                          width: "auto",
-                        }}
-                      >
-                        <div
-                          className="col-sm-9 ms-4 me-4 mt-4 mb-4"
-                          style={{ width: "auto" }}
+              <div className="card-as mt-4 rounded-3">
+                <div
+                  className="card-header-as bg-transparent"
+                  style={{ padding: "30px 30px 5px 30px" }}
+                >
+                  <div className="text-black-20px fw-bold">Item detail</div>
+                </div>
+                <hr className="limit-line"></hr>
+                <div className="card-body-as">
+                  <div className="row">
+                    <div className="col-lg-8 col-md-12 col-12 order-lg-0 order-1">
+                      <div className="col ms-4 mb-4">
+                        <label
+                          htmlFor="price"
+                          className="text-start col-sm-3 col-form-label text-black-50"
                         >
-                          <Editor
-                            apiKey="0mk4qfdlq6ewh1qix0et7vd6noxgb49m5gsj4qj6wdb33h69"
-                            init={{
-                              height: 500,
-                              menubar: false,
-                              plugins: [
-                                "advlist autolink lists link image charmap print preview anchor",
-                                "searchreplace visualblocks code fullscreen",
-                                "insertdatetime media table paste code help wordcount",
-                              ],
-                              toolbar:
-                                "undo redo | formatselect | " +
-                                "bold italic backcolor | alignleft aligncenter " +
-                                "alignright alignjustify | bullist numlist outdent indent | " +
-                                "removeformat | help",
-                              content_style:
-                                "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-                            }}
-                            onChange={(e) =>
-                              setProducts({
-                                ...products,
-                                description: e.target
-                                  .getContent()
-                                  .replace(/(&nbsp;)*/g, "")
-                                  .replace(/(<p>)*/g, "")
-                                  .replace(/<(\/)?p[^>]*>/g, ""),
-                              })
-                            }
+                          Unit price
+                        </label>
+                        <div className="col-sm-9">
+                          <Input
+                            id="prices"
+                            type="text"
+                            name="price"
+                            onChange={handleChange}
+                            element="input"
                           />
+                        </div>
+                        <label
+                          htmlFor="stock"
+                          className="text-start col-sm-3 col-form-label text-black-50"
+                        >
+                          Stock
+                        </label>
+                        <div className="col-sm-9">
+                          <Input
+                            id="stock"
+                            type="text"
+                            name="stock"
+                            onChange={handleChange}
+                            element="input"
+                          />
+                        </div>
+                        <div className="ms-2 col-sm-9">
+                          <form>
+                            <p className="text-black-50">Stock</p>
+                            <div className="conditionStock d-flex mt-2">
+                              <CustomRadio nameLabel="Baru" />
+                              <CustomRadio
+                                nameLabel="Bekas"
+                                styling="add-margin-CR"
+                              />
+                            </div>
+                          </form>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              className="offset-3 btn__save-product col-9"
-              style={{ widht: "85%" }}
-            >
-              <Button
-                type="submit"
-                onClick={handleSubmit}
-                styling="btn-product-save"
+              <div className="card-as mt-4 rounded-3">
+                <div
+                  className="card-header-as bg-transparent"
+                  style={{ padding: "30px 30px 5px 30px" }}
+                >
+                  <div className="text-black-20px fw-bold">Photo of goods</div>
+                </div>
+                <hr className="limit-line"></hr>
+                <div className="card-body-as">
+                  <div className="row">
+                    <div className="col-md-12 col-12 order-lg-0 order-1">
+                      <div className="col ms-4 mb-4 me-4">
+                        <div
+                          style={{
+                            border: "1px dashed #d4d4d4",
+                            width: "auto",
+                          }}
+                        >
+                          <div
+                            className="col-sm-9 ms-4 me-4 mt-4 mb-4"
+                            style={{ width: "auto" }}
+                          >
+                            <div>
+                              <img src={UploadImg} alt="upload img"></img>
+                            </div>
+                            <Input
+                              id="image"
+                              type="file"
+                              name="image"
+                              onChange={handleInputFile}
+                              element="input"
+                              placeholder="url image product"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="card-as mt-4 rounded-3">
+                <div
+                  className="card-header-as bg-transparent"
+                  style={{ padding: "30px 30px 5px 30px" }}
+                >
+                  <div className="text-black-20px fw-bold">Description</div>
+                </div>
+                <hr className="limit-line"></hr>
+                <div className="card-body-as">
+                  <div className="row">
+                    <div className="col-md-12 col-12 order-lg-0 order-1">
+                      <div className="col ms-4 mb-4 me-4">
+                        <div
+                          style={{
+                            width: "auto",
+                          }}
+                        >
+                          <div
+                            className="col-sm-9 ms-4 me-4 mt-4 mb-4"
+                            style={{ width: "auto" }}
+                          >
+                            <Editor
+                              apiKey="0mk4qfdlq6ewh1qix0et7vd6noxgb49m5gsj4qj6wdb33h69"
+                              init={{
+                                height: 500,
+                                menubar: false,
+                                plugins: [
+                                  "advlist autolink lists link image charmap print preview anchor",
+                                  "searchreplace visualblocks code fullscreen",
+                                  "insertdatetime media table paste code help wordcount",
+                                ],
+                                toolbar:
+                                  "undo redo | formatselect | " +
+                                  "bold italic backcolor | alignleft aligncenter " +
+                                  "alignright alignjustify | bullist numlist outdent indent | " +
+                                  "removeformat | help",
+                                content_style:
+                                  "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+                              }}
+                              onChange={(e) =>
+                                setProducts({
+                                  ...products,
+                                  description: e.target
+                                    .getContent()
+                                    .replace(/(&nbsp;)*/g, "")
+                                    .replace(/(<p>)*/g, "")
+                                    .replace(/<(\/)?p[^>]*>/g, ""),
+                                })
+                              }
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="offset-3 btn__save-product col-9"
+                style={{ widht: "85%" }}
               >
-                Jual
-              </Button>
+                <Button type="submit" styling="btn-product-save">
+                  Jual
+                </Button>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

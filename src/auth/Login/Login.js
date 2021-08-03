@@ -41,24 +41,11 @@ export class Login extends Component {
       password,
     };
     this.props.dispatch(login(data, this.props.history));
-    const { roles, token, id, name } = this.props.user.userData;
-    console.log(roles);
+    const { roles } = this.props.user.userData;
     if (roles === "custommer" && toggleState === 1) {
-      return (
-        alert("Login Success"),
-        localStorage.setItem("KEY_TOKEN", token),
-        localStorage.setItem("id", id),
-        localStorage.setItem("name", name),
-        this.props.history.push("/")
-      );
+      return alert("Login Success"), this.props.history.push("/");
     } else if (roles === "seller" && toggleState === 2) {
-      return (
-        alert("Login Success"),
-        localStorage.setItem("KEY_TOKEN", token),
-        localStorage.setItem("id", id),
-        localStorage.setItem("name", name),
-        this.props.history.push("/")
-      );
+      return alert("Login Success"), this.props.history.push("/");
     } else {
       return alert(`You account not found`);
     }
