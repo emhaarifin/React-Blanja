@@ -8,7 +8,7 @@ const productsReducers = (state = initialValue, action) => {
     case "POST_PRODUCT":
       return {
         ...state,
-        productsData: action.payload.data,
+        productsData: action.payload,
       };
     default:
       return state;
