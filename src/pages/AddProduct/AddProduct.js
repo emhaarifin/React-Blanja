@@ -31,6 +31,7 @@ function AddProduct() {
     categoryId: 2,
     image: null,
     price: 0,
+    defaultImg: true,
     imagePreview: null,
   });
 
@@ -43,6 +44,7 @@ function AddProduct() {
     console.log(e);
     setProducts({
       ...products,
+      defaultImg: false,
       image: e.target.files[0],
       imagePreview: URL.createObjectURL(e.target.files[0]),
     });
@@ -176,8 +178,24 @@ function AddProduct() {
                             className="col-sm-9 ms-4 me-4 mt-4 mb-4"
                             style={{ width: "auto" }}
                           >
-                            <div>
-                              <img src={UploadImg} alt="upload img"></img>
+                            <div
+                              style={{
+                                maxWidth: "190px",
+                                maxHeight: "190px",
+                              }}
+                            >
+                              <img
+                                src={
+                                  products.defaultImg
+                                    ? UploadImg
+                                    : products.imagePreview
+                                }
+                                style={{
+                                  maxWidth: "190px",
+                                  maxHeight: "190px",
+                                }}
+                                alt="upload img"
+                              ></img>
                             </div>
                             <Input
                               id="image"

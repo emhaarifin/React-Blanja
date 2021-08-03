@@ -86,7 +86,16 @@ export class Product extends Component {
             <div className="row" key={index}>
               <div className="col-lg-4 col-md-8 images-product">
                 <div className="row image-product-main">
-                  <img src={image} alt="aa"></img>
+                  <img
+                    style={{
+                      maxWidth: "378px",
+                      maxHeight: "378px",
+                      width: "auto",
+                      height: "auto",
+                    }}
+                    src={image}
+                    alt="aa"
+                  ></img>
                 </div>
               </div>
               <div className="col-md-8">
