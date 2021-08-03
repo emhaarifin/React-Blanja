@@ -10,6 +10,11 @@ const productsReducers = (state = initialValue, action) => {
         ...state,
         productsData: action.payload,
       };
+    case "PUT_PRODUCT":
+      return {
+        ...state,
+        productsData: action.payload,
+      };
     default:
       return state;
   }

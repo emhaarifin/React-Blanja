@@ -53,10 +53,6 @@ function AddProduct() {
     document.title = "Tambah Produk Untuk Dijual";
   });
 
-  // const idUser = localStorage.getItem("id");
-  // console.log(idUser, "id user");
-  // const dispatch = useDispatch();
-
   return (
     <div>
       <Navbar className="midlle-nav-login" />
@@ -174,10 +170,7 @@ function AddProduct() {
                             width: "auto",
                           }}
                         >
-                          <div
-                            className="col-sm-9 ms-4 me-4 mt-4 mb-4"
-                            style={{ width: "auto" }}
-                          >
+                          <div className="col-sm-9 ms-4 me-4 mt-4 mb-4">
                             <div
                               style={{
                                 maxWidth: "190px",
