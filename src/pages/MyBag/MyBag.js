@@ -9,7 +9,9 @@ import { adjustItemQty, removeFromCart } from "../../redux/action/products";
 const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
-  const [input, setInput] = useState(productId.qty);
+  const [input, setInput] = useState();
+  // console.log(productId.qty, "qtt");
+  console.log(cart);
 
   useEffect(() => {
     let items = 0;
@@ -24,10 +26,10 @@ const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
     setTotalPrice(price);
   }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
 
-  const onChangeHandler = (e) => {
-    setInput(e.target.value);
-    adjustQty(productId.id, e.target.value);
-  };
+  // const onChangeHandler = (e) => {
+  //   setInput(e.target.value);
+  //   adjustQty(productId.id, e.target.value);
+  // };
 
   return (
     <div>
@@ -69,8 +71,21 @@ const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
                       <div className="quantity-price">
                         <div className="sum-item">
                           <InputIncrement
-                            onChange={onChangeHandler}
+                            min="1"
+                            max="5"
                             value={item.qty}
+                            Decrement={(e) => {
+                              if (item.qty !== 1) {
+                                setInput(e.target.value);
+                                adjustQty(item.id, item.qty - 1);
+                              }
+                            }}
+                            Increment={(e) => {
+                              if (item.qty < item.stock) {
+                                setInput(e.target.value);
+                                adjustQty(item.id, item.qty + 1);
+                              }
+                            }}
                           />
                         </div>
                         <p className="price-item">Rp {item.price}</p>

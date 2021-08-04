@@ -50,6 +50,9 @@ export class InputIncrement extends Component {
           -
         </button>
         <input
+          type="number"
+          min={this.props.min}
+          max={this.props.max}
           className="input-quantity"
           value={this.props.value}
           onChange={this.props.onChange}
