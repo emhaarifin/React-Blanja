@@ -1,15 +1,37 @@
+/* eslint-disable no-sequences */
 import axios from "axios";
 // import { BASE_URL } from "../../configs/db";
 
-export const login = (body, history) => (dispatch) => {
+export const login = (body, toggleState, history) => (dispatch) => {
   axios
     .post(`http://localhost:4000/v2/auth/login/`, body)
     .then((result) => {
+      const roles = result.data.result.roles;
       const userData = result.data.result;
-      dispatch({ type: "POST_LOGIN", payload: userData });
-      localStorage.setItem("KEY_TOKEN", userData.token);
-      localStorage.setItem("id", userData.id);
-      localStorage.setItem("name", userData.name);
+      console.log(roles);
+
+      // console.log(result, "tes result login");
+      if (roles === "custommer" && toggleState === 1) {
+        return (
+          alert(result.data.message),
+          dispatch({ type: "POST_LOGIN", payload: userData }),
+          localStorage.setItem("KEY_TOKEN", userData.token),
+          localStorage.setItem("id", userData.id),
+          localStorage.setItem("name", userData.name),
+          history.push("/")
+        );
+      } else if (roles === "seller" && toggleState === 2) {
+        return (
+          alert(result.data.message),
+          dispatch({ type: "POST_LOGIN", payload: userData }),
+          localStorage.setItem("KEY_TOKEN", userData.token),
+          localStorage.setItem("id", userData.id),
+          localStorage.setItem("name", userData.name),
+          history.push("/")
+        );
+      } else {
+        return alert(`Your account not found try login as ${roles}`);
+      }
     })
     .catch((error) => {
       alert(error.response.data.message);
@@ -41,12 +63,23 @@ export const registerSel = (body, history) => (dispatch) => {
     });
 };
 
+export const updateProfile = (id, data) => (dispatch) => {
+  axios
+    .put(`http://localhost:4000/v2/auth/profile/update/${id}`, data)
+    .then((result) => {
+      const newData = result.data.result;
+      dispatch({ type: "UPDATE_PROFILE", payload: newData });
+    })
+    .catch((error) => {
+      alert(error.response.data.message);
+    });
+};
 export const getUserById = (id) => (dispatch) => {
   axios
-    .post(`http://localhost:4000/v2/auth/profile/${id}`)
+    .get(`http://localhost:4000/v2/auth/profile/${id}`)
     .then((result) => {
-      // dispatch({ type: "GET_USER_BY_ID", payload: });
-      console.log(result);
+      const data = result.data.result[0];
+      dispatch({ type: "GET_USER_BY_ID", payload: data });
     })
     .catch((error) => {
       alert(error);

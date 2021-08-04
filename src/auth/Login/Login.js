@@ -41,15 +41,7 @@ export class Login extends Component {
       email,
       password,
     };
-    this.props.dispatch(login(data, this.props.history));
-    const { roles } = this.props.user.userData;
-    if (roles === "custommer" && toggleState === 1) {
-      return alert("Login Success"), this.props.history.push("/");
-    } else if (roles === "seller" && toggleState === 2) {
-      return alert("Login Success"), this.props.history.push("/");
-    } else {
-      return alert(`You account not found try login as ${roles}`);
-    }
+    this.props.dispatch(login(data, toggleState, this.props.history));
   };
 
   componentDidMount() {

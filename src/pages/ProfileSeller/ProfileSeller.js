@@ -6,14 +6,24 @@ import Button from "../../components/Button/Button";
 import Navbar from "../../components/Navbar/Navbar";
 import { useDispatch } from "react-redux";
 import SidebarSeller from "../../components/AsideProfile/SidebarSeller";
-import { getUserById } from "../../redux/action/user";
+import { getUserById, updateProfile } from "../../redux/action/user";
+import { useSelector } from "react-redux";
 function ProfileSeller() {
   const dispatch = useDispatch();
+  const { id, name, phone_number, email } = useSelector(
+    (state) => state.user.userData
+  );
+  console.log(id, "tes id");
+  const { store_description } = useSelector(
+    (state) => state.user.userData.StoreData[0]
+  );
+  // console.log(store_description);
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone_number: "",
     gender: "",
+    store_description: "",
     date_of_birth: "",
   });
 
@@ -25,10 +35,11 @@ function ProfileSeller() {
   };
 
   const handleSubmit = () => {
-    dispatch(getUserById);
+    dispatch(updateProfile(id, form));
   };
   useEffect(() => {
     document.title = "Profile Seller";
+    // dispatch(getUserById(id));
   });
   return (
     <div>
@@ -53,10 +64,17 @@ function ProfileSeller() {
                         for="name"
                         className="col-sm-3 col-form-label text-black-50"
                       >
-                        Name
+                        Store Name
                       </label>
                       <div className="col-sm-9">
-                        <Input id="name" type="text" element="input" />
+                        <Input
+                          id="name"
+                          name="name"
+                          value={form.name}
+                          type="text"
+                          onChange={changeText}
+                          element="input"
+                        />
                       </div>
                     </div>
                     <div className="row mb-3">
@@ -67,7 +85,14 @@ function ProfileSeller() {
                         Email
                       </label>
                       <div className="col-sm-9">
-                        <Input id="email" type="text" element="input" />
+                        <Input
+                          id="email"
+                          type="text"
+                          name="email"
+                          value={form.email}
+                          onChange={changeText}
+                          element="input"
+                        />
                       </div>
                     </div>
                     <div className="row mb-3">
@@ -81,6 +106,9 @@ function ProfileSeller() {
                         <Input
                           type="number"
                           id="phone_number"
+                          value={form.phone_number}
+                          name="phone_number"
+                          onChange={changeText}
                           element="input"
                         />
                       </div>
@@ -95,7 +123,10 @@ function ProfileSeller() {
                       <div className="col-sm-9">
                         <Input
                           type="text"
+                          value={form.store_description}
                           element="textarea"
+                          name="store_description"
+                          onChange={changeText}
                           id="store_description"
                         />
                       </div>
