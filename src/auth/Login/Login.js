@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import React, { Component } from "react";
 import Logo from "../../components/logo/logo";
 import Input from "../../components/input/input";
@@ -47,7 +48,7 @@ export class Login extends Component {
     } else if (roles === "seller" && toggleState === 2) {
       return alert("Login Success"), this.props.history.push("/");
     } else {
-      return alert(`You account not found`);
+      return alert(`You account not found try login as ${roles}`);
     }
   };
 
