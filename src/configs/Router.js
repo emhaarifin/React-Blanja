@@ -25,7 +25,7 @@ export class Router extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/mybag" component={MyBag} />
+          <Route path="/mybag" render={(props) => <MyBag {...props} />} />
           <Route path="/checkout" component={CheckOut} />
           <Route
             exact
@@ -49,7 +49,11 @@ export class Router extends Component {
           />
           <Route exact path="/profile/custommer" component={ProfileCust} />
           <Route path="/profile/seller/add_product" component={AddProduct} />
-          <Route exact path="/products/:id" component={Product} />
+          <Route
+            exact
+            path="/products/:id"
+            render={(props) => <Product {...props} />}
+          />
           <Route
             path="/profile/custommer/shipping_address"
             component={ShippingAddressCust}

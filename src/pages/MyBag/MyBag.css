@@ -47,7 +47,7 @@
   text-align: center;
 }
 
-.item {
+.item-cart {
   margin-top: 10px;
   padding: 25px;
   background: #FFFFFF;
@@ -65,11 +65,21 @@
   display: flex;
 }
 
+.desc__cart-product {
+  width: 60%;
+}
 
 .name-item {
   font-size: 16px;
   color: #000;
   padding-left: 5px;
+  display: inline-block;
+  word-wrap: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .seller-item {
@@ -216,7 +226,7 @@
       padding: 1px 1px;
   }
 
-  .item {
+  .item-cart {
       width: 155%;
   }
 

@@ -235,11 +235,11 @@ function CheckOut() {
                 <p className="price-total">$ 45.0</p>
               </div>
               <div>
-                <Link to="/mybag">
-                  <button type="button" className="btn-primary">
-                    Buy
-                  </button>
-                </Link>
+                {/* <Link to="/mybag"> */}
+                <button type="button" className="btn-primary">
+                  Buy
+                </button>
+                {/* </Link> */}
               </div>
             </div>
           </div>
@@ -329,7 +329,12 @@ function CheckOut() {
                         >
                           Discard
                         </button>
-                        <button type="button" className="btn btn-primary">
+                        <button
+                          onClick={() => console.log("cong")}
+                          // data-bs-dismiss="modal"
+                          type="button"
+                          className="btn btn-primary"
+                        >
                           Apply
                         </button>
                       </div>

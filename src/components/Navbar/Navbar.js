@@ -127,9 +127,9 @@ function Navbar(props) {
               </button>
             </li>
             <li className="nav-item">
-              <a className="nav-link btn-cart" href="./pages/mybag.html">
+              <Link className="nav-link btn-cart" to="/mybag">
                 <img src={IconCart} alt=""></img>
-              </a>
+              </Link>
             </li>
           </ul>
           <ul className="navbar-nav">

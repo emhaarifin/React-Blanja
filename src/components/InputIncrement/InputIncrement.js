@@ -46,15 +46,15 @@ export class InputIncrement extends Component {
   render() {
     return (
       <div>
-        <button className="btn-quantity dec" onClick={this.DecreaseItem}>
+        <button className="btn-quantity dec" onClick={this.props.Decrement}>
           -
         </button>
         <input
           className="input-quantity"
-          value={this.state.quantity}
-          onChange={this.handleChange}
+          value={this.props.value}
+          onChange={this.props.onChange}
         />
-        <button className="btn-quantity inc" onClick={this.IncrementItem}>
+        <button className="btn-quantity inc" onClick={this.props.Increment}>
           +
         </button>
       </div>

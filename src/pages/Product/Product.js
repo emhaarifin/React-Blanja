@@ -9,7 +9,9 @@ import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import CardProduct from "../../components/CardProduct/CardProduct";
 import rating from "../../asset/home/new/star.svg";
+import { getPoductsById, addToCart } from "../../redux/action/products";
 import InputIncrement from "../../components/InputIncrement/InputIncrement";
+import { connect } from "react-redux";
 export class Product extends Component {
   state = {
     products: [],
@@ -18,36 +20,24 @@ export class Product extends Component {
     errors: null,
   };
 
-  componentDidMount() {
-    this.getPoductsById();
-    document.title = "Produk pilihanmu";
-    this.getAllProduct();
-  }
-
-  componentDidUpdate(prevState) {
-    if (this.props.match.params.id !== prevState.match.params.id) {
-      this.getPoductsById();
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.getProductById();
       window.scrollTo(0, 0);
     }
   }
 
-  async getPoductsById() {
-    const response = await axios.get(
-      `http://localhost:4000/v2/products/${this.props.match.params.id}`
-    );
-    try {
-      this.setState({
-        productsbyId: response.data.result,
-        isLoading: false,
-      });
-    } catch (error) {
-      this.setState({ error, isLoading: false });
-    }
+  getProductById = () => {
+    this.props.dispatch(getPoductsById(this.props.match.params.id));
+  };
+  componentDidMount() {
+    this.getProductById();
+    document.title = "Produk pilihanmu";
+    this.getAllProduct();
   }
 
   async getAllProduct() {
     const response = await axios.get(`http://localhost:4000/v2/products`);
-    console.log(response);
     try {
       this.setState({
         products: response.data.data,
@@ -57,10 +47,12 @@ export class Product extends Component {
       this.setState({ error, isLoading: false });
     }
   }
-
+  inputToCart = (id) => {
+    this.props.dispatch(addToCart(id));
+  };
   render() {
-    const { productsbyId } = this.state;
-    return productsbyId.map((product, index) => {
+    const productsbyId = this.props.productByID;
+    return productsbyId.map((product) => {
       const { id, name, brand, price, category, description, image } = product;
       return (
         <>
@@ -83,7 +75,7 @@ export class Product extends Component {
                 </li>
               </ol>
             </nav>
-            <div className="row" key={index}>
+            <div className="row" key={id}>
               <div className="col-lg-4 col-md-8 images-product">
                 <div className="row image-product-main">
                   <img
@@ -111,8 +103,8 @@ export class Product extends Component {
                     <p className="sold">(10)</p>
                   </div>
                 </div>
-                <div class="row price-total">
-                  <p class="subtitle-price-product mt-4">Price</p>
+                <div className="row price-total">
+                  <p className="subtitle-price-product mt-4">Price</p>
                   <p className="price-item-product mt-2">Rp {price}</p>
                 </div>
                 <div className="color-choice">
@@ -122,40 +114,40 @@ export class Product extends Component {
                       type="checkbox"
                       className="btn-check"
                       id="color1"
-                      autocomplete="off"
+                      autoComplete="off"
                     ></input>
                     <label
-                      for="color1"
+                      htmlFor="color1"
                       className="btn-black choice-color-product"
                     ></label>
                     <input
                       type="checkbox"
                       className="btn-check"
                       id="color2"
-                      autocomplete="off"
+                      autoComplete="off"
                     ></input>
                     <label
-                      for="color2"
+                      htmlFor="color2"
                       className="btn-red choice-color-product"
                     ></label>
                     <input
                       type="checkbox"
                       className="btn-check"
                       id="color3"
-                      autocomplete="off"
+                      autoComplete="off"
                     ></input>
                     <label
-                      for="color3"
+                      htmlFor="color3"
                       className="btn-blue choice-color-product"
                     ></label>
                     <input
                       type="checkbox"
                       className="btn-check"
                       id="color4"
-                      autocomplete="off"
+                      autoComplete="off"
                     ></input>
                     <label
-                      for="color4"
+                      htmlFor="color4"
                       className="btn-green choice-color-product"
                     ></label>
                   </div>
@@ -186,6 +178,7 @@ export class Product extends Component {
                     type="button"
                     className="btn-bold btn-secondary-bold"
                     data-bs-dismiss="modal"
+                    onClick={() => this.inputToCart(id)}
                   >
                     Add Bag
                   </button>
@@ -214,7 +207,7 @@ export class Product extends Component {
                 <p className="the-description">{description}</p>
               </div>
             </div>
-            <hr class="limit-line mt-5"></hr>
+            <hr className="limit-line mt-5"></hr>
             <div className="product-heading">
               <p className="heading-product">Popular</p>
               <p className="subheading-product">
@@ -231,4 +224,11 @@ export class Product extends Component {
   }
 }
 
-export default Product;
+const mapStateToProps = (state) => {
+  return {
+    current: state.products.currentItem,
+    productByID: state.products.productId,
+  };
+};
+
+export default connect(mapStateToProps)(Product);

@@ -4,19 +4,19 @@ import Input from "../../components/input/input";
 import Avatar from "../../asset/profile.png";
 import Button from "../../components/Button/Button";
 import Navbar from "../../components/Navbar/Navbar";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import SidebarSeller from "../../components/AsideProfile/SidebarSeller";
-import { getUserById, updateProfile } from "../../redux/action/user";
-import { useSelector } from "react-redux";
+// import { getUserById, updateProfile } from "../../redux/action/user";
+// import { useSelector } from "react-redux";
 function ProfileSeller() {
-  const dispatch = useDispatch();
-  const { id, name, phone_number, email } = useSelector(
-    (state) => state.user.userData
-  );
-  console.log(id, "tes id");
-  const { store_description } = useSelector(
-    (state) => state.user.userData.StoreData[0]
-  );
+  // const dispatch = useDispatch();
+  // const { id, name, phone_number, email } = useSelector(
+  //   (state) => state.user.userData
+  // );
+  // console.log(id, "tes id");
+  // const { store_description } = useSelector(
+  //   (state) => state.user.userData.StoreData[0]
+  // );
   // console.log(store_description);
   const [form, setForm] = useState({
     name: "",
@@ -34,9 +34,9 @@ function ProfileSeller() {
     });
   };
 
-  const handleSubmit = () => {
-    dispatch(updateProfile(id, form));
-  };
+  // const handleSubmit = () => {
+  //   dispatch(updateProfile(id, form));
+  // };
   useEffect(() => {
     document.title = "Profile Seller";
     // dispatch(getUserById(id));

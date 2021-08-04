@@ -4,7 +4,7 @@ import AvatarMini from "../../asset/profile-mini.png";
 import IconPackage from "../../asset/profile/product.png";
 import StoreIcon from "../../asset/profile/store.png";
 import IconCart from "../../asset/profile/order.png";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 function AsideProfile() {
   const name = localStorage.getItem("name");

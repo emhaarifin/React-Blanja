@@ -53,3 +53,50 @@ export const updateProduct = (formData, id, history) => (dispatch) => {
       alert(error.response.data.message);
     });
 };
+
+export const getPoductsById = (id) => (dispatch) => {
+  axios
+    .get(`http://localhost:4000/v2/products/${id}`)
+    .then((result) => {
+      const data = result.data.result;
+      dispatch({ type: "GET_PRODUCT_BY_ID", payload: data });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const addToCart = (productId) => {
+  return {
+    type: "ADD_TO_CART",
+    payload: {
+      id: productId,
+    },
+  };
+};
+
+export const removeFromCart = (productId) => {
+  return {
+    type: "REMOVE_FROM_CART",
+    payload: {
+      id: productId,
+    },
+  };
+};
+
+export const adjustItemQty = (productId, qty) => {
+  return {
+    type: "ADJUST_ITEM_QTY",
+    payload: {
+      id: productId,
+      qty,
+    },
+  };
+};
+
+export const loadCurrentItem = (item) => {
+  return {
+    type: "LOAD_CURRENT_ITEM",
+    payload: item,
+  };
+};
