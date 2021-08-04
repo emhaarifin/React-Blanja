@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Input from "../../components/input/input";
 import Button from "../../components/Button/Button";
 import CustomRadio from "../../components/CustomRadio/CustomRadio";
@@ -7,14 +7,14 @@ import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
 import { updateProduct } from "../../redux/action/products";
 import { useDispatch, useSelector } from "react-redux";
-
 import { useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import SidebarSeller from "../../components/AsideProfile/SidebarSeller";
 function AddProduct() {
   const { id } = useParams();
-  const dispatch = useDispatch();
 
+  const tinyEditor = useRef(null);
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     setProducts({
       ...products,
@@ -257,9 +257,13 @@ function AddProduct() {
                           >
                             <Editor
                               apiKey="0mk4qfdlq6ewh1qix0et7vd6noxgb49m5gsj4qj6wdb33h69"
+                              onInit={(evt, editor) =>
+                                (tinyEditor.current = editor)
+                              }
+                              initialValue={products.description}
                               init={{
-                                height: 500,
-                                menubar: false,
+                                height: 400,
+                                menubar: true,
                                 plugins: [
                                   "advlist autolink lists link image charmap print preview anchor",
                                   "searchreplace visualblocks code fullscreen",
@@ -273,7 +277,7 @@ function AddProduct() {
                                 content_style:
                                   "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
                               }}
-                              value={(e) =>
+                              onSaveContent={(e) =>
                                 setProducts({
                                   ...products,
                                   description: e.target

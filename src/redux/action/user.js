@@ -21,7 +21,6 @@ export const registerCust = (body, history) => (dispatch) => {
   axios
     .post(`http://localhost:4000/v2/auth/register/custommer`, body)
     .then((result) => {
-      console.log(result, "tes result post regis");
       const userData = result.data.result;
       dispatch({ type: "POST_REGISTER", payload: userData });
     })

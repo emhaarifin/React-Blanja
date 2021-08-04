@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./AddProduct.css";
 import Input from "../../components/input/input";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,7 @@ import { postProduct } from "../../redux/action/products";
 function AddProduct() {
   // const url = "http://localhost:4000";
   const dispatch = useDispatch();
-
+  const tinyEditor = useRef(null);
   const handleChange = (e) => {
     setProducts({
       ...products,
@@ -170,7 +170,10 @@ function AddProduct() {
                             width: "auto",
                           }}
                         >
-                          <div className="col-sm-9 ms-4 me-4 mt-4 mb-4">
+                          <div
+                            className="col-sm-9 ms-4 me-4 mt-4 mb-4"
+                            style={{ width: "auto" }}
+                          >
                             <div
                               style={{
                                 maxWidth: "190px",
@@ -228,9 +231,12 @@ function AddProduct() {
                           >
                             <Editor
                               apiKey="0mk4qfdlq6ewh1qix0et7vd6noxgb49m5gsj4qj6wdb33h69"
+                              onInit={(evt, editor) =>
+                                (tinyEditor.current = editor)
+                              }
                               init={{
-                                height: 500,
-                                menubar: false,
+                                height: 400,
+                                menubar: true,
                                 plugins: [
                                   "advlist autolink lists link image charmap print preview anchor",
                                   "searchreplace visualblocks code fullscreen",
