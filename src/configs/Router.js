@@ -29,11 +29,7 @@ export class Router extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/mybag" render={(props) => <MyBag {...props} />} />
           <Route path="/checkout" component={CheckOut} />
-          <Route
-            exact
-            path="/auth/login"
-            render={(props) => <Login {...props} />}
-          />
+          <PublicRoute exact path="/auth/login" component={Login} />
           <Route
             path="/auth/register"
             render={(props) => <Register {...props} />}
