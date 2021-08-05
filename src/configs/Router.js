@@ -19,7 +19,8 @@ import ShippingAddressCust from "../pages/ShippingAddressCust/ShippingAddressCus
 import CustOrder from "../pages/CustOrder/CustOrder";
 import SellerOrder from "../pages/SellerOrder/SellerOrder";
 import PrivateRoute from "./module/PrivateRoute";
-
+import PrivateRouteUser from "./module/PrivateRouteUser";
+import PublicRoute from "./module/PublicRoute";
 export class Router extends Component {
   render() {
     return (
@@ -48,7 +49,11 @@ export class Router extends Component {
             path="/profile/seller/product"
             component={SellerProduct}
           />
-          <Route exact path="/profile/custommer" component={ProfileCust} />
+          <PrivateRouteUser
+            exact
+            path="/profile/custommer"
+            component={ProfileCust}
+          />
           <PrivateRoute
             path="/profile/seller/add_product"
             component={AddProduct}
@@ -58,11 +63,14 @@ export class Router extends Component {
             path="/products/:id"
             render={(props) => <Product {...props} />}
           />
-          <Route
+          <PrivateRouteUser
             path="/profile/custommer/shipping_address"
             component={ShippingAddressCust}
           />
-          <Route path="/profile/custommer/my_order" component={CustOrder} />
+          <PrivateRouteUser
+            path="/profile/custommer/my_order"
+            component={CustOrder}
+          />
           <PrivateRoute
             path="/profile/seller/update_product/:id"
             component={UpdateProduct}

@@ -15,7 +15,7 @@ function ProfileCust() {
   useEffect(() => {
     document.title = "Profile Custommer";
   });
-  const handleLogout = (e) => {
+  const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     alert("Logout Success");
     history.push("/");

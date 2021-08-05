@@ -44,24 +44,28 @@ export const registerCust = (body, history) => (dispatch) => {
   axios
     .post(`http://localhost:4000/v2/auth/register/custommer`, body)
     .then((result) => {
-      console.log(result, "tes result post regis");
       const userData = result.data.result;
-      dispatch({ type: "POST_REGISTER", payload: userData });
+      return (
+        alert("Register Success, Check mail to active your account"),
+        dispatch({ type: "POST_REGISTER", payload: userData })
+      );
     })
     .catch((error) => {
-      alert(error.response.data.message);
+      return alert(error.response.data.message);
     });
 };
 export const registerSel = (body, history) => (dispatch) => {
   axios
     .post(`http://localhost:4000/v2/auth/register/seller`, body)
     .then((result) => {
-      console.log(result);
       const userData = result.data.result;
-      dispatch({ type: "POST_REGISTER", payload: userData });
+      return (
+        alert("Register Success, Check mail to active your account"),
+        dispatch({ type: "POST_REGISTER", payload: userData })
+      );
     })
     .catch((error) => {
-      alert(error.response.data.message);
+      return alert(error.response.data.message);
     });
 };
 

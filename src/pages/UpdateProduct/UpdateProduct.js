@@ -21,13 +21,13 @@ function AddProduct() {
       [e.target.name]: e.target.value,
     });
   };
-  const { store_name } = useSelector(
-    (state) => state.user.userData.StoreData[0]
-  );
+  // const { store_name } = useSelector(
+  //   (state) => state.user.userData.StoreData[0]
+  // );
 
   const [products, setProducts] = useState({
     name: "",
-    brand: store_name,
+    // brand: store_name,
     description: "",
     stock: 0,
     categoryId: 2,

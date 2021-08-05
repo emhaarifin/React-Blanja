@@ -11,7 +11,7 @@ const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
   const [input, setInput] = useState();
-
+  const isAuth = localStorage.getItem("KEY_TOKEN");
   useEffect(() => {
     let items = 0;
     let price = 0;
@@ -96,6 +96,7 @@ const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
                   <p id="title-price">Total Price</p>
                   <p id="price">Rp {totalPrice}</p>
                 </div>
+
                 <Link to="/checkout" type="button" className="btn btn-primary">
                   Buy
                 </Link>

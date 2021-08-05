@@ -22,9 +22,7 @@ function Home() {
 
   const getAllProducts = async () => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/v2/products/`
-      );
+      const response = await axios.get(`${BASE_URL}/v2/products/`);
       const allProducts = response.data.data;
       setProducts(allProducts);
     } catch {

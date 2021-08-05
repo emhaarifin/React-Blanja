@@ -37,7 +37,7 @@ function ProfileSeller() {
   };
 
   const history = useHistory();
-  const handleLogout = (e) => {
+  const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     alert("Logout Success");
     history.push("/");
@@ -160,10 +160,12 @@ function ProfileSeller() {
                       <Button styling="btn-select-image">Select image</Button>
                     </div>
                   </div>
-                  <Button onClick={() => handleLogout}>Log Out</Button>
                 </div>
               </div>
             </div>
+            <Button styling="btn-select-image" onClick={handleLogout}>
+              Log Out
+            </Button>
           </div>
         </div>
       </div>
