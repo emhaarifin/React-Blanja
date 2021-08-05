@@ -5,9 +5,9 @@ import IconPackage from "../../asset/profile/product.png";
 import StoreIcon from "../../asset/profile/store.png";
 import IconCart from "../../asset/profile/order.png";
 
-export default function SidebarCustommer() {
+function AsideProfile() {
   return (
-    <div>
+    <>
       <div className="sidebar  flex-column">
         <div className="user-profile d-flex flex-wrap mb-5">
           <img
@@ -93,6 +93,8 @@ export default function SidebarCustommer() {
           </ul>
         </div>
       </div>
-    </div>
+    </>
   );
 }
+
+export default AsideProfile;

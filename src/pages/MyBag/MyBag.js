@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import CustomCheckBox from "../../components/CustomCheckBox/CustomCheckBox";
 import Navbar from "../../components/Navbar/Navbar";
@@ -10,8 +11,6 @@ const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
   const [input, setInput] = useState();
-  // console.log(productId.qty, "qtt");
-  console.log(cart);
 
   useEffect(() => {
     let items = 0;
@@ -25,11 +24,6 @@ const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
     setTotalItems(items);
     setTotalPrice(price);
   }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
-
-  // const onChangeHandler = (e) => {
-  //   setInput(e.target.value);
-  //   adjustQty(productId.id, e.target.value);
-  // };
 
   return (
     <div>
@@ -45,10 +39,10 @@ const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
                   <p className="subtitle">
                     Select all items <span>({cart.length} items selected)</span>
                   </p>
-                  <p className="delete">Delete</p>
+                  <button className="btn__delete">Delete</button>
                 </div>
-                <div className="the-item">
-                  {cart.map((item) => (
+                {cart.map((item) => (
+                  <div className="the-item">
                     <div key={item.id} className="item-cart">
                       <div className="d-flex align-items-center">
                         <CustomCheckBox />
@@ -63,13 +57,13 @@ const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
                             alt=""
                           ></img>
                           <div className="desc__cart-product">
-                            <p className="name-item">{item.name}</p>
+                            <p className="name__item">{item.name}</p>
                             <p className="seller-item">{item.brand}</p>
                           </div>
                         </div>
                       </div>
-                      <div className="quantity-price">
-                        <div className="sum-item">
+                      <div className="quantity-price-item d-flex align-items-center">
+                        <div className="sum__item-qty">
                           <InputIncrement
                             min="1"
                             max="5"
@@ -88,11 +82,11 @@ const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
                             }}
                           />
                         </div>
-                        <p className="price-item">Rp {item.price}</p>
+                        <p className="price__by-item">Rp {item.price}</p>
                       </div>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="col-4">

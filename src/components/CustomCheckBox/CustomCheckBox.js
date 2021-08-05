@@ -5,7 +5,12 @@ export class CustomCheckBox extends Component {
   render() {
     return (
       <label className="checker-checkbox">
-        <input type="checkbox"></input>
+        <input
+          checked={this.props.checked}
+          onChange={this.props.onChange}
+          defaultChecked={this.props.defaultChecked}
+          type="checkbox"
+        ></input>
         <span className="checkmark-checkbox"></span>
       </label>
     );

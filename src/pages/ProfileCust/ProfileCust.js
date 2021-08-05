@@ -6,10 +6,20 @@ import Button from "../../components/Button/Button";
 import CustomRadio from "../../components/CustomRadio/CustomRadio";
 import Navbar from "../../components/Navbar/Navbar";
 import SidebarCustommer from "../../components/AsideProfile/SidebarCustommer";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 function ProfileCust() {
+  const dispatch = useDispatch();
+  const history = useHistory();
   useEffect(() => {
     document.title = "Profile Custommer";
   });
+  const handleLogout = (e) => {
+    dispatch({ type: "LOGOUT" });
+    alert("Logout Success");
+    history.push("/");
+  };
   return (
     <div>
       <Navbar />
@@ -165,6 +175,9 @@ function ProfileCust() {
                 </div>
               </div>
             </div>
+            <Button styling="btn-select-image" onClick={handleLogout}>
+              Log Out
+            </Button>
           </div>
         </div>
       </div>

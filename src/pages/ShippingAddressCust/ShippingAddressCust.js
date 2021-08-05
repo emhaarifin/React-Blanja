@@ -30,14 +30,7 @@ function ShippingAddressCust() {
                     <div className="modal-dialog modal-lg">
                       <div className="container">
                         <div className="modal-content">
-                          <div className="modal-header modal-header-address">
-                            <button
-                              type="button"
-                              className="btn-close"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            ></button>
-                          </div>
+                          <div className="modal-header modal-header-address"></div>
                           <div className="modal-body">
                             <div className="row">
                               <div className="col-12">

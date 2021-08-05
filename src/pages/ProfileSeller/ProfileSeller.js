@@ -4,12 +4,14 @@ import Input from "../../components/input/input";
 import Avatar from "../../asset/profile.png";
 import Button from "../../components/Button/Button";
 import Navbar from "../../components/Navbar/Navbar";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import SidebarSeller from "../../components/AsideProfile/SidebarSeller";
+import { useHistory } from "react-router-dom";
+
 // import { getUserById, updateProfile } from "../../redux/action/user";
 // import { useSelector } from "react-redux";
 function ProfileSeller() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const { id, name, phone_number, email } = useSelector(
   //   (state) => state.user.userData
   // );
@@ -34,6 +36,12 @@ function ProfileSeller() {
     });
   };
 
+  const history = useHistory();
+  const handleLogout = (e) => {
+    dispatch({ type: "LOGOUT" });
+    alert("Logout Success");
+    history.push("/");
+  };
   // const handleSubmit = () => {
   //   dispatch(updateProfile(id, form));
   // };
@@ -152,6 +160,7 @@ function ProfileSeller() {
                       <Button styling="btn-select-image">Select image</Button>
                     </div>
                   </div>
+                  <Button onClick={() => handleLogout}>Log Out</Button>
                 </div>
               </div>
             </div>

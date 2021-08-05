@@ -18,6 +18,7 @@ import ProfileCust from "../pages/ProfileCust/ProfileCust";
 import ShippingAddressCust from "../pages/ShippingAddressCust/ShippingAddressCust";
 import CustOrder from "../pages/CustOrder/CustOrder";
 import SellerOrder from "../pages/SellerOrder/SellerOrder";
+import PrivateRoute from "./module/PrivateRoute";
 
 export class Router extends Component {
   render() {
@@ -42,13 +43,16 @@ export class Router extends Component {
             path="/auth/confirm_password_login"
             component={ConfirmPasswordLogin}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/profile/seller/product"
             component={SellerProduct}
           />
           <Route exact path="/profile/custommer" component={ProfileCust} />
-          <Route path="/profile/seller/add_product" component={AddProduct} />
+          <PrivateRoute
+            path="/profile/seller/add_product"
+            component={AddProduct}
+          />
           <Route
             exact
             path="/products/:id"
@@ -59,13 +63,20 @@ export class Router extends Component {
             component={ShippingAddressCust}
           />
           <Route path="/profile/custommer/my_order" component={CustOrder} />
-          <Route
+          <PrivateRoute
             path="/profile/seller/update_product/:id"
             component={UpdateProduct}
           />
-          <Route exact path="/profile/seller" component={ProfileSeller} />
+          <PrivateRoute
+            exact
+            path="/profile/seller"
+            component={ProfileSeller}
+          />
           <Route path="/category/:id" component={Category} />
-          <Route path="/profile/seller/myorderseller" component={SellerOrder} />
+          <PrivateRoute
+            path="/profile/seller/myorderseller"
+            component={SellerOrder}
+          />
         </Switch>
       </BrowserRouter>
     );

@@ -66,10 +66,11 @@ export const getPoductsById = (id) => (dispatch) => {
     });
 };
 
-export const addToCart = (productId) => {
+export const addToCart = (productId, id) => {
   return {
     type: "ADD_TO_CART",
     payload: {
+      user_id: id,
       id: productId,
     },
   };

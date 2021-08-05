@@ -48,7 +48,9 @@ export class Product extends Component {
     }
   }
   inputToCart = (id) => {
-    this.props.dispatch(addToCart(id));
+    const user_id = localStorage.getItem("id");
+    console.log(user_id);
+    this.props.dispatch(addToCart(id, user_id));
   };
   render() {
     const productsbyId = this.props.productByID;

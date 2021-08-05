@@ -18,6 +18,7 @@ export const login = (body, toggleState, history) => (dispatch) => {
           localStorage.setItem("KEY_TOKEN", userData.token),
           localStorage.setItem("id", userData.id),
           localStorage.setItem("name", userData.name),
+          localStorage.setItem("roles", userData.roles),
           history.push("/")
         );
       } else if (roles === "seller" && toggleState === 2) {
@@ -27,6 +28,7 @@ export const login = (body, toggleState, history) => (dispatch) => {
           localStorage.setItem("KEY_TOKEN", userData.token),
           localStorage.setItem("id", userData.id),
           localStorage.setItem("name", userData.name),
+          localStorage.setItem("roles", userData.roles),
           history.push("/")
         );
       } else {
