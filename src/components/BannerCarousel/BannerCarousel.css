@@ -1,15 +1,15 @@
-button.slick-arrow{
+button.slick-arrow {
   z-index: 1000;
 }
-
-.container.banner-carousel.mt-5{
+/* 
+.container.banner-carousel.mt-5 {
   position: relative;
-}
+} */
 
 .banner-carousel .banner {
   margin: 0 25px;
+  position: relative;
 }
-
 
 .banner-carousel .banner p {
   position: absolute;
@@ -18,8 +18,9 @@ button.slick-arrow{
   text-align: center;
   font-size: 38px;
   font-weight: bold;
-  line-height: 38px;  
-  color: #FFFFFF;
+  line-height: 38px;
+  color: #ffffff;
+  /* z-index: 9; */
 }
 
 .banner-carousel .banner img {
