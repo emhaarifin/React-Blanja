@@ -36,13 +36,7 @@ const userReducers = (state = initialValue, action) => {
         ...state,
         userData: action.payload,
       };
-    case "LOGOUT":
-      return {
-        ...state,
-        userData: {},
-        userDataID: {},
-        errorMsg: {},
-      };
+
     default:
       return state;
   }

@@ -4,7 +4,7 @@ import Input from "../../components/input/input";
 import Avatar from "../../asset/profile.png";
 import Button from "../../components/Button/Button";
 import Navbar from "../../components/Navbar/Navbar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SidebarSeller from "../../components/AsideProfile/SidebarSeller";
 import { useHistory } from "react-router-dom";
 
@@ -12,6 +12,7 @@ import { useHistory } from "react-router-dom";
 // import { useSelector } from "react-redux";
 function ProfileSeller() {
   const dispatch = useDispatch();
+
   // const { id, name, phone_number, email } = useSelector(
   //   (state) => state.user.userData
   // );
@@ -20,6 +21,11 @@ function ProfileSeller() {
   //   (state) => state.user.userData.StoreData[0]
   // );
   // console.log(store_description);
+  const { StoreData, phone_number, gender, email, name } = useSelector(
+    (state) => state.user.userData
+  );
+  console.log(StoreData, phone_number, gender, email, name);
+  // console.log(name, email, phone_number, gender, store_name);
   const [form, setForm] = useState({
     name: "",
     email: "",

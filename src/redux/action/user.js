@@ -10,7 +10,6 @@ export const login = (body, toggleState, history) => (dispatch) => {
       const userData = result.data.result;
       console.log(roles);
 
-      // console.log(result, "tes result login");
       if (roles === "custommer" && toggleState === 1) {
         return (
           alert(result.data.message),
@@ -47,11 +46,13 @@ export const registerCust = (body, history) => (dispatch) => {
       const userData = result.data.result;
       return (
         alert("Register Success, Check mail to active your account"),
-        dispatch({ type: "POST_REGISTER", payload: userData })
+        dispatch({ type: "POST_REGISTER", payload: userData }),
+        history.push("/auth/login")
       );
     })
     .catch((error) => {
-      return alert(error.response.data.message);
+      console.log(error.response);
+      return alert(error);
     });
 };
 export const registerSel = (body, history) => (dispatch) => {
@@ -60,12 +61,15 @@ export const registerSel = (body, history) => (dispatch) => {
     .then((result) => {
       const userData = result.data.result;
       return (
+        console.log(userData),
         alert("Register Success, Check mail to active your account"),
-        dispatch({ type: "POST_REGISTER", payload: userData })
+        dispatch({ type: "POST_REGISTER", payload: userData }),
+        history.push("/auth/login")
       );
     })
     .catch((error) => {
-      return alert(error.response.data.message);
+      console.log(error.response);
+      return alert(error);
     });
 };
 

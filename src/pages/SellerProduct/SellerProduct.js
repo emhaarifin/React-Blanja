@@ -41,32 +41,29 @@ class ProductSeller extends Component {
     if (this.state.sort !== prevState.sort) {
       this.getAllProduct();
     }
-    console.log(this.state.sort, this.state.sortBy);
   }
-
-  async getAllProduct() {
-    const response = await axios.get(
-      `http://localhost:4000/v1/products?page=${this.state.pageNumber}&search=${this.state.search}&sortBy=${this.state.sortBy}&sort=${this.state.sort}`
-    );
-    try {
-      this.setState({
-        products: response.data.data,
-        isLoading: false,
-        pageDetail: response.data.pageDetail,
-        message: response.data.message,
-        status: response.data.status,
-        totalPage: response.data.pageDetail.totalPage,
+  getAllProduct() {
+    axios
+      .get(
+        `http://localhost:4000/v1/products?page=${this.state.pageNumber}&search=${this.state.search}&sortBy=${this.state.sortBy}&sort=${this.state.sort}`
+      )
+      .then((response) => {
+        console.log(response, "Respone");
+        this.setState({
+          products: response.data.data,
+          isLoading: false,
+          pageDetail: response.data.pageDetail,
+          message: response.data.message,
+          status: response.data.status,
+          totalPage: response.data.pageDetail.totalPage,
+        });
+      })
+      .catch((error) => {
+        console.log(this.state, error, "Respo errne");
+        this.setState({
+          status: 404,
+        });
       });
-      console.log("try", response);
-    } catch (error) {
-      this.setState({
-        error,
-        message: response.data.message,
-        isLoading: false,
-      });
-      console.log("re", response);
-    }
-    console.log("full", response);
   }
 
   prevHandlerButton = async () => {
@@ -92,11 +89,26 @@ class ProductSeller extends Component {
     }
   };
 
-  handlePagination = () => {
-    if (this.state.pageNumber > 1) {
-      this.prevHandlerButton();
-    } else {
-      this.nextHandlerButton();
+  handlePagination = async (index) => {
+    let number = index + 1;
+    const response = await axios.get(
+      `http://localhost:4000/v1/products?page=${number}&search=${this.state.search}&sortBy=${this.state.sortBy}&sort=${this.state.sort}`
+    );
+    try {
+      this.setState({
+        products: response.data.data,
+        isLoading: false,
+        pageDetail: response.data.pageDetail,
+        message: response.data.message,
+        status: response.data.status,
+        totalPage: response.data.pageDetail.totalPage,
+      });
+    } catch (error) {
+      this.setState({
+        error,
+        message: response.data.message,
+        isLoading: false,
+      });
     }
   };
 
@@ -160,11 +172,11 @@ class ProductSeller extends Component {
   }
 
   render() {
-    const { toggleState, products, totalPage, pageNumber } = this.state;
+    const { toggleState, products, totalPage, status, pageNumber } = this.state;
     const TotalPage = Array(totalPage).fill();
-
+    console.log(products, status, "dat products");
     const getProducts = () => {
-      if (products === []) {
+      if (status !== 200) {
         return (
           <tr>
             <td></td>
@@ -290,7 +302,7 @@ class ProductSeller extends Component {
                         {TotalPage.map((element, index) => (
                           <button
                             className="custom-btn-pagination-middle"
-                            onClick={this.handlePagination}
+                            onClick={() => this.handlePagination(index)}
                           >
                             {index + 1}
                           </button>

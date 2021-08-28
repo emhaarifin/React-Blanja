@@ -49,26 +49,10 @@ export class Register extends Component {
       store_name,
       password,
     };
-    // const { roles } = this.props.user.userData;
-    // console.log(roles);
     if (toggleState === 1) {
-      this.props.dispatch(registerCust(dataCust, this.props.history));
-      console.log(this.props);
-      return (
-        alert("Register Success"),
-        // localStorage.setItem("KEY_TOKEN", token),
-        // localStorage.setItem("id", id),
-        // localStorage.setItem("name", name),
-        this.props.history.push("/auth/login")
-      );
+      return this.props.dispatch(registerCust(dataCust, this.props.history));
     } else if (toggleState === 2) {
-      this.props.dispatch(registerSel(dataSel, this.props.history));
-      return (
-        alert("Register Success"),
-        // localStorage.setItem("KEY_TOKEN", token),
-        // localStorage.setItem("id", id),
-        this.props.history.push("/auth/login")
-      );
+      return this.props.dispatch(registerSel(dataSel, this.props.history));
     } else {
       return alert(`Something Wrong`);
     }
