@@ -1,17 +1,108 @@
-# Blanja[![Netlify Status](https://api.netlify.com/api/v1/badges/ba20e6b4-9d5a-4ca8-beeb-fceb94907f3a/deploy-status)](https://app.netlify.com/sites/quirky-nightingale-afb662/deploys)
-## Contents
+<h1 align="center">Blanja: Fashion e-commerce</h1>
 
-- [Description](#description)
-- [Requirements](#requirements)
-<!-- - [Instalation](#instalation) -->
-<!-- - [Screenshot](#screenshot) -->
+<p align="center">
+    <a href="https://bit.ly/blanja-netlify">View Demo</a>
+    ·
+    <a href="https://github.com/emhaarifin/React-Blanja/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/emhaarifin/React-Blanja/pulls">Request Feature</a>
+</p>
+<br/>
 
-## Desciption
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+        <ol>
+            <li>
+                <a href="#build-with">Build With</a>
+            </li>
+        </ol>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ol>
+        <li>
+          <a href="#installation">Installation</a>
+        </li>
+        <li>
+          <a href="#prerequisites">Prerequisites</a>
+        </li>
+        <li>
+          <a href="#related-project">Related Project</a>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#screenshots">Screenshots</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-This is my frist time project from html and css into React Create App. 
+<!-- ABOUT THE PROJECT -->
 
-## Requirements
+## About The Project
 
-- `React`
-- `Pagination`
-- `Search`
+<b>Blanja</b> is an online store that currently focuses on the fashion market. sellers can market their products and customers can buy as needed.
+
+### Build With
+* [JavaScript](https://www.javascript.com/)
+* [React Js](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+* [Styled Components](https://styled-components.com/)
+
+## Getting Started
+
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+* [Node Js](https://nodejs.org/en/download/)
+
+### Installation
+
+1. Clone These 2 Repos (Backend and Frontend)
+```sh
+git clone https://github.com/emhaarifin/React-Blanja.git
+```
+2. Go To Folder Repo
+```sh
+cd React-Blanja
+```
+3. Install Module
+```sh
+npm install
+```
+4. Add .env file at root folder project, and add following
+```sh
+REACT_APP_BASE_URL=[BACKEND_API]
+```
+5. Start website
+```sh
+npm start
+```
+
+### Related Project
+* [`Frontend-Blanja`](https://github.com/emhaarifin/React-Blanja)
+* [`Backend-Ecommerce`](https://github.com/emhaarifin/ecommerce-api)
+
+## Screenshots
+
+<div align="center">
+    <img width="350" src="">   
+    <img width="350" src="">
+</div>
+<div align="center">
+    <img width="350" src="">   
+    <img width="350" src="">
+</div>
+<div align="center">
+    <img width="350" src="">   
+    <img width="350" src="">
+</div>
+
+## Contact
+My Email : 101muhammadarifin@gmail.com
+
+Project Link: [https://github.com/emhaarifin/React-Blanja](https://github.com/emhaarifin/React-Blanja)
+
