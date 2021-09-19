@@ -50,7 +50,8 @@
 * [JavaScript](https://www.javascript.com/)
 * [React Js](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
-* [Styled Components](https://styled-components.com/)
+* [TinyMCE](https://www.tiny.cloud/)
+* [Bootstrap](https://getbootstrap.com/)
 
 ## Getting Started
 
