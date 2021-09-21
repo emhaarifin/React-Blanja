@@ -93,8 +93,8 @@ npm start
 ## Screenshots
 
 <div align="center">
-    <img width="350" src="https://res.cloudinary.com/emhaarifin/image/upload/v1632211658/Screen_Shot_2021-09-21_at_15.06.48_nvak0u.png">   
-    <img width="350" src="https://res.cloudinary.com/emhaarifin/image/upload/v1632211658/Screen_Shot_2021-09-21_at_15.06.54_q6d1al.png">
+    <img width="350" src="https://res.cloudinary.com/emhaarifin/image/upload/v1632212390/Screen_Shot_2021-09-21_at_15.06.48_tm1rpa.png">   
+    <img width="350" src="https://res.cloudinary.com/emhaarifin/image/upload/v1632212390/Screen_Shot_2021-09-21_at_15.06.54_trcxne.png">
 </div>
 <div align="center">
     <img width="350" src="https://res.cloudinary.com/emhaarifin/image/upload/v1632168258/Screen_Shot_2021-09-19_at_19.30.34_kkn5dp.png">   
