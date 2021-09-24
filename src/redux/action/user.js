@@ -83,7 +83,7 @@ export const updateProfile = (id, data) => (dispatch) => {
       dispatch({ type: 'UPDATE_PROFILE', payload: newData });
     })
     .catch((error) => {
-      alert(error.response.data.message);
+      alert(error?.response?.data?.message);
     });
 };
 export const getUserById = (id) => (dispatch) => {
