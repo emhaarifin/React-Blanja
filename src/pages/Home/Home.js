@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-import "./home.css";
+import React, { useEffect, useState } from 'react';
+import './home.css';
 // import { useHistory, useLocation } from "react-router-dom";
 // import { useSelector, useDispatch } from "react-redux";
-import Navbar from "../../components/Navbar/Navbar";
-import BannerCarousel from "../../components/BannerCarousel/BannerCarousel";
-import CategoryProduct from "../../components/CategoryProduct/CategoryProduct";
-import CardProduct from "../../components/CardProduct/CardProduct";
-import axios from "axios";
-import { BASE_URL } from "../../configs/db";
+import Navbar from '../../components/Navbar/Navbar';
+import BannerCarousel from '../../components/BannerCarousel/BannerCarousel';
+import CategoryProduct from '../../components/CategoryProduct/CategoryProduct';
+import CardProduct from '../../components/CardProduct/CardProduct';
+import axios from '../../configs/axiosConfiq';
 
 function Home() {
   // const dispatch = useDispatch();
@@ -22,7 +21,7 @@ function Home() {
 
   const getAllProducts = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/v2/products/`);
+      const response = await axios.get(`/products/`);
       const allProducts = response.data.data;
       setProducts(allProducts);
     } catch {
@@ -32,7 +31,7 @@ function Home() {
 
   const getAllCategory = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/v1/category`);
+      const response = await axios.get(`/category`);
       const allCategory = response.data.result;
       setCategory(allCategory);
     } catch (error) {
@@ -47,9 +46,7 @@ function Home() {
       <div className="container">
         <div className="category-heading">
           <p className="heading-product">Category</p>
-          <p className="subheading-product">
-            What are you currently looking for
-          </p>
+          <p className="subheading-product">What are you currently looking for</p>
         </div>
         {/* <div className="d-flex"> */}
         <CategoryProduct category={category} />
@@ -67,9 +64,7 @@ function Home() {
       <div className="container">
         <div className="product-heading">
           <p className="heading-product">Popular</p>
-          <p className="subheading-product">
-            Find clothes that are trending recently
-          </p>
+          <p className="subheading-product">Find clothes that are trending recently</p>
         </div>
         <div className="card-product">
           <CardProduct products={products} />

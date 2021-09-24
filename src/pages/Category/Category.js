@@ -1,21 +1,20 @@
-import React, { Component } from "react";
-import axios from "axios";
-import CardProduct from "../../components/CardProduct/CardProduct";
-import Navbar from "../../components/Navbar/Navbar";
-import { Link } from "react-router-dom";
-import "./Category.css";
+import React, { Component } from 'react';
+import axios from '../../configs/axiosConfiq';
+import CardProduct from '../../components/CardProduct/CardProduct';
+import Navbar from '../../components/Navbar/Navbar';
+import { Link } from 'react-router-dom';
+import './Category.css';
+
 class Category extends Component {
   state = {
     categoryData: [],
     isLoading: true,
     pageNumber: 1,
-    categoryName: "",
+    categoryName: '',
   };
 
   async getCategoryProduct() {
-    const response = await axios.get(
-      `http://localhost:4000/v1/category/${this.props.match.params.id}`
-    );
+    const response = await axios.get(`/category/${this.props.match.params.id}`);
     try {
       console.log(response.data.data);
       this.setState({
@@ -42,12 +41,12 @@ class Category extends Component {
           <nav className="breadcrumb" aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <Link style={{ color: "#9B9B9B" }} to="/">
+                <Link style={{ color: '#9B9B9B' }} to="/">
                   Home
                 </Link>
               </li>
               <li className="breadcrumb-item">
-                <Link style={{ color: "#9B9B9B" }} to="/">
+                <Link style={{ color: '#9B9B9B' }} to="/">
                   Category
                 </Link>
               </li>

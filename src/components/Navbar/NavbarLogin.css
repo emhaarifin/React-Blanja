@@ -1,33 +1,45 @@
 .header-right {
+  display: flex;
   margin-left: 42px;
 }
 
 .btn-mail-auth {
   margin-left: 42px;
 }
-
 .btn-profile-auth {
   margin-left: 42px;
 }
- @media (min-width: 320px) and (max-width: 480px) {
+
+.image-avatar {
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 32px;
+}
+.image-avatar img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
   .header-right {
     display: flex;
     padding-top: 10px;
     justify-content: center;
     margin: 0;
     gap: 25px;
-}
+  }
 
   .header-right {
-    margin:0;
-}
-
-.btn-mail-auth {
     margin: 0;
-}
+  }
 
-.btn-profil-auth {
+  .btn-mail-auth {
+    margin: 0;
+  }
+
+  .btn-profil-auth {
     margin-left: 0;
+  }
 }
-} 
-

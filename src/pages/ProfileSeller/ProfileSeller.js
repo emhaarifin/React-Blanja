@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import "./ProfileSeller.css";
-import Input from "../../components/input/input";
-import Avatar from "../../asset/profile.png";
-import Button from "../../components/Button/Button";
-import Navbar from "../../components/Navbar/Navbar";
-import { useDispatch, useSelector } from "react-redux";
-import SidebarSeller from "../../components/AsideProfile/SidebarSeller";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import './ProfileSeller.css';
+import Input from '../../components/input/input';
+import Avatar from '../../asset/arifin.jpg';
+import Button from '../../components/Button/Button';
+import Navbar from '../../components/Navbar/Navbar';
+import { useDispatch, useSelector } from 'react-redux';
+import SidebarSeller from '../../components/AsideProfile/SidebarSeller';
+import { useHistory } from 'react-router-dom';
 
 // import { getUserById, updateProfile } from "../../redux/action/user";
 // import { useSelector } from "react-redux";
@@ -21,18 +21,16 @@ function ProfileSeller() {
   //   (state) => state.user.userData.StoreData[0]
   // );
   // console.log(store_description);
-  const { StoreData, phone_number, gender, email, name } = useSelector(
-    (state) => state.user.userData
-  );
+  const { StoreData, phone_number, gender, email, name } = useSelector((state) => state.user.userData);
   console.log(StoreData, phone_number, gender, email, name);
   // console.log(name, email, phone_number, gender, store_name);
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone_number: "",
-    gender: "",
-    store_description: "",
-    date_of_birth: "",
+    name: '',
+    email: '',
+    phone_number: '',
+    gender: '',
+    store_description: '',
+    date_of_birth: '',
   });
 
   const changeText = (e) => {
@@ -44,15 +42,15 @@ function ProfileSeller() {
 
   const history = useHistory();
   const handleLogout = () => {
-    dispatch({ type: "LOGOUT" });
-    alert("Logout Success");
-    history.push("/");
+    dispatch({ type: 'LOGOUT' });
+    alert('Logout Success');
+    history.push('/');
   };
   // const handleSubmit = () => {
   //   dispatch(updateProfile(id, form));
   // };
   useEffect(() => {
-    document.title = "Profile Seller";
+    document.title = 'Profile Seller';
     // dispatch(getUserById(id));
   });
   return (
@@ -65,19 +63,14 @@ function ProfileSeller() {
             <div className="card-as rounded-3">
               <div className="card-header-as bg-transparent">
                 <div className="text-black-20px fw-bold">My profile store</div>
-                <div className="text-black-14px text-black-50">
-                  Manage your profile information
-                </div>
+                <div className="text-black-14px text-black-50">Manage your profile information</div>
                 <hr className="limit-line"></hr>
               </div>
               <div className="card-body-as">
                 <div className="row">
                   <div className="col-lg-8 col-md-12 col-12 order-lg-0 order-1">
                     <div className="row mb-3">
-                      <label
-                        for="name"
-                        className="col-sm-3 col-form-label text-black-50"
-                      >
+                      <label for="name" className="col-sm-3 col-form-label text-black-50">
                         Store Name
                       </label>
                       <div className="col-sm-9">
@@ -92,10 +85,7 @@ function ProfileSeller() {
                       </div>
                     </div>
                     <div className="row mb-3">
-                      <label
-                        for="email"
-                        className="col-sm-3 col-form-label text-black-50"
-                      >
+                      <label for="email" className="col-sm-3 col-form-label text-black-50">
                         Email
                       </label>
                       <div className="col-sm-9">
@@ -110,10 +100,7 @@ function ProfileSeller() {
                       </div>
                     </div>
                     <div className="row mb-3">
-                      <label
-                        for="phone_number"
-                        className="col-sm-3 col-form-label text-black-50"
-                      >
+                      <label for="phone_number" className="col-sm-3 col-form-label text-black-50">
                         Phone number
                       </label>
                       <div className="col-sm-9">
@@ -128,10 +115,7 @@ function ProfileSeller() {
                       </div>
                     </div>
                     <div className="row mb-3">
-                      <label
-                        for="store_description"
-                        className="col-sm-3 col-form-label text-black-50"
-                      >
+                      <label for="store_description" className="col-sm-3 col-form-label text-black-50">
                         Store description
                       </label>
                       <div className="col-sm-9">

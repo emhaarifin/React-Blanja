@@ -4,8 +4,8 @@
 }
 
 .form-select:focus {
-  border-color: #DB3022;
-  box-shadow: none
+  border-color: #db3022;
+  box-shadow: none;
 }
 
 a.login:hover {
@@ -17,43 +17,48 @@ a.btn:focus {
 }
 
 a.btn-primary:hover {
-  background-color: #DB3022;
+  background-color: #db3022;
 }
 
 .navbar-collapse {
   flex-grow: unset;
 }
 
-.btn-check:active+.btn-primary:focus, 
-.btn-check:checked+.btn-primary:focus, 
-.btn-primary.active:focus, .btn-primary:active:focus, 
-.show>.btn-primary.dropdown-toggle:focus {
+.btn-check:active + .btn-primary:focus,
+.btn-check:checked + .btn-primary:focus,
+.btn-primary.active:focus,
+.btn-primary:active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
   box-shadow: none;
 }
 
-.btn-check:active+.btn-primary, 
-.btn-check:checked+.btn-primary, 
-.btn-primary.active, .btn-primary:active, 
-.show>.btn-primary.dropdown-toggle {
-  background-color: #DB3022;
+.btn-check:active + .btn-primary,
+.btn-check:checked + .btn-primary,
+.btn-primary.active,
+.btn-primary:active,
+.show > .btn-primary.dropdown-toggle {
+  background-color: #db3022;
 }
 
-.btn-check:active+.btn-primary, 
-.btn-check:checked+.btn-primary, 
-.btn-primary.active, .btn-primary:active, 
-.show>.btn-primary.dropdown-toggle {
+.btn-check:active + .btn-primary,
+.btn-check:checked + .btn-primary,
+.btn-primary.active,
+.btn-primary:active,
+.show > .btn-primary.dropdown-toggle {
   border-color: none;
 }
 
-.btn-check:focus+.btn-primary, .btn-primary:focus {
-  background-color: #DB3022;
+.btn-check:focus + .btn-primary,
+.btn-primary:focus {
+  background-color: #db3022;
 }
 .btn-primary:hover {
-  background-color: #DB3022;
+  background-color: #db3022;
   border-color: none;
 }
 
-.btn-check:focus+.btn, .btn:focus {
+.btn-check:focus + .btn,
+.btn:focus {
   box-shadow: none;
 }
 
@@ -69,7 +74,7 @@ a.btn-primary:hover {
   margin-left: 41px;
 }
 
-.search input{
+.search input {
   padding-top: 7px;
   padding-bottom: 7px;
   padding-left: 20px;
@@ -92,13 +97,13 @@ a.btn-primary:hover {
 .btn-filter {
   width: 40px;
   height: 40px;
-  background: #FFFFFF;
-  border: 1px solid #8E8E93;
+  background: #ffffff;
+  border: 1px solid #8e8e93;
   border-radius: 8px;
   margin-left: 10px;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
 
 .btn-cart {
@@ -123,50 +128,47 @@ a.btn-primary:hover {
 }
 
 .login {
-  background-color: #DB3022;
+  background-color: #db3022;
   color: white;
 }
 
 .signup {
   margin-left: 20px;
-  color: #9B9B9B;
-  border: 1px solid #9B9B9B;
+  color: #9b9b9b;
+  border: 1px solid #9b9b9b;
 }
-
-
-
 
 /* nav end */
 
 @media (min-width: 320px) and (max-width: 480px) {
-/* navbar start */
-    .midlle-nav {
-        margin-top: 5%;
-        display: flex;
-        flex-direction: row;
-    }
-
-    .search, .btn-filter, .btn-cart, .btn-login-signup {
-        margin: 0;
-    }
-
-
-   ul .nav-item .search .form-control {
-      padding-right: 10rem;
-   }
-
-
-    .btn-filter {
-        margin-left: 1rem;
-    }
-
-    .navbar-nav .btn-login-signup {
-        margin-top: 5%;   
-    }
-
-    .btn-login-signup a {
-        /* width: 40%; */
-        width: 100%;
-    }
-
+  /* navbar start */
+  .midlle-nav {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
   }
+
+  .search,
+  .btn-filter,
+  .btn-cart,
+  .btn-login-signup {
+    margin: 0;
+  }
+
+  ul .nav-item .search .form-control {
+    padding-right: 10rem;
+  }
+
+  .btn-filter {
+    margin-left: 1rem;
+  }
+
+  .navbar-nav .btn-login-signup {
+    margin-top: 5%;
+  }
+
+  .btn-login-signup a {
+    /* width: 40%; */
+    width: 100%;
+  }
+}

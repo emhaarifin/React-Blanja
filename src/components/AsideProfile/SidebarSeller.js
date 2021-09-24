@@ -1,22 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import AvatarMini from "../../asset/profile-mini.png";
-import IconPackage from "../../asset/profile/product.png";
-import StoreIcon from "../../asset/profile/store.png";
-import IconCart from "../../asset/profile/order.png";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import AvatarMini from '../../asset/arifin.jpg';
+import IconPackage from '../../asset/profile/product.png';
+import StoreIcon from '../../asset/profile/store.png';
+import IconCart from '../../asset/profile/order.png';
 // import { useSelector } from "react-redux";
 
 function AsideProfile() {
-  const name = localStorage.getItem("name");
+  const name = localStorage.getItem('name');
   return (
     <>
       <div className="sidebar  flex-column">
         <div className="user-profile d-flex flex-wrap mb-5">
-          <img
-            src={AvatarMini}
-            className="user-profile-img"
-            alt="user-profile-img"
-          ></img>
+          <img src={AvatarMini} className="user-profile-img" alt="user-profile-img"></img>
           <div className="d-flex flex-column ps-3 pt-1">
             <div className="text-black-16px font-semi-bold">{name}</div>
             <div className="text-black-14px text-black-50">
@@ -27,21 +23,10 @@ function AsideProfile() {
         <div>
           <ul className="sidebar-menu">
             <li>
-              <input
-                type="checkbox"
-                className="sidebar-collapse"
-                id="sidebar-collapse1"
-              ></input>
-              <label
-                for="sidebar-collapse1"
-                className="d-flex align-items-center"
-              >
+              <input type="checkbox" className="sidebar-collapse" id="sidebar-collapse1"></input>
+              <label for="sidebar-collapse1" className="d-flex align-items-center">
                 <div className="sidebar-menu-icon-background store-icon">
-                  <img
-                    className="sidebar-menu-icon"
-                    src={StoreIcon}
-                    alt=""
-                  ></img>
+                  <img className="sidebar-menu-icon" src={StoreIcon} alt=""></img>
                 </div>
                 Store
                 <span className="arrow-menu ms-auto"></span>
@@ -53,21 +38,10 @@ function AsideProfile() {
               </ul>
             </li>
             <li>
-              <input
-                type="checkbox"
-                className="sidebar-collapse"
-                id="sidebar-collapse2"
-              ></input>
-              <label
-                for="sidebar-collapse2"
-                className="d-flex align-items-center text-black-50"
-              >
+              <input type="checkbox" className="sidebar-collapse" id="sidebar-collapse2"></input>
+              <label for="sidebar-collapse2" className="d-flex align-items-center text-black-50">
                 <div className="sidebar-menu-icon-background package-icon">
-                  <img
-                    className="sidebar-menu-icon"
-                    src={IconPackage}
-                    alt=""
-                  ></img>
+                  <img className="sidebar-menu-icon" src={IconPackage} alt=""></img>
                 </div>
                 Product
                 <span className=" arrow-menu ms-auto"></span>
@@ -79,49 +53,29 @@ function AsideProfile() {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/profile/seller/add_product"
-                    className="text-black-50"
-                  >
+                  <Link to="/profile/seller/add_product" className="text-black-50">
                     Selling products
                   </Link>
                 </li>
               </ul>
             </li>
             <li>
-              <input
-                type="checkbox"
-                className="sidebar-collapse"
-                id="sidebar-collapse3"
-              ></input>
-              <label
-                for="sidebar-collapse3"
-                className="d-flex align-items-center text-black-50"
-              >
+              <input type="checkbox" className="sidebar-collapse" id="sidebar-collapse3"></input>
+              <label for="sidebar-collapse3" className="d-flex align-items-center text-black-50">
                 <div className="sidebar-menu-icon-background cart-icon">
-                  <img
-                    className="sidebar-menu-icon"
-                    src={IconCart}
-                    alt=""
-                  ></img>
+                  <img className="sidebar-menu-icon" src={IconCart} alt=""></img>
                 </div>
                 Order
                 <span className=" arrow-menu ms-auto"></span>
               </label>
               <ul className="sidebar-submenu" id="submenu2">
                 <li>
-                  <Link
-                    to="/profile/seller/myorderseller"
-                    className="text-black-50"
-                  >
+                  <Link to="/profile/seller/myorderseller" className="text-black-50">
                     My order
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/profile/seller/myorderseller"
-                    className="text-black-50"
-                  >
+                  <Link to="/profile/seller/myorderseller" className="text-black-50">
                     Order cancel
                   </Link>
                 </li>

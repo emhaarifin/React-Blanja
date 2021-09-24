@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import "./SellerProduct.css";
+import React, { Component } from 'react';
+import './SellerProduct.css';
 // import Input from "../../components/input/input";
 // import Avatar from "../../asset/profile.png";
-import Button from "../../components/Button/Button";
-import TabButton from "../../components/TabButton/TabButton";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import Search from "../../asset/search.png";
-import Navbar from "../../components/Navbar/Navbar";
-import SidebarSeller from "../../components/AsideProfile/SidebarSeller";
+import Button from '../../components/Button/Button';
+import TabButton from '../../components/TabButton/TabButton';
+import { Link } from 'react-router-dom';
+import axios from '../../configs/axiosConfiq';
+import Search from '../../asset/search.png';
+import Navbar from '../../components/Navbar/Navbar';
+import SidebarSeller from '../../components/AsideProfile/SidebarSeller';
 
 class ProductSeller extends Component {
   constructor(properties) {
@@ -20,17 +20,17 @@ class ProductSeller extends Component {
       pageDetail: [],
       toggleState: 1,
       totalPage: 0,
-      search: "",
-      message: "",
-      status: "",
+      search: '',
+      message: '',
+      status: '',
       result: {},
-      sortBy: "",
-      sort: "ASC",
+      sortBy: '',
+      sort: 'ASC',
     };
   }
 
   componentDidMount() {
-    document.title = "Produk Yang Kamu Jual";
+    document.title = 'Produk Yang Kamu Jual';
     this.getAllProduct();
   }
 
@@ -45,10 +45,10 @@ class ProductSeller extends Component {
   getAllProduct() {
     axios
       .get(
-        `http://localhost:4000/v1/products?page=${this.state.pageNumber}&search=${this.state.search}&sortBy=${this.state.sortBy}&sort=${this.state.sort}`
+        `/products?page=${this.state.pageNumber}&search=${this.state.search}&sortBy=${this.state.sortBy}&sort=${this.state.sort}`
       )
       .then((response) => {
-        console.log(response, "Respone");
+        console.log(response, 'Respone');
         this.setState({
           products: response.data.data,
           isLoading: false,
@@ -59,7 +59,7 @@ class ProductSeller extends Component {
         });
       })
       .catch((error) => {
-        console.log(this.state, error, "Respo errne");
+        console.log(this.state, error, 'Respo errne');
         this.setState({
           status: 404,
         });
@@ -77,10 +77,7 @@ class ProductSeller extends Component {
   };
 
   nextHandlerButton = async () => {
-    if (
-      this.state.pageNumber <
-      Math.ceil(this.state.pageDetail.total / this.state.pageDetail.per_page)
-    ) {
+    if (this.state.pageNumber < Math.ceil(this.state.pageDetail.total / this.state.pageDetail.per_page)) {
       const pageNumberState = this.state.pageNumber + 1;
       await this.setState({
         pageNumber: pageNumberState,
@@ -92,7 +89,7 @@ class ProductSeller extends Component {
   handlePagination = async (index) => {
     let number = index + 1;
     const response = await axios.get(
-      `http://localhost:4000/v1/products?page=${number}&search=${this.state.search}&sortBy=${this.state.sortBy}&sort=${this.state.sort}`
+      `/products?page=${number}&search=${this.state.search}&sortBy=${this.state.sortBy}&sort=${this.state.sort}`
     );
     try {
       this.setState({
@@ -113,9 +110,7 @@ class ProductSeller extends Component {
   };
 
   async deleteProduct(id) {
-    const response = await axios.delete(
-      `http://localhost:4000/v1/products/${id}`
-    );
+    const response = await axios.delete(`/products/${id}`);
     try {
       this.setState({
         products: response.data.data,
@@ -127,30 +122,30 @@ class ProductSeller extends Component {
   }
 
   getSortByName = async () => {
-    if (this.state.sort === "ASC") {
+    if (this.state.sort === 'ASC') {
       this.setState({
-        sort: "DESC",
-        sortBy: "name",
+        sort: 'DESC',
+        sortBy: 'name',
       });
       await this.getAllProduct();
     } else {
       this.setState({
-        sort: "ASC",
+        sort: 'ASC',
       });
       await this.getAllProduct();
     }
   };
 
   getSortByPrice = async () => {
-    if (this.state.sort === "ASC") {
+    if (this.state.sort === 'ASC') {
       this.setState({
-        sort: "DESC",
-        sortBy: "price",
+        sort: 'DESC',
+        sortBy: 'price',
       });
       await this.getAllProduct();
     } else {
       this.setState({
-        sort: "ASC",
+        sort: 'ASC',
       });
       await this.getAllProduct();
     }
@@ -162,7 +157,7 @@ class ProductSeller extends Component {
 
   handleInputChange = (event) => {
     const search = event.target.value;
-    this.setState({ search, loading: true, message: "" }, () => {
+    this.setState({ search, loading: true, message: '' }, () => {
       this.getSearchResult(search);
     });
   };
@@ -174,7 +169,7 @@ class ProductSeller extends Component {
   render() {
     const { toggleState, products, totalPage, status, pageNumber } = this.state;
     const TotalPage = Array(totalPage).fill();
-    console.log(products, status, "dat products");
+    console.log(products, status, 'dat products');
     const getProducts = () => {
       if (status !== 200) {
         return (
@@ -194,18 +189,14 @@ class ProductSeller extends Component {
                   <td className="image-seller-product">
                     <img src={item.image} alt="product" />
                   </td>
-                  <td className="text-center text-name-product align-middle">
-                    {item.name}
-                  </td>
+                  <td className="text-center text-name-product align-middle">{item.name}</td>
                   <td className="text-center align-middle">{item.price}</td>
                   <td className="d-flex text-center flex-column mt-4">
-                    <Link to={`/profile/seller/update_product/${item.id}`}>
-                      Edit
-                    </Link>
+                    <Link to={`/profile/seller/update_product/${item.id}`}>Edit</Link>
                     <Button
                       styling="button-delete"
                       onClick={() => {
-                        if (window.confirm("Delete the item?")) {
+                        if (window.confirm('Delete the item?')) {
                           this.deleteProduct(item.id);
                         }
                       }}
@@ -234,31 +225,19 @@ class ProductSeller extends Component {
                   <div className="toggle-profile">
                     <TabButton
                       toggleTab={() => this.toggleTab(1)}
-                      typeTab={
-                        toggleState === 1
-                          ? "active-tab-profile"
-                          : "non-active-tab-profile"
-                      }
+                      typeTab={toggleState === 1 ? 'active-tab-profile' : 'non-active-tab-profile'}
                     >
                       All Item
                     </TabButton>
                     <TabButton
                       toggleTab={() => this.toggleTab(2)}
-                      typeTab={
-                        toggleState === 2
-                          ? "active-tab-profile"
-                          : "non-active-tab-profile"
-                      }
+                      typeTab={toggleState === 2 ? 'active-tab-profile' : 'non-active-tab-profile'}
                     >
                       Sold Out
                     </TabButton>
                     <TabButton
                       toggleTab={() => this.toggleTab(3)}
-                      typeTab={
-                        toggleState === 3
-                          ? "active-tab-profile"
-                          : "non-active-tab-profile"
-                      }
+                      typeTab={toggleState === 3 ? 'active-tab-profile' : 'non-active-tab-profile'}
                     >
                       Archived
                     </TabButton>
@@ -291,28 +270,19 @@ class ProductSeller extends Component {
                     </table>
                     <div className="custom-page-pagination">
                       <div>
-                        <button
-                          className="custom-btn-pagination"
-                          onClick={this.prevHandlerButton}
-                        >
+                        <button className="custom-btn-pagination" onClick={this.prevHandlerButton}>
                           {pageNumber} <span>Back</span>
                         </button>
                       </div>
                       <div>
                         {TotalPage.map((element, index) => (
-                          <button
-                            className="custom-btn-pagination-middle"
-                            onClick={() => this.handlePagination(index)}
-                          >
+                          <button className="custom-btn-pagination-middle" onClick={() => this.handlePagination(index)}>
                             {index + 1}
                           </button>
                         ))}
                       </div>
                       <div>
-                        <button
-                          className="custom-btn-pagination"
-                          onClick={this.nextHandlerButton}
-                        >
+                        <button className="custom-btn-pagination" onClick={this.nextHandlerButton}>
                           {pageNumber} <span>Next</span>
                         </button>
                       </div>

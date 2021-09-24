@@ -1,20 +1,33 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
-import LOGO from "../logo/logo";
-import Search from "../../asset/search.png";
-import Filter from "../../asset/filter-icon.png";
-import "./Navbar.css";
-import IconCart from "../../asset/shopping-cart.svg";
-import ImageProfile from "../../asset/mybag/icon-profile.png";
-import ImageMail from "../../asset/mybag/icon-mail.png";
-import IconNotification from "../../asset/mybag/icon-notification.png";
-import "./NavbarLogin.css";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import LOGO from '../logo/logo';
+import Search from '../../asset/search.png';
+import Filter from '../../asset/filter-icon.png';
+import './Navbar.css';
+import IconCart from '../../asset/shopping-cart.svg';
+import ImageProfile from '../../asset/arifin.jpg';
+import ImageMail from '../../asset/mybag/icon-mail.png';
+import IconNotification from '../../asset/mybag/icon-notification.png';
+import './NavbarLogin.css';
+import { Link, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Navbar(props) {
-  const isAuth = localStorage.getItem("KEY_TOKEN");
+  const isAuth = localStorage.getItem('KEY_TOKEN');
   const { roles } = useSelector((state) => state.user.userData);
+
+  const [search, setSearch] = useState('');
+
+  let location = useHistory();
+
+  const handleForm = (e) => {
+    setSearch(e.target.value);
+  };
+  const searchProduct = () => {
+    console.log(search);
+    location.push(`/search?search=${search}`);
+    location.go(0);
+  };
   const Navbar = !isAuth ? (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
       <div className="container">
@@ -36,18 +49,9 @@ function Navbar(props) {
           <ul className="navbar-nav midlle-nav">
             <li className="nav-item">
               <form className="search">
-                <input
-                  className="form-control"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                ></input>
+                <input className="form-control" type="search" placeholder="Search" aria-label="Search"></input>
                 <button className="btn-search">
-                  <img
-                    src={Search}
-                    alt="logo-search"
-                    className="icon-search"
-                  ></img>
+                  <img src={Search} alt="logo-search" className="icon-search"></img>
                 </button>
               </form>
             </li>
@@ -105,24 +109,18 @@ function Navbar(props) {
                 <input
                   className="form-control"
                   type="search"
+                  onChange={handleForm}
+                  o
                   placeholder="Search"
                   aria-label="Search"
                 ></input>
                 <button className="btn-search">
-                  <img
-                    src={Search}
-                    alt="logo-search"
-                    className="icon-search"
-                  ></img>
+                  <img src={Search} alt="logo-search" nClick={searchProduct} className="icon-search"></img>
                 </button>
               </form>
             </li>
             <li className="nav-item">
-              <button
-                data-bs-toggle="modal"
-                data-bs-target="#filter-product"
-                className="btn-filter"
-              >
+              <button data-bs-toggle="modal" data-bs-target="#filter-product" className="btn-filter">
                 <img src={Filter} className="filter" alt=""></img>
               </button>
             </li>
@@ -141,16 +139,20 @@ function Navbar(props) {
                 <Link to="" className="btn-mail-auth">
                   <img src={ImageMail} alt=""></img>
                 </Link>
-                {roles === "custommer" ? (
+                {roles === 'custommer' ? (
                   <>
                     <Link to="/profile/custommer" className="btn-profile-auth">
-                      <img src={ImageProfile} alt=""></img>
+                      <div className="image-avatar">
+                        <img src={ImageProfile} alt=""></img>
+                      </div>
                     </Link>
                   </>
                 ) : (
                   <>
                     <Link to="/profile/seller" className="btn-profile-auth">
-                      <img src={ImageProfile} alt=""></img>
+                      <div className="image-avatar">
+                        <img src={ImageProfile} alt=""></img>
+                      </div>
                     </Link>
                   </>
                 )}
