@@ -27,17 +27,17 @@ function CheckOut() {
       });
     }
     document.title = 'Yuk Bayar!';
-  }, []);
-  const sendData = {
-    id_user: '',
-    name_address: '',
-    name_recipient: '',
-    phone_recipient: '',
-    address: '',
-    postal_code: '',
-    city: '',
-    primary_address: '',
-  };
+  }, [cart]);
+  // const sendData = {
+  //   id_user: '',
+  //   name_address: '',
+  //   name_recipient: '',
+  //   phone_recipient: '',
+  //   address: '',
+  //   postal_code: '',
+  //   city: '',
+  //   primary_address: '',
+  // };
 
   const handleCheckOut = async (e) => {
     e.preventDefault();
