@@ -4,7 +4,7 @@
 <h1 align="center">Blanja: Fashion e-commerce</h1>
 
 <p align="center">
-    <a href="https://bit.ly/blanja-netlify">View Demo</a>
+    <a href="https://bit.ly/blanja_react">View Demo</a>
     ·
     <a href="https://github.com/emhaarifin/React-Blanja/issues">Report Bug</a>
     ·
