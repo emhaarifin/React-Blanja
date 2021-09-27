@@ -5,11 +5,11 @@ import './SellerProduct.css';
 import Button from '../../components/Button/Button';
 import TabButton from '../../components/TabButton/TabButton';
 import { Link } from 'react-router-dom';
-import axios from '../../configs/axiosConfiq';
+import axios from '../../configs/axiosConfig';
 import Search from '../../asset/search.png';
 import Navbar from '../../components/Navbar/Navbar';
 import SidebarSeller from '../../components/AsideProfile/SidebarSeller';
-
+import Skeleton from 'react-loading-skeleton';
 class ProductSeller extends Component {
   constructor(properties) {
     super(properties);
@@ -187,10 +187,10 @@ class ProductSeller extends Component {
               products.map((item, index) => (
                 <tr key={index}>
                   <td className="image-seller-product">
-                    <img src={item.image} alt="product" />
+                    <img src={item.image || <Skeleton />} alt="product" />
                   </td>
-                  <td className="text-center text-name-product align-middle">{item.name}</td>
-                  <td className="text-center align-middle">{item.price}</td>
+                  <td className="text-center text-name-product align-middle">{item.name || <Skeleton />}</td>
+                  <td className="text-center align-middle">{item.price || <Skeleton />}</td>
                   <td className="d-flex text-center flex-column mt-4">
                     <Link to={`/profile/seller/update_product/${item.id}`}>Edit</Link>
                     <Button

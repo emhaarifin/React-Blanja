@@ -5,7 +5,6 @@ import Search from '../../asset/search.png';
 import Filter from '../../asset/filter-icon.png';
 import './Navbar.css';
 import IconCart from '../../asset/shopping-cart.svg';
-import ImageProfile from '../../asset/arifin.jpg';
 import ImageMail from '../../asset/mybag/icon-mail.png';
 import IconNotification from '../../asset/mybag/icon-notification.png';
 import './NavbarLogin.css';
@@ -14,17 +13,17 @@ import { useSelector } from 'react-redux';
 
 function Navbar(props) {
   const isAuth = localStorage.getItem('KEY_TOKEN');
-  const { roles } = useSelector((state) => state.user.userData);
+  const { roles, avatar } = useSelector((state) => state.user.userData);
 
   const [search, setSearch] = useState('');
 
   let location = useHistory();
 
   const handleForm = (e) => {
+    console.log(search);
     setSearch(e.target.value);
   };
   const searchProduct = () => {
-    console.log(search);
     location.push(`/search?search=${search}`);
     location.go(0);
   };
@@ -49,8 +48,15 @@ function Navbar(props) {
           <ul className="navbar-nav midlle-nav">
             <li className="nav-item">
               <form className="search">
-                <input className="form-control" type="search" placeholder="Search" aria-label="Search"></input>
-                <button className="btn-search">
+                <input
+                  className="form-control"
+                  onChange={handleForm}
+                  onKeyPress={(e) => e.key === 'Enter' && searchProduct()}
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                ></input>
+                <button className="btn-search" onClick={searchProduct}>
                   <img src={Search} alt="logo-search" className="icon-search"></img>
                 </button>
               </form>
@@ -110,12 +116,12 @@ function Navbar(props) {
                   className="form-control"
                   type="search"
                   onChange={handleForm}
-                  o
+                  onKeyPress={(e) => e.key === 'Enter' && searchProduct()}
                   placeholder="Search"
                   aria-label="Search"
                 ></input>
-                <button className="btn-search">
-                  <img src={Search} alt="logo-search" nClick={searchProduct} className="icon-search"></img>
+                <button className="btn-search" onClick={searchProduct}>
+                  <img src={Search} alt="logo-search" className="icon-search"></img>
                 </button>
               </form>
             </li>
@@ -143,7 +149,16 @@ function Navbar(props) {
                   <>
                     <Link to="/profile/custommer" className="btn-profile-auth">
                       <div className="image-avatar">
-                        <img src={ImageProfile} alt=""></img>
+                        <img
+                          src={
+                            props.imagePreview
+                              ? props.imagePreview
+                              : avatar
+                              ? avatar
+                              : 'https://res.cloudinary.com/emhaarifin/image/upload/v1632113374/Tele%20App/user-default_khw9y4.png'
+                          }
+                          alt=""
+                        ></img>
                       </div>
                     </Link>
                   </>
@@ -151,7 +166,16 @@ function Navbar(props) {
                   <>
                     <Link to="/profile/seller" className="btn-profile-auth">
                       <div className="image-avatar">
-                        <img src={ImageProfile} alt=""></img>
+                        <img
+                          src={
+                            props.imagePreview
+                              ? props.imagePreview
+                              : avatar
+                              ? avatar
+                              : 'https://res.cloudinary.com/emhaarifin/image/upload/v1632113374/Tele%20App/user-default_khw9y4.png'
+                          }
+                          alt=""
+                        ></img>
                       </div>
                     </Link>
                   </>

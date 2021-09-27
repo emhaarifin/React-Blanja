@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import './Product.css';
 import CountBuyProduct from '../../components/CountBuyProduct/CountBuyProduct';
 import Button from '../../components/Button/Button';
-import axios from '../../configs/axiosConfiq';
+import axios from '../../configs/axiosConfig';
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import CardProduct from '../../components/CardProduct/CardProduct';

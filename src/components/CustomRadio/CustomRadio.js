@@ -1,12 +1,12 @@
-import React from "react";
-import "./CustomRadio.css";
+import React from 'react';
+import './CustomRadio.css';
 
-function CustomRadio(props) {
+function CustomRadio({ id, nameLabel, styling, name, ...props }) {
   return (
     <div>
-      <label className={`custom-radio ${props.styling}`}>
-        {props.nameLabel}
-        <input type="radio" name="radio"></input>
+      <label htmlFor={id} className={`custom-radio ${styling}`}>
+        {nameLabel}
+        <input type="radio" name={name} id={id} {...props}></input>
         <span className="checkmark-radio"></span>
       </label>
     </div>

@@ -1,27 +1,23 @@
-import React from "react";
-import "./input.css";
+import React from 'react';
+import './input.css';
 
-const input = (props) => {
-  const element =
-    props.element === "input" ? (
+const input = ({ id, name, onChange, type, element, placeholder, value, rows, ...props }) => {
+  const cElement =
+    element === 'input' ? (
       <input
-        className={"custom-input"}
-        id={props.id}
-        type={props.type}
-        name={props.name}
-        onChange={props.onChange}
-        placeholder={props.placeholder}
-        value={props.value}
+        className={'custom-input'}
+        id={id}
+        type={type}
+        name={name}
+        onChange={onChange}
+        placeholder={placeholder}
+        value={value}
+        {...props}
       />
     ) : (
-      <textarea
-        className={"custom-input"}
-        id={props.id}
-        rows={props.rows || 3}
-        placeholder={props.placeholder}
-      />
+      <textarea className={'custom-input'} id={id} rows={rows || 3} placeholder={placeholder} {...props} />
     );
-  return <div>{element}</div>;
+  return <div>{cElement}</div>;
 };
 
 export default input;

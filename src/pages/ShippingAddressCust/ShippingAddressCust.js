@@ -1,28 +1,24 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar";
-import SidebarCustommer from "../../components/AsideProfile/SidebarCustommer";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
+import SidebarCustommer from '../../components/AsideProfile/SidebarCustommer';
 
 function ShippingAddressCust() {
   useEffect(() => {
-    document.title = "Atur Alamat Tujuan";
+    document.title = 'Atur Alamat Tujuan';
   });
   return (
     <>
       <div>
         <Navbar />
         <div className="d-flex wrapper  flex-nowrap">
-          <SidebarCustommer />
+          <SidebarCustommer active="Shipping" />
           <div className="main-panel">
             <div className="container mb-5">
               <div className="card-as rounded-3">
                 <div className="card-header-as bg-transparent">
-                  <div className="text-black-20px fw-bold">
-                    Choose Another Address
-                  </div>
-                  <div className="text-black-14px text-black-50">
-                    Manage your shipping address
-                  </div>
+                  <div className="text-black-20px fw-bold">Choose Another Address</div>
+                  <div className="text-black-14px text-black-50">Manage your shipping address</div>
                   <hr className="limit-line"></hr>
                 </div>
                 <div className="card-body-as">
@@ -35,9 +31,7 @@ function ShippingAddressCust() {
                             <div className="row">
                               <div className="col-12">
                                 <div className="modal-address">
-                                  <p className="modal__title">
-                                    Choose another address
-                                  </p>
+                                  <p className="modal__title">Choose another address</p>
                                   <div className="add-new-adress">
                                     <button
                                       type="button"
@@ -53,15 +47,10 @@ function ShippingAddressCust() {
                                     <div className="modal__adress">
                                       <p className="name-buyer">Andreas Jane</p>
                                       <p className="the-adress">
-                                        Perumahan Sapphire Mediterania,
-                                        Wiradadi, Kec. Sokaraja, Kabupaten
-                                        Banyumas, Jawa Tengah, 53181 [Tokopedia
-                                        Note: blok c 16] Sokaraja, Kab.
-                                        Banyumas, 53181
+                                        Perumahan Sapphire Mediterania, Wiradadi, Kec. Sokaraja, Kabupaten Banyumas,
+                                        Jawa Tengah, 53181 [Tokopedia Note: blok c 16] Sokaraja, Kab. Banyumas, 53181
                                       </p>
-                                      <Link className="modal__change-adress">
-                                        Change address
-                                      </Link>
+                                      <Link className="modal__change-adress">Change address</Link>
                                     </div>
                                   </div>
                                 </div>
@@ -91,12 +80,7 @@ function ShippingAddressCust() {
           <div className="container">
             <div className="modal-content">
               <div className="modal-header modal-header-address">
-                <button
-                  type="button"
-                  className="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div className="modal-body">
                 <div className="row">
@@ -107,18 +91,13 @@ function ShippingAddressCust() {
                         <div className="row">
                           <div className="col-12">
                             <div className="form-input-address">
-                              <p className="add-address-title">
-                                Save address as (ex : home address, office
-                                address)
-                              </p>
+                              <p className="add-address-title">Save address as (ex : home address, office address)</p>
                               <input type="text" className="input-item"></input>
                             </div>
                           </div>
                           <div className="col-6">
                             <div className="form-input-address">
-                              <p className="add-address-title">
-                                Recipient's name
-                              </p>
+                              <p className="add-address-title">Recipient's name</p>
                               <input type="text" className="input-item"></input>
                             </div>
                             <div className="form-input-address">
@@ -126,17 +105,13 @@ function ShippingAddressCust() {
                               <input type="text" className="input-item"></input>
                             </div>
                             <div className="form-input-address">
-                              <p className="add-address-title">
-                                City of Subdistrict
-                              </p>
+                              <p className="add-address-title">City of Subdistrict</p>
                               <input type="text" className="input-item"></input>
                             </div>
                           </div>
                           <div className="col-6">
                             <div className="form-input-address">
-                              <p className="add-address-title">
-                                Recipient's telephone number
-                              </p>
+                              <p className="add-address-title">Recipient's telephone number</p>
                               <input type="text" className="input-item"></input>
                             </div>
                             <div className="form-input-address">
@@ -145,20 +120,13 @@ function ShippingAddressCust() {
                             </div>
                           </div>
                           <div className="col-12 primary-address">
-                            <input
-                              type="checkbox"
-                              className="set-primary-address"
-                            ></input>
+                            <input type="checkbox" className="set-primary-address"></input>
                             <p className="correct">Make it primary address</p>
                           </div>
                         </div>
                       </div>
                       <div className="footer-address">
-                        <button
-                          type="button"
-                          className="btn btn-secondary"
-                          data-bs-dismiss="modal"
-                        >
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
                           Discard
                         </button>
                         <button type="button" className="btn btn-primary">

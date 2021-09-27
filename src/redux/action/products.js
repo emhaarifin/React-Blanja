@@ -1,5 +1,4 @@
-import axios from '';
-
+import axios from '../../../src/configs/axiosConfig';
 export const postProduct = (formData, history) => (dispatch) => {
   const token = localStorage.getItem('KEY_TOKEN');
   const product = new FormData();
@@ -11,7 +10,7 @@ export const postProduct = (formData, history) => (dispatch) => {
   product.append('image', formData.image);
   product.append('price', formData.price);
   axios
-    .post(`http://localhost:4000/v2/products/`, product, {
+    .post(`/products/`, product, {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'multipart/form-data',
@@ -38,7 +37,7 @@ export const updateProduct = (formData, id, history) => (dispatch) => {
   product.append('image', formData.image);
   product.append('price', formData.price);
   axios
-    .put(`http://localhost:4000/v2/products/${id}`, product, {
+    .put(`/products/${id}`, product, {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'multipart/form-data',
@@ -56,7 +55,7 @@ export const updateProduct = (formData, id, history) => (dispatch) => {
 
 export const getPoductsById = (id) => (dispatch) => {
   axios
-    .get(`http://localhost:4000/v2/products/${id}`)
+    .get(`/products/${id}`)
     .then((result) => {
       const data = result.data.result;
       dispatch({ type: 'GET_PRODUCT_BY_ID', payload: data });

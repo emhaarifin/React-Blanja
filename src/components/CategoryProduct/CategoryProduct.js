@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
-import img from "./../../asset/home/category/jacket.svg";
-import "./CategoryProduct.css";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import Slider from 'react-slick';
+import './CategoryProduct.css';
+import { Link } from 'react-router-dom';
 
+import Skeleton from 'react-loading-skeleton';
 export default class CenterMode extends Component {
   render() {
     const settings = {
-      className: "center",
+      className: 'center',
       infinite: true,
       slidesToShow: 5,
       arrows: true,
@@ -21,7 +21,7 @@ export default class CenterMode extends Component {
           settings: {
             arrows: false,
             centerMode: true,
-            centerPadding: "40px",
+            centerPadding: '40px',
             slidesToShow: 1,
           },
         },
@@ -34,8 +34,8 @@ export default class CenterMode extends Component {
           <Link to={{ pathname: `/category/${item.id}` }}>
             <div className="category-item">
               <div style={{ background: item.color }}>
-                <img src={item.image} alt=""></img>
-                <p>{item.category}</p>
+                <img src={item.image || <Skeleton />} alt=""></img>
+                <p>{item.category || <Skeleton />}</p>
               </div>
             </div>
           </Link>

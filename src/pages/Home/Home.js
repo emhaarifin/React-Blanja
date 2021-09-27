@@ -6,7 +6,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import BannerCarousel from '../../components/BannerCarousel/BannerCarousel';
 import CategoryProduct from '../../components/CategoryProduct/CategoryProduct';
 import CardProduct from '../../components/CardProduct/CardProduct';
-import axios from '../../configs/axiosConfiq';
+import axios from '../../configs/axiosConfig';
 
 function Home() {
   // const dispatch = useDispatch();

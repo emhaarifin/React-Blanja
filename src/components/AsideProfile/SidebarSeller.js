@@ -1,20 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AvatarMini from '../../asset/arifin.jpg';
 import IconPackage from '../../asset/profile/product.png';
 import StoreIcon from '../../asset/profile/store.png';
 import IconCart from '../../asset/profile/order.png';
-// import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
-function AsideProfile() {
-  const name = localStorage.getItem('name');
+function AsideProfile(props) {
+  const { avatar } = useSelector((state) => state?.user?.userData);
+
   return (
     <>
       <div className="sidebar  flex-column">
         <div className="user-profile d-flex flex-wrap mb-5">
-          <img src={AvatarMini} className="user-profile-img" alt="user-profile-img"></img>
+          <img
+            src={
+              props.imgAvatar
+                ? props.imgAvatar
+                : avatar
+                ? avatar
+                : 'https://res.cloudinary.com/emhaarifin/image/upload/v1632113374/Tele%20App/user-default_khw9y4.png'
+            }
+            className="user-profile-img"
+            alt="user-profile-img"
+          ></img>
           <div className="d-flex flex-column ps-3 pt-1">
-            <div className="text-black-16px font-semi-bold">{name}</div>
+            <div className="text-black-16px font-semi-bold">{props.nameUser}</div>
             <div className="text-black-14px text-black-50">
               <img src="../asset/img/icon/pensil.svg" alt=""></img> Ubah profile
             </div>

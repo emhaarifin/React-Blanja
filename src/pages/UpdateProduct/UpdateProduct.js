@@ -4,7 +4,7 @@ import Input from '../../components/input/input';
 import Button from '../../components/Button/Button';
 import CustomRadio from '../../components/CustomRadio/CustomRadio';
 import { Editor } from '@tinymce/tinymce-react';
-import axios from '../../configs/axiosConfiq';
+import axios from '../../configs/axiosConfig';
 import { updateProduct } from '../../redux/action/products';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -187,14 +187,28 @@ function AddProduct() {
                                 alt="upload img"
                               ></img>
                             </div>
-                            <Input
-                              id="image"
-                              type="file"
-                              name="image"
-                              onChange={handleInputFile}
-                              element="input"
-                              placeholder="url image product"
-                            />
+                            <label
+                              className="p-2 mt-4"
+                              style={{
+                                margin: '0 auto',
+                                width: '100%',
+                                borderRadius: '10px',
+                                textAlign: 'center',
+                                border: '1px solid black',
+                                cursor: 'pointer',
+                              }}
+                              htmlFor="image"
+                            >
+                              Select Image
+                              <Input
+                                id="image"
+                                type="file"
+                                name="image"
+                                onChange={handleInputFile}
+                                element="input"
+                                style={{ display: 'none' }}
+                              />
+                            </label>
                           </div>
                         </div>
                       </div>

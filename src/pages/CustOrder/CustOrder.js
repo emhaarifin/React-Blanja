@@ -1,110 +1,106 @@
-import React, { Component } from "react";
-import TabButton from "../../components/TabButton/TabButton";
-import "./CustOrder.css";
-import Navbar from "../../components/Navbar/Navbar";
-import SidebarCustommer from "../../components/AsideProfile/SidebarCustommer";
-class CustOrder extends Component {
-  constructor(properties) {
-    super(properties);
-    this.state = {
-      toggleState: 1,
-    };
-  }
-  toggleTab(index) {
-    this.setState({ toggleState: index });
-  }
-
-  componentDidMount() {
-    document.title = "Riwayat order";
-  }
-  render() {
-    const { toggleState } = this.state;
-    return (
-      <>
-        <div>
-          <Navbar />
-          <div className="d-flex wrapper flex-nowrap">
-            <SidebarCustommer />
-            <div className="main-panel">
-              <div className="container mb-5">
-                <div className="card-as rounded-3">
-                  <div className="card-header-as bg-transparent">
-                    <div className="text-black-20px fw-bold">My Order</div>
-                  </div>
-                  <div className="card-body-as" style={{ height: "70vh" }}>
-                    <div>
-                      <div className="ms-4 cardCustOrder toggle-profile">
-                        <TabButton
-                          toggleTab={() => this.toggleTab(1)}
-                          typeTab={
-                            toggleState === 1
-                              ? "active-tab-profile"
-                              : "non-active-tab-profile"
-                          }
-                        >
-                          All Item
-                        </TabButton>
-                        <TabButton
-                          toggleTab={() => this.toggleTab(2)}
-                          typeTab={
-                            toggleState === 2
-                              ? "active-tab-profile"
-                              : "non-active-tab-profile"
-                          }
-                        >
-                          Not yet paid
-                        </TabButton>
-                        <TabButton
-                          toggleTab={() => this.toggleTab(3)}
-                          typeTab={
-                            toggleState === 3
-                              ? "active-tab-profile"
-                              : "non-active-tab-profile"
-                          }
-                        >
-                          Packed
-                        </TabButton>
-                        <TabButton
-                          toggleTab={() => this.toggleTab(4)}
-                          typeTab={
-                            toggleState === 4
-                              ? "active-tab-profile"
-                              : "non-active-tab-profile"
-                          }
-                        >
-                          Sent
-                        </TabButton>
-                        <TabButton
-                          toggleTab={() => this.toggleTab(5)}
-                          typeTab={
-                            toggleState === 5
-                              ? "active-tab-profile"
-                              : "non-active-tab-profile"
-                          }
-                        >
-                          Completed
-                        </TabButton>
-                        <TabButton
-                          toggleTab={() => this.toggleTab(6)}
-                          typeTab={
-                            toggleState === 6
-                              ? "active-tab-profile"
-                              : "non-active-tab-profile"
-                          }
-                        >
-                          Order cancel
-                        </TabButton>
-                      </div>
+import React, { useState, useEffect } from 'react';
+import TabButton from '../../components/TabButton/TabButton';
+import './CustOrder.css';
+import Navbar from '../../components/Navbar/Navbar';
+import SidebarCustommer from '../../components/AsideProfile/SidebarCustommer';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllOrder } from '../../redux/action/order';
+import Skeleton from 'react-loading-skeleton';
+function CustOrder() {
+  const [toggleState, setToggleState] = useState(1);
+  const [search, setSearch] = useState('');
+  const toggleTab = (number, keyword) => {
+    setToggleState(number);
+    setSearch(keyword);
+  };
+  const { orderData } = useSelector((state) => state.orders);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllOrder(search));
+  }, [dispatch, search]);
+  return (
+    <>
+      <div>
+        <Navbar />
+        <div className="d-flex wrapper flex-nowrap">
+          <SidebarCustommer active="Order" />
+          <div className="main-panel">
+            <div className="container mb-5">
+              <div className="card-as rounded-3">
+                <div className="card-header-as bg-transparent">
+                  <div className="text-black-20px fw-bold">My Order</div>
+                </div>
+                <div className="card-body-as pb-5 ">
+                  <div>
+                    <div className="ms-4 cardCustOrder flex-wrap toggle-profile">
+                      <TabButton
+                        toggleTab={() => toggleTab(1, '')}
+                        typeTab={toggleState === 1 ? 'active-tab-profile' : 'non-active-tab-profile'}
+                      >
+                        All Item
+                      </TabButton>
+                      <TabButton
+                        toggleTab={() => toggleTab(2, 'Not yet paid')}
+                        typeTab={toggleState === 2 ? 'active-tab-profile' : 'non-active-tab-profile'}
+                      >
+                        Not yet paid
+                      </TabButton>
+                      <TabButton
+                        toggleTab={() => toggleTab(3, 'Packed')}
+                        typeTab={toggleState === 3 ? 'active-tab-profile' : 'non-active-tab-profile'}
+                      >
+                        Packed
+                      </TabButton>
+                      <TabButton
+                        toggleTab={() => toggleTab(4, 'Sent')}
+                        typeTab={toggleState === 4 ? 'active-tab-profile' : 'non-active-tab-profile'}
+                      >
+                        Sent
+                      </TabButton>
+                      <TabButton
+                        toggleTab={() => toggleTab(5, 'Completed')}
+                        typeTab={toggleState === 5 ? 'active-tab-profile' : 'non-active-tab-profile'}
+                      >
+                        Completed
+                      </TabButton>
+                      <TabButton
+                        toggleTab={() => toggleTab(6, 'Order cancel')}
+                        typeTab={toggleState === 6 ? 'active-tab-profile' : 'non-active-tab-profile'}
+                      >
+                        Order cancel
+                      </TabButton>
                     </div>
                   </div>
+                  {orderData.length > 0 ? (
+                    orderData.map((item) => {
+                      return (
+                        <>
+                          <div className="ms-4 mt-5 me-4" style={{ borderBottom: '1px solid black' }}>
+                            <p>{`Name product: ${item.name}` || <Skeleton />}</p>
+                            <p>{`Category: ${item.category}` || <Skeleton />}</p>
+                            <p>{`Quantity: ${item.qty}` || <Skeleton />}</p>
+                            <p>{`Rp. ${item.total}` || <Skeleton />}</p>
+                            <p>{`Payment: ${item.payment_method}` || <Skeleton />}</p>
+                          </div>
+                        </>
+                      );
+                    })
+                  ) : (
+                    <p
+                      className="ms-4 "
+                      style={{ height: '30vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                    >
+                      Belum ada order
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
 }
 
 export default CustOrder;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from '../../configs/axiosConfiq';
+import axios from '../../configs/axiosConfig';
 import CardProduct from '../../components/CardProduct/CardProduct';
 import Navbar from '../../components/Navbar/Navbar';
 import { Link } from 'react-router-dom';
