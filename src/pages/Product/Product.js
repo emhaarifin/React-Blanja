@@ -110,7 +110,7 @@ export class Product extends Component {
                   <p className="price-item-product mt-2">Rp {price}</p>
                 </div>
                 <div className="color-choice">
-                  <p className="filter-title">Color</p>
+                 /* <p className="filter-title">Color</p>
                   <div className="pick-color">
                     <input type="checkbox" className="btn-check" id="color1" autoComplete="off"></input>
                     <label htmlFor="color1" className="btn-black choice-color-product"></label>
@@ -121,14 +121,17 @@ export class Product extends Component {
                     <input type="checkbox" className="btn-check" id="color4" autoComplete="off"></input>
                     <label htmlFor="color4" className="btn-green choice-color-product"></label>
                   </div>
+*/
                 </div>
                 <div className="set-size-total">
+/*
                   <div className="size">
                     <p className="filter-title mb-2">Size</p>
                     <section className="sum-item">
                       <InputIncrement />
                     </section>
                   </div>
+                 */
                   <div className="total">
                     <p className="filter-title mb-2">Jumlah</p>
                     <section className="sum-item">
