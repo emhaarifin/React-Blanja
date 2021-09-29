@@ -194,13 +194,13 @@ export class Product extends Component {
                 <h3>
                   <b>Informasi Produk</b>
                 </h3>
-                <br></br>
+                {/* <br></br>
                 <h4>
                   <b>Condition</b>
                 </h4>
                 <p className="the-condition">
                   <b>New</b>
-                </p>
+                </p> */}
                 <br></br>
                 <h4>
                   <b>Description</b>

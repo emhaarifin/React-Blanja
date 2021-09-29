@@ -2,7 +2,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Input from '../../components/input/input';
 import Button from '../../components/Button/Button';
-import CustomRadio from '../../components/CustomRadio/CustomRadio';
 import { Editor } from '@tinymce/tinymce-react';
 import axios from '../../configs/axiosConfig';
 import { updateProduct } from '../../redux/action/products';
@@ -23,14 +22,15 @@ function AddProduct() {
   };
   const { store_name } = useSelector((state) => state.user.userData.StoreData[0]);
 
+  const [category, setCategory] = useState([]);
   const [products, setProducts] = useState({
     name: '',
     brand: store_name,
     description: '',
-    stock: 0,
-    categoryId: 2,
+    stock: 1,
+    categoryId: 1,
     image: null,
-    price: 0,
+    price: 1,
     defaultImg: false,
     imagePreview: null,
   });
@@ -39,7 +39,17 @@ function AddProduct() {
     e.preventDefault();
     dispatch(updateProduct(products, id));
   };
+  const getAllCategory = async () => {
+    try {
+      const response = await axios.get(`/category`);
+      const allCategory = response.data.result;
+      setCategory(allCategory);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
+    getAllCategory();
     document.title = 'Perbarui Produk';
     getAllProductsByID();
   }, [id]);
@@ -142,14 +152,28 @@ function AddProduct() {
                             element="input"
                           />
                         </div>
-                        <div className="ms-2 col-sm-9">
-                          <form>
-                            <p className="text-black-50">Stock</p>
-                            <div className="conditionStock d-flex mt-2">
-                              <CustomRadio nameLabel="Baru" />
-                              <CustomRadio nameLabel="Bekas" styling="add-margin-CR" />
-                            </div>
-                          </form>
+                        <label htmlFor="categoryId" className="text-start col-sm-3 col-form-label text-black-50">
+                          Category
+                        </label>
+                        <div className="col-sm-9">
+                          <select
+                            id="categoryId"
+                            className="custom-input"
+                            onChange={handleChange}
+                            placeholder="Category"
+                            name="categoryId"
+                          >
+                            {category &&
+                              category?.map((item) => {
+                                return (
+                                  <>
+                                    <option key={item.id} name="category_id" value={item.id}>
+                                      {item.category}
+                                    </option>
+                                  </>
+                                );
+                              })}
+                          </select>
                         </div>
                       </div>
                     </div>

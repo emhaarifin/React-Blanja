@@ -4,9 +4,9 @@ import Input from '../../components/input/input';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../components/Button/Button';
 import UploadImg from '../../asset/profile/uploadImg.png';
-import CustomRadio from '../../components/CustomRadio/CustomRadio';
 import { Editor } from '@tinymce/tinymce-react';
 // import axios from "axios";
+import axios from '../../configs/axiosConfig';
 import Navbar from '../../components/Navbar/Navbar';
 import SidebarSeller from '../../components/AsideProfile/SidebarSeller';
 import { postProduct } from '../../redux/action/products';
@@ -14,23 +14,19 @@ function AddProduct() {
   // const url = "http://localhost:4000";
   const dispatch = useDispatch();
   const tinyEditor = useRef(null);
-  const handleChange = (e) => {
-    setProducts({
-      ...products,
-      [e.target.name]: e.target.value,
-    });
-  };
+
   const { store_name } = useSelector((state) => state.user.userData.StoreData[0]);
 
+  const [category, setCategory] = useState([]);
   // console.log(store_name);
   const [products, setProducts] = useState({
     name: '',
     brand: store_name,
     description: '',
-    stock: 0,
-    categoryId: 2,
+    stock: 1,
+    categoryId: 1,
     image: null,
-    price: 0,
+    price: 1,
     defaultImg: true,
     imagePreview: null,
   });
@@ -40,6 +36,12 @@ function AddProduct() {
     dispatch(postProduct(products));
   };
 
+  const handleChange = (e) => {
+    setProducts({
+      ...products,
+      [e.target.name]: e.target.value,
+    });
+  };
   const handleInputFile = (e) => {
     console.log(e);
     setProducts({
@@ -49,9 +51,20 @@ function AddProduct() {
       imagePreview: URL.createObjectURL(e.target.files[0]),
     });
   };
+
+  const getAllCategory = async () => {
+    try {
+      const response = await axios.get(`/category`);
+      const allCategory = response.data.result;
+      setCategory(allCategory);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     document.title = 'Tambah Produk Untuk Dijual';
-  });
+    getAllCategory();
+  }, []);
 
   return (
     <div>
@@ -102,14 +115,28 @@ function AddProduct() {
                         <div className="col-sm-9">
                           <Input id="stock" type="text" name="stock" onChange={handleChange} element="input" />
                         </div>
-                        <div className="ms-2 col-sm-9">
-                          <form>
-                            <p className="text-black-50">Stock</p>
-                            <div className="conditionStock d-flex mt-2">
-                              <CustomRadio nameLabel="Baru" />
-                              <CustomRadio nameLabel="Bekas" styling="add-margin-CR" />
-                            </div>
-                          </form>
+                        <label htmlFor="categoryId" className="text-start col-sm-3 col-form-label text-black-50">
+                          Category
+                        </label>
+                        <div className="col-sm-9">
+                          <select
+                            id="categoryId"
+                            className="custom-input"
+                            onChange={handleChange}
+                            placeholder="Category"
+                            name="categoryId"
+                          >
+                            {category &&
+                              category?.map((item) => {
+                                return (
+                                  <>
+                                    <option key={item.id} name="category_id" value={item.id}>
+                                      {item.category}
+                                    </option>
+                                  </>
+                                );
+                              })}
+                          </select>
                         </div>
                       </div>
                     </div>
