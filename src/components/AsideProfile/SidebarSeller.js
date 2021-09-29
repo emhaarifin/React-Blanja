@@ -45,8 +45,10 @@ function AsideProfile(props) {
                 <span className="arrow-menu ms-auto"></span>
               </label>
               <ul className="sidebar-submenu" id="submenu1">
-                <li className={`${props.active === 'Store' ? '' : 'text-black-50'}`}>
-                  <Link to="/profile/seller">Store profile</Link>
+                <li>
+                  <Link className={`${props.active === 'Store' ? '' : 'text-black-50'}`} to="/profile/seller">
+                    Store profile
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -100,14 +102,6 @@ function AsideProfile(props) {
                     className={`${props.subActive === 'MyOrderSeller' ? '' : 'text-black-50'}`}
                   >
                     My order
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/profile/seller/myorderseller"
-                    className={`${props.subActive === 'MyOrderCancel' ? '' : 'text-black-50'}`}
-                  >
-                    Order cancel
                   </Link>
                 </li>
               </ul>
