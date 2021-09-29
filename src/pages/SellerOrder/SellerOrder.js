@@ -25,7 +25,7 @@ class SellerOrder extends Component {
         <div>
           <Navbar className="midlle-nav-login" />
           <div className="d-flex wrapper flex-nowrap">
-            <SidebarSeller active="MYProduct" subActive="MyOrderSeller" />
+            <SidebarSeller active="OrderSeller" subActive="MyOrderSeller" />
             <div className="main-panel">
               <div className="container mb-5">
                 <div className="card-as rounded-3">
