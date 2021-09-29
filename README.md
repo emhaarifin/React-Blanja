@@ -47,7 +47,7 @@
 
 ## About The Project
 
-<b>Blanja</b> is an online store that currently focuses on the fashion market. sellers can market their products and customers can buy as needed.
+<b>Blanja</b> is an online store that currently focuses on the fashion market. sellers can promote their products and customers can buy what they need.
 
 ### Build With
 * [JavaScript](https://www.javascript.com/)
