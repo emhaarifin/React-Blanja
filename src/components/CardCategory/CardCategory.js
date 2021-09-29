@@ -18,4 +18,6 @@ function CardProduct(props) {
   ));
 }
 
+<Skeleton wrapper={CardProduct} height={100} />;
+
 export default CardProduct;
