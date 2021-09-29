@@ -1,25 +1,33 @@
-
-html, body,
-ul, ol, li,
-h1, h2, h3, h4, h5, h6, p, a{
-    /* margin: 0; */
-    /* padding: 0 ; */
-    font-family: 'MetropolisRegular';
-    box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+html,
+body,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  /* margin: 0; */
+  /* padding: 0 ; */
+  font-family: 'MetropolisRegular';
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-input[type=search] {
+input[type='search'] {
   outline-offset: unset !important;
   outline: unset;
 }
@@ -27,7 +35,9 @@ input[type=search] {
   border-color: unset !important;
   box-shadow: unset !important;
 }
-
+button:disabled {
+  cursor: not-allowed !important;
+}
 /*
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

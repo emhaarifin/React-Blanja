@@ -34,7 +34,10 @@ function AsideProfile(props) {
           <ul className="sidebar-menu">
             <li>
               <input type="checkbox" className="sidebar-collapse" id="sidebar-collapse1"></input>
-              <label for="sidebar-collapse1" className="d-flex align-items-center">
+              <label
+                for="sidebar-collapse1"
+                className={`d-flex align-items-center ${props.active === 'Store' ? '' : 'text-black-50'}`}
+              >
                 <div className="sidebar-menu-icon-background store-icon">
                   <img className="sidebar-menu-icon" src={StoreIcon} alt=""></img>
                 </div>
@@ -42,14 +45,17 @@ function AsideProfile(props) {
                 <span className="arrow-menu ms-auto"></span>
               </label>
               <ul className="sidebar-submenu" id="submenu1">
-                <li>
+                <li className={`${props.active === 'Store' ? '' : 'text-black-50'}`}>
                   <Link to="/profile/seller">Store profile</Link>
                 </li>
               </ul>
             </li>
             <li>
               <input type="checkbox" className="sidebar-collapse" id="sidebar-collapse2"></input>
-              <label for="sidebar-collapse2" className="d-flex align-items-center text-black-50">
+              <label
+                for="sidebar-collapse2"
+                className={`d-flex align-items-center ${props.active === 'MYProduct' ? '' : 'text-black-50'}`}
+              >
                 <div className="sidebar-menu-icon-background package-icon">
                   <img className="sidebar-menu-icon" src={IconPackage} alt=""></img>
                 </div>
@@ -58,12 +64,18 @@ function AsideProfile(props) {
               </label>
               <ul className="sidebar-submenu" id="submenu2">
                 <li>
-                  <Link to="/profile/seller/product" className="text-black-50">
+                  <Link
+                    to="/profile/seller/product"
+                    className={`${props.subActive === 'MYProduct' ? '' : 'text-black-50'}`}
+                  >
                     My Products
                   </Link>
                 </li>
                 <li>
-                  <Link to="/profile/seller/add_product" className="text-black-50">
+                  <Link
+                    to="/profile/seller/add_product"
+                    className={`${props.subActive === 'Add Product' ? '' : 'text-black-50'}`}
+                  >
                     Selling products
                   </Link>
                 </li>
@@ -71,7 +83,10 @@ function AsideProfile(props) {
             </li>
             <li>
               <input type="checkbox" className="sidebar-collapse" id="sidebar-collapse3"></input>
-              <label for="sidebar-collapse3" className="d-flex align-items-center text-black-50">
+              <label
+                for="sidebar-collapse3"
+                className={`d-flex align-items-center  ${props.active === 'OrderSeller' ? '' : 'text-black-50'}`}
+              >
                 <div className="sidebar-menu-icon-background cart-icon">
                   <img className="sidebar-menu-icon" src={IconCart} alt=""></img>
                 </div>
@@ -80,12 +95,18 @@ function AsideProfile(props) {
               </label>
               <ul className="sidebar-submenu" id="submenu2">
                 <li>
-                  <Link to="/profile/seller/myorderseller" className="text-black-50">
+                  <Link
+                    to="/profile/seller/myorderseller"
+                    className={`${props.subActive === 'MyOrderSeller' ? '' : 'text-black-50'}`}
+                  >
                     My order
                   </Link>
                 </li>
                 <li>
-                  <Link to="/profile/seller/myorderseller" className="text-black-50">
+                  <Link
+                    to="/profile/seller/myorderseller"
+                    className={`${props.subActive === 'MyOrderCancel' ? '' : 'text-black-50'}`}
+                  >
                     Order cancel
                   </Link>
                 </li>

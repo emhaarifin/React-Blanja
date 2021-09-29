@@ -11,7 +11,7 @@ function CheckOut() {
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.products);
   const [payment, setPayment] = useState({
-    payment_method: 'Gopay',
+    payment_method: '',
   });
   const changePayment = (e) => {
     setPayment({
@@ -289,7 +289,14 @@ function CheckOut() {
               </div>
               <div>
                 {/* <Link to="/mybag"> */}
-                <button type="button" onClick={handleCheckOut} className="btn-primary">
+                <button
+                  type="button"
+                  disabled={
+                    `${localStorage.getItem('KEY_TOKEN')}` && payment.payment_method && cart.length ? false : true
+                  }
+                  onClick={handleCheckOut}
+                  className="btn-primary"
+                >
                   Buy
                 </button>
                 {/* </Link> */}
@@ -362,7 +369,7 @@ function CheckOut() {
                           Discard
                         </button>
                         <button
-                          onClick={() => console.log('cong')}
+                          onClick={() => console.log('halo')}
                           // data-bs-dismiss="modal"
                           type="button"
                           className="btn btn-primary"

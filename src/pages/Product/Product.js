@@ -23,7 +23,6 @@ export class Product extends Component {
       qty: 1,
     };
   }
-
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.setState({
@@ -181,7 +180,11 @@ export class Product extends Component {
                     Add Bag
                   </button>
                   <Link to="/mybag">
-                    <button type="button" className="btn-bold btn-primary-bold">
+                    <button
+                      type="button"
+                      onClick={() => this.inputToCart(id, this.state.qty) && this.props.history.push('/mybag')}
+                      className="btn-bold btn-primary-bold"
+                    >
                       Buy Now
                     </button>
                   </Link>

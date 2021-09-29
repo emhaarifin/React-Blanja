@@ -73,7 +73,7 @@ function Navbar(props) {
             <li className="nav-item">
               <Link className="nav-link btn-cart" style={{ position: 'relative' }} to="/mybag">
                 <img src={IconCart} alt=""></img>
-                {cart?.length && (
+                {cart?.length !== 0 && (
                   <span
                     style={{
                       position: 'absolute',
@@ -149,7 +149,7 @@ function Navbar(props) {
             <li className="nav-item">
               <Link className="nav-link btn-cart" style={{ position: 'relative' }} to="/mybag">
                 <img src={IconCart} alt=""></img>
-                {cart?.length && (
+                {cart?.length !== 0 && (
                   <span
                     style={{
                       position: 'absolute',

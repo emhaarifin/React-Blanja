@@ -69,6 +69,7 @@ function ProfileSeller() {
               ? avatar
               : 'https://res.cloudinary.com/emhaarifin/image/upload/v1632113374/Tele%20App/user-default_khw9y4.png'
           }
+          active="Store"
           nameUser={name}
         />
         <div className="main-panel">

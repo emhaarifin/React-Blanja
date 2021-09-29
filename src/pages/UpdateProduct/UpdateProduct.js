@@ -76,7 +76,7 @@ function AddProduct() {
     <div>
       <Navbar className="midlle-nav-login" />
       <div className="d-flex wrapper  flex-nowrap">
-        <SidebarSeller />
+        <SidebarSeller active="MYProduct" />
         <div className="main-panel">
           <form onSubmit={handleSubmit} encType="multipart/form-data">
             <div className="container mb-5">

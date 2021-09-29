@@ -214,7 +214,7 @@ class ProductSeller extends Component {
       <div>
         <Navbar className="midlle-nav-login" />
         <div className="d-flex wrapper  flex-nowrap">
-          <SidebarSeller />
+          <SidebarSeller active="MYProduct" subActive="MYProduct" />
           <div className="main-panel">
             <div className="container mb-5">
               <div className="card-as-seller rounded-3">
