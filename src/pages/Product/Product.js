@@ -122,6 +122,7 @@ export class Product extends Component {
                   <p className="subtitle-price-product mt-4">Price</p>
                   <p className="price-item-product mt-2">Rp {price}</p>
                 </div>
+                /*
                 <div className="color-choice">
                   {/* <p className="filter-title">Color</p>
                   <div className="pick-color">
@@ -135,13 +136,16 @@ export class Product extends Component {
                     <label htmlFor="color4" className="btn-green choice-color-product"></label>
                   </div> */}
                 </div>
+                */
                 <div className="set-size-total">
+                  /*
                   <div className="size">
                     {/* <p className="filter-title mb-2">Size</p>
                     <section className="sum-item">
                       <InputIncrement />
                     </section> */}
                   </div>
+                  */
                   <div className="total">
                     <p className="filter-title mb-2">Jumlah</p>
                     <section className="sum-item">
