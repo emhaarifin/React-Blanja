@@ -1,13 +1,13 @@
 /* eslint-disable no-sequences */
-import React, { Component } from "react";
-import Logo from "../../components/logo/logo";
-import Input from "../../components/input/input";
-import Button from "../../components/Button/Button";
-import TabButton from "../../components/TabButton/TabButton";
-import "./Login.css";
-import { connect } from "react-redux";
-import { login } from "../../redux/action/user";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import Logo from '../../components/logo/logo';
+import Input from '../../components/input/input';
+import Button from '../../components/Button/Button';
+import TabButton from '../../components/TabButton/TabButton';
+import './Login.css';
+import { connect } from 'react-redux';
+import { login } from '../../redux/action/user';
+import { Link } from 'react-router-dom';
 
 const mapStateToProps = (user) => {
   return {
@@ -19,9 +19,9 @@ export class Login extends Component {
     super(properties);
     this.state = {
       toggleState: 1,
-      email: "",
-      password: "",
-      name: "",
+      email: '',
+      password: '',
+      name: '',
     };
   }
 
@@ -45,7 +45,7 @@ export class Login extends Component {
   };
 
   componentDidMount() {
-    document.title = "Login";
+    document.title = 'Login';
   }
 
   render() {
@@ -61,21 +61,13 @@ export class Login extends Component {
               <TabButton
                 // typeTab={"active-tabs"}
                 toggleTab={() => this.toggleTab(1)}
-                typeTab={
-                  toggleState === 1
-                    ? "active-tabs-custommer"
-                    : "non-active-tabs-custommer"
-                }
+                typeTab={toggleState === 1 ? 'active-tabs-custommer' : 'non-active-tabs-custommer'}
               >
                 Custommer
               </TabButton>
               <TabButton
                 toggleTab={() => this.toggleTab(2)}
-                typeTab={
-                  toggleState === 2
-                    ? "active-tabs-seller"
-                    : "non-active-tabs-seller"
-                }
+                typeTab={toggleState === 2 ? 'active-tabs-seller' : 'non-active-tabs-seller'}
               >
                 Seller
               </TabButton>
@@ -106,11 +98,7 @@ export class Login extends Component {
                 <Link to="/auth/forgot_password">Forgot password?</Link>
               </section>
 
-              <Button
-                className="button"
-                styling="button--submit"
-                onClick={this.postLogin}
-              >
+              <Button className="button" styling="button--submit" onClick={this.postLogin}>
                 PRIMARY
               </Button>
             </form>

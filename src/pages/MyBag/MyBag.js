@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
-import CustomCheckBox from "../../components/CustomCheckBox/CustomCheckBox";
-import Navbar from "../../components/Navbar/Navbar";
-import "./MyBag.css";
-import { Link } from "react-router-dom";
-import InputIncrement from "../../components/InputIncrement/InputIncrement";
-import { connect } from "react-redux";
-import { adjustItemQty, removeFromCart } from "../../redux/action/products";
+import React, { useState, useEffect } from 'react';
+import CustomCheckBox from '../../components/CustomCheckBox/CustomCheckBox';
+import Navbar from '../../components/Navbar/Navbar';
+import './MyBag.css';
+import { Link } from 'react-router-dom';
+import InputIncrement from '../../components/InputIncrement/InputIncrement';
+import { connect } from 'react-redux';
+import { adjustItemQty, removeFromCart } from '../../redux/action/products';
 const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
   const [input, setInput] = useState();
-  const isAuth = localStorage.getItem("KEY_TOKEN");
+  const isAuth = localStorage.getItem('KEY_TOKEN');
   useEffect(() => {
     let items = 0;
     let price = 0;
@@ -27,7 +27,7 @@ const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar cart={cart.length} />
       <div className="my-bag">
         <div className="container">
           <div className="row">
@@ -49,9 +49,9 @@ const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
                         <div className="d-flex ms-2 md-2 align-items-center">
                           <img
                             style={{
-                              width: "70px",
-                              height: "69px",
-                              borderRadius: "8px",
+                              width: '70px',
+                              height: '69px',
+                              borderRadius: '8px',
                             }}
                             src={item.image}
                             alt=""

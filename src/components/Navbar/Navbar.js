@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 function Navbar(props) {
   const isAuth = localStorage.getItem('KEY_TOKEN');
   const { roles, avatar } = useSelector((state) => state.user.userData);
-
+  const { cart } = useSelector((state) => state.products);
   const [search, setSearch] = useState('');
 
   let location = useHistory();
@@ -71,8 +71,24 @@ function Navbar(props) {
               </button>
             </li>
             <li className="nav-item">
-              <Link to="/mybag" className="nav-link btn-cart">
+              <Link className="nav-link btn-cart" style={{ position: 'relative' }} to="/mybag">
                 <img src={IconCart} alt=""></img>
+                {cart?.length && (
+                  <span
+                    style={{
+                      position: 'absolute',
+                      bottom: '2px',
+                      right: '0',
+                      background: '#DB3022',
+                      color: 'white',
+                      borderRadius: '50%',
+                      padding: '0px 5px',
+                      fontSize: '12px',
+                    }}
+                  >
+                    {cart?.length}
+                  </span>
+                )}
               </Link>
             </li>
           </ul>
@@ -126,13 +142,29 @@ function Navbar(props) {
               </form>
             </li>
             <li className="nav-item">
-              <button data-bs-toggle="modal" data-bs-target="#filter-product" className="btn-filter">
+              <button /*data-bs-toggle="modal" data-bs-target="#filter-product"*/ className="btn-filter">
                 <img src={Filter} className="filter" alt=""></img>
               </button>
             </li>
             <li className="nav-item">
-              <Link className="nav-link btn-cart" to="/mybag">
+              <Link className="nav-link btn-cart" style={{ position: 'relative' }} to="/mybag">
                 <img src={IconCart} alt=""></img>
+                {cart?.length && (
+                  <span
+                    style={{
+                      position: 'absolute',
+                      bottom: '2px',
+                      right: '0',
+                      background: '#DB3022',
+                      color: 'white',
+                      borderRadius: '50%',
+                      padding: '0px 5px',
+                      fontSize: '12px',
+                    }}
+                  >
+                    {cart?.length}
+                  </span>
+                )}
               </Link>
             </li>
           </ul>

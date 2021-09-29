@@ -1,7 +1,9 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import swal from 'sweetalert';
+
 const PrivateRouteUser = ({ component: Component, ...rest }) => {
-  const isAuth = localStorage.getItem("KEY_TOKEN");
+  const isAuth = localStorage.getItem('KEY_TOKEN');
   return (
     <Route
       {...rest}
@@ -11,7 +13,7 @@ const PrivateRouteUser = ({ component: Component, ...rest }) => {
             <Component {...props} />
           </>
         ) : (
-          (alert("Forbidder acces"), (<Redirect to="/" />))
+          (swal('Forbidder acces'), (<Redirect to="/" />))
         );
       }}
     />

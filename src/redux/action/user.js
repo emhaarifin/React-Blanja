@@ -1,6 +1,7 @@
 /* eslint-disable no-sequences */
 import axios from '../../configs/axiosConfig';
 // import { BASE_URL } from "../../configs/db";
+import swal from 'sweetalert';
 
 export const login = (body, toggleState, history) => (dispatch) => {
   axios
@@ -12,7 +13,6 @@ export const login = (body, toggleState, history) => (dispatch) => {
 
       if (roles === 'custommer' && toggleState === 1) {
         return (
-          alert(result.data.message),
           dispatch({ type: 'POST_LOGIN', payload: userData }),
           localStorage.setItem('KEY_TOKEN', userData.token),
           localStorage.setItem('id', userData.id),
@@ -22,7 +22,6 @@ export const login = (body, toggleState, history) => (dispatch) => {
         );
       } else if (roles === 'seller' && toggleState === 2) {
         return (
-          alert(result.data.message),
           dispatch({ type: 'POST_LOGIN', payload: userData }),
           localStorage.setItem('KEY_TOKEN', userData.token),
           localStorage.setItem('id', userData.id),
@@ -31,11 +30,11 @@ export const login = (body, toggleState, history) => (dispatch) => {
           history.push('/')
         );
       } else {
-        return alert(`Your account not found try login as ${roles}`);
+        return swal('error', `Your account not found try login as ${roles}`, 'error');
       }
     })
     .catch((error) => {
-      alert(error?.response?.data?.message || 'login gagal');
+      swal('error', error?.response?.data?.message || 'login gagal', 'error');
     });
 };
 
@@ -45,14 +44,13 @@ export const registerCust = (body, history) => (dispatch) => {
     .then((result) => {
       const userData = result.data.result;
       return (
-        alert('Register Success, Check mail to active your account'),
+        swal('success', 'Register Success, Check mail to active your account', 'success'),
         dispatch({ type: 'POST_REGISTER', payload: userData }),
         history.push('/auth/login')
       );
     })
     .catch((error) => {
-      console.log(error.response);
-      return alert(error);
+      return swal('error', error?.response?.data?.message || 'Register Failed', 'error');
     });
 };
 export const registerSel = (body, history) => (dispatch) => {
@@ -62,14 +60,13 @@ export const registerSel = (body, history) => (dispatch) => {
       const userData = result.data.result;
       return (
         console.log(userData),
-        alert('Register Success, Check mail to active your account'),
+        swal('success', 'Register Success, Check mail to active your account', 'success'),
         dispatch({ type: 'POST_REGISTER', payload: userData }),
         history.push('/auth/login')
       );
     })
     .catch((error) => {
-      console.log(error.response);
-      return alert(error);
+      return swal('error', error?.response?.data?.message || 'Register Failed', 'error');
     });
 };
 
@@ -90,24 +87,23 @@ export const updateProfile = (data, setReset) => async (dispatch) => {
     })
     .then(() => {
       console.log(newData, data);
-      alert('Sukses bro');
+      swal('Sukses bro');
       // const newData = result.data.result;
       dispatch({ type: 'UPDATE_PROFILE' });
       setReset(true);
     })
     .catch((error) => {
-      alert(error?.response?.data?.message);
+      return swal('error', error?.response?.data?.message || 'Update failed', 'error');
     });
 };
 export const getUserById = (id) => (dispatch) => {
   axios
     .get(`/auth/profile/${id}`)
     .then((result) => {
-      console.log(result, 'progile');
       const data = result?.data?.result[0];
-      dispatch({ type: 'GET_USER_BY_ID', payload: data });
+      return dispatch({ type: 'GET_USER_BY_ID', payload: data });
     })
     .catch((error) => {
-      alert(error?.response?.data?.message || 'Gagal');
+      return swal('error', error?.response?.data?.message || 'Gagal', 'error');
     });
 };

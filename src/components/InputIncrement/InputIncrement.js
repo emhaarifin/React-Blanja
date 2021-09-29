@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./InputIncrement.css";
+import React, { Component } from 'react';
+import './InputIncrement.css';
 
 export class InputIncrement extends Component {
   constructor(props) {
@@ -55,7 +55,8 @@ export class InputIncrement extends Component {
           max={this.props.max}
           className="input-quantity"
           value={this.props.value}
-          onChange={this.props.onChange}
+          readOnly
+          // onChange={this.props.onChange}
         />
         <button className="btn-quantity inc" onClick={this.props.Increment}>
           +

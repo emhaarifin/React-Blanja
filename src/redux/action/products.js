@@ -1,4 +1,6 @@
 import axios from '../../../src/configs/axiosConfig';
+import swal from 'sweetalert';
+
 export const postProduct = (formData, history) => (dispatch) => {
   const token = localStorage.getItem('KEY_TOKEN');
   const product = new FormData();
@@ -19,10 +21,10 @@ export const postProduct = (formData, history) => (dispatch) => {
     .then((result) => {
       const theproduct = result.data.result;
       dispatch({ type: 'POST_PRODUCT', payload: theproduct });
-      alert(result.data.message);
+      swal('success', result?.data?.message || 'Success add product', 'success');
     })
     .catch((error) => {
-      alert(error.response.data.message);
+      return swal('error', error?.response?.data?.message || 'Add product Failed', 'error');
     });
 };
 
@@ -46,10 +48,10 @@ export const updateProduct = (formData, id, history) => (dispatch) => {
     .then((result) => {
       const theproduct = result.data.result;
       dispatch({ type: 'PUT_PRODUCT', payload: theproduct });
-      alert(result.data.message);
+      swal('success', result?.data?.message || 'Success update product', ' success');
     })
     .catch((error) => {
-      alert(error.response.data.message);
+      return swal('error', error?.response?.data?.message || 'Update product Failed', 'error');
     });
 };
 
@@ -65,12 +67,13 @@ export const getPoductsById = (id) => (dispatch) => {
     });
 };
 
-export const addToCart = (productId, id) => {
+export const addToCart = (productId, id, qty) => {
   return {
     type: 'ADD_TO_CART',
     payload: {
       user_id: id,
       id: productId,
+      qty: qty,
     },
   };
 };

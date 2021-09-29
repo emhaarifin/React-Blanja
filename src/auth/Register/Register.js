@@ -1,11 +1,12 @@
-import React, { Component } from "react";
-import Logo from "../../components/logo/logo";
-import Input from "../../components/input/input";
-import Button from "../../components/Button/Button";
-import TabButton from "../../components/TabButton/TabButton";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { registerCust, registerSel } from "../../redux/action/user";
+import React, { Component } from 'react';
+import Logo from '../../components/logo/logo';
+import Input from '../../components/input/input';
+import Button from '../../components/Button/Button';
+import TabButton from '../../components/TabButton/TabButton';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { registerCust, registerSel } from '../../redux/action/user';
+import swal from 'sweetalert';
 
 const mapStateToProps = (user) => {
   return {
@@ -17,11 +18,11 @@ export class Register extends Component {
     super(properties);
     this.state = {
       toggleState: 1,
-      name: "",
-      email: "",
+      name: '',
+      email: '',
       phone_number: 0,
-      store_name: "",
-      password: "",
+      store_name: '',
+      password: '',
     };
   }
   changeText = (e) => {
@@ -34,8 +35,7 @@ export class Register extends Component {
   }
   postRegister = (event) => {
     event.preventDefault();
-    const { email, name, phone_number, store_name, password, toggleState } =
-      this.state;
+    const { email, name, phone_number, store_name, password, toggleState } = this.state;
     const dataCust = {
       name,
       email,
@@ -54,11 +54,11 @@ export class Register extends Component {
     } else if (toggleState === 2) {
       return this.props.dispatch(registerSel(dataSel, this.props.history));
     } else {
-      return alert(`Something Wrong`);
+      return swal('error', `Something Wrong`, 'error');
     }
   };
   componentDidMount() {
-    document.title = "Register";
+    document.title = 'Register';
   }
 
   render() {
@@ -72,21 +72,13 @@ export class Register extends Component {
           <section className="tab-auth">
             <TabButton
               toggleTab={() => this.toggleTab(1)}
-              typeTab={
-                toggleState === 1
-                  ? "active-tabs-custommer"
-                  : "non-active-tabs-custommer"
-              }
+              typeTab={toggleState === 1 ? 'active-tabs-custommer' : 'non-active-tabs-custommer'}
             >
               Custommer
             </TabButton>
             <TabButton
               toggleTab={() => this.toggleTab(2)}
-              typeTab={
-                toggleState === 2
-                  ? "active-tabs-seller"
-                  : "non-active-tabs-seller"
-              }
+              typeTab={toggleState === 2 ? 'active-tabs-seller' : 'non-active-tabs-seller'}
             >
               Seller
             </TabButton>
@@ -177,11 +169,7 @@ export class Register extends Component {
             </section>
 
             {/* <Link to="/auth.login"> */}
-            <Button
-              className="button"
-              styling="button--submit"
-              onClick={this.postRegister}
-            >
+            <Button className="button" styling="button--submit" onClick={this.postRegister}>
               PRIMARY
             </Button>
           </form>

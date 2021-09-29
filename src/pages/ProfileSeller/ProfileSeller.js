@@ -9,6 +9,7 @@ import SidebarSeller from '../../components/AsideProfile/SidebarSeller';
 import { useHistory } from 'react-router-dom';
 
 import { getUserById, updateProfile } from '../../redux/action/user';
+import swal from 'sweetalert';
 
 function ProfileSeller() {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ function ProfileSeller() {
   const history = useHistory();
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT' });
-    alert('Logout Success');
+    swal('Logout Success');
     history.push('/');
   };
   const handleSubmit = async (e) => {

@@ -9,29 +9,41 @@ import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import CardProduct from '../../components/CardProduct/CardProduct';
 import rating from '../../asset/home/new/star.svg';
-import { getPoductsById, addToCart } from '../../redux/action/products';
+import { getPoductsById, addToCart, adjustItemQty } from '../../redux/action/products';
 import InputIncrement from '../../components/InputIncrement/InputIncrement';
 import { connect } from 'react-redux';
 export class Product extends Component {
-  state = {
-    products: [],
-    productsbyId: [],
-    isLoading: true,
-    errors: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+      productsbyId: [],
+      isLoading: true,
+      errors: null,
+      qty: 1,
+    };
+  }
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.getProductById();
+      this.setState({
+        products: [],
+        productsbyId: [],
+        isLoading: true,
+        errors: null,
+        qty: 1,
+      });
+      this.getPoductsId();
+      this.getAllProduct();
       window.scrollTo(0, 0);
     }
   }
 
-  getProductById = () => {
-    this.props.dispatch(getPoductsById(this.props.match.params.id));
+  getPoductsId = () => {
+    this.props.getPoductsId(this.props.match.params.id);
   };
   componentDidMount() {
-    this.getProductById();
+    this.getPoductsId();
     document.title = 'Produk pilihanmu';
     this.getAllProduct();
   }
@@ -47,15 +59,16 @@ export class Product extends Component {
       this.setState({ error, isLoading: false });
     }
   }
-  inputToCart = (id) => {
+  inputToCart = (id, qtyFinal) => {
     const user_id = localStorage.getItem('id');
     console.log(user_id);
-    this.props.dispatch(addToCart(id, user_id));
+    this.props.addCart(id, user_id, qtyFinal);
   };
   render() {
     const productsbyId = this.props.productByID;
     return productsbyId.map((product) => {
-      const { id, name, brand, price, category, description, image } = product;
+      console.log(product);
+      const { id, name, brand, price, category, description, image, stock } = product;
       return (
         <>
           <Navbar />
@@ -110,7 +123,7 @@ export class Product extends Component {
                   <p className="price-item-product mt-2">Rp {price}</p>
                 </div>
                 <div className="color-choice">
-                  <p className="filter-title">Color</p>
+                  {/* <p className="filter-title">Color</p>
                   <div className="pick-color">
                     <input type="checkbox" className="btn-check" id="color1" autoComplete="off"></input>
                     <label htmlFor="color1" className="btn-black choice-color-product"></label>
@@ -120,31 +133,47 @@ export class Product extends Component {
                     <label htmlFor="color3" className="btn-blue choice-color-product"></label>
                     <input type="checkbox" className="btn-check" id="color4" autoComplete="off"></input>
                     <label htmlFor="color4" className="btn-green choice-color-product"></label>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="set-size-total">
                   <div className="size">
-                    <p className="filter-title mb-2">Size</p>
+                    {/* <p className="filter-title mb-2">Size</p>
                     <section className="sum-item">
                       <InputIncrement />
-                    </section>
+                    </section> */}
                   </div>
                   <div className="total">
                     <p className="filter-title mb-2">Jumlah</p>
                     <section className="sum-item">
-                      <InputIncrement />
+                      <InputIncrement
+                        min="1"
+                        max="5"
+                        value={this.state.qty}
+                        Decrement={async (e) => {
+                          if (this.state.qty !== 1) {
+                            await this.setState({ ...this.state, qty: this.state.qty - 1 });
+                            this.props.adjustQty(id, this.state.qty);
+                          }
+                        }}
+                        Increment={async (e) => {
+                          if (this.state.qty < stock) {
+                            await this.setState({ ...this.state, qty: this.state.qty + 1 });
+                            this.props.adjustQty(id, this.state.qty);
+                          }
+                        }}
+                      />
                     </section>
                   </div>
                 </div>
                 <div className="btn-choice">
-                  <button type="button" className="btn-bold btn-secondary-bold" data-bs-dismiss="modal">
+                  <button disabled type="button" className="btn-bold btn-secondary-bold" data-bs-dismiss="modal">
                     Chat
                   </button>
                   <button
                     type="button"
                     className="btn-bold btn-secondary-bold"
                     data-bs-dismiss="modal"
-                    onClick={() => this.inputToCart(id)}
+                    onClick={() => this.inputToCart(id, this.state.qty)}
                   >
                     Add Bag
                   </button>
@@ -195,4 +224,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Product);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    adjustQty: (id, value) => dispatch(adjustItemQty(id, value)),
+    removeFromCart: (id) => dispatch(removeFromCart(id)),
+    getPoductsId: (id) => dispatch(getPoductsById(id)),
+    addCart: (id, user_id) => dispatch(addToCart(id, user_id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

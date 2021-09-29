@@ -5,7 +5,7 @@ import Gopay from '../../asset/checkout/gopay.png';
 import Mastercard from '../../asset/checkout/mastercard.png';
 import PosIndonesia from '../../asset/checkout/posindonesia.png';
 import axios from '../../configs/axiosConfig';
-
+import swal from 'sweetalert';
 import { useSelector, useDispatch } from 'react-redux';
 function CheckOut() {
   const dispatch = useDispatch();
@@ -56,10 +56,10 @@ function CheckOut() {
       )
       .then(() => {
         dispatch({ type: 'SUKSES_ORDER' });
-        alert('Sukses');
+        swal('success', 'Sukses', 'success');
       })
       .catch((error) => {
-        alert(error?.response?.data?.message || 'Err');
+        swal('error', error?.response?.data?.message || 'Checkout Failed', 'error');
       });
     // });
   };

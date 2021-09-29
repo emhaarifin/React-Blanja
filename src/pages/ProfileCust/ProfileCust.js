@@ -9,6 +9,7 @@ import SidebarCustommer from '../../components/AsideProfile/SidebarCustommer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getUserById, updateProfile } from '../../redux/action/user';
+import swal from 'sweetalert';
 
 function ProfileCust() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function ProfileCust() {
 
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT' });
-    alert('Logout Success');
+    swal('success', 'Logout Success', 'success');
     history.push('/');
   };
   const [reset, setReset] = useState(false);
