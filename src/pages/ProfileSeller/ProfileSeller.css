@@ -91,7 +91,8 @@
   padding-top: 80px;
   box-sizing: border-box;
   display: none;
-  padding-left: 12rem;
+  padding-right: 3.5rem;
+  align-items: flex-end;
   flex-shrink: 0;
   overflow-y: auto;
   height: 100vh;
@@ -190,9 +191,7 @@ img {
     display: flex;
     flex-direction: row;
   }
-  .sidebar {
-    padding-left: 1.5rem;
-  }
+
   .d-flex.wrapper.flex-nowrap {
     display: flex;
     overflow: unset;

@@ -71,28 +71,56 @@ function CustOrder() {
                       </TabButton>
                     </div>
                   </div>
-                  {orderData.length > 0 ? (
-                    orderData.map((item) => {
-                      return (
-                        <>
-                          <div className="ms-4 mt-5 me-4" style={{ borderBottom: '1px solid black' }}>
-                            <p>{`Name product: ${item.name}` || <Skeleton />}</p>
-                            <p>{`Category: ${item.category}` || <Skeleton />}</p>
-                            <p>{`Quantity: ${item.qty}` || <Skeleton />}</p>
-                            <p>{`Rp. ${item.total}` || <Skeleton />}</p>
-                            <p>{`Payment: ${item.payment_method}` || <Skeleton />}</p>
-                          </div>
-                        </>
-                      );
-                    })
-                  ) : (
-                    <p
-                      className="ms-4 "
-                      style={{ height: '30vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-                    >
-                      Belum ada order
-                    </p>
-                  )}
+                  <table className="table ms-auto me-auto  table-sm table-bordered" style={{ width: '94%' }}>
+                    <thead className="text-center">
+                      <tr>
+                        <th style={{ width: '20%' }}>Name</th>
+                        <th style={{ width: '20%' }}>Category</th>
+                        <th style={{ width: '20%' }}>Quantity</th>
+                        <th style={{ width: '20%' }}>Total Price</th>
+                        <th style={{ width: '20%' }}>Payment Method</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {orderData &&
+                        orderData.map((item) => {
+                          return (
+                            <>
+                              <tr key={item.id}>
+                                <td className="max-1-line">{`${item.name}` || <Skeleton />}</td>
+                                <td>{`${item.category}` || <Skeleton />}</td>
+                                <td>{`${item.qty}` || <Skeleton />}</td>
+                                <td>{`${item.total}` || <Skeleton />}</td>
+                                <td>{`${item.payment_method}` || <Skeleton />}</td>
+                              </tr>
+                            </>
+                          );
+                        })}
+                    </tbody>
+                  </table>
+                  {/* // {orderData.length > 0 ? ( */}
+                  {/* //   orderData.map((item) => { */}
+                  {/* //     console.log(item);
+                  //     return (
+                  //       <>
+                  //         <div className="ms-4 mt-5 me-4 d-flex" style={{ borderBottom: '1px solid black' }}>
+                  //           <p>{`Name product: ${item.name}` || <Skeleton />}</p>
+                  //           <p>{`Category: ${item.category}` || <Skeleton />}</p>
+                  //           <p>{`Quantity: ${item.qty}` || <Skeleton />}</p>
+                  //           <p>{`Rp. ${item.total}` || <Skeleton />}</p>
+                  //           <p>{`Payment: ${item.payment_method}` || <Skeleton />}</p>
+                  //         </div>
+                  //       </>
+                  //     );
+                  //   })
+                  // ) : (
+                  //   <p
+                  //     className="ms-4 "
+                  //     style={{ height: '30vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                  //   >
+                  //     Belum ada order
+                  //   </p>
+                  // )} */}
                 </div>
               </div>
             </div>
