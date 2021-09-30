@@ -14,7 +14,7 @@ import swal from 'sweetalert';
 function ProfileSeller() {
   const dispatch = useDispatch();
   const [reset, setReset] = useState(false);
-  const { StoreData, phone_number, gender, email, name, avatar, id } = useSelector((state) => state.user.userData);
+  const { StoreData, phone_number, gender, email, avatar, id } = useSelector((state) => state.user.userData);
 
   const { store_name, store_description } = StoreData[0];
   const [form, setForm] = useState({
