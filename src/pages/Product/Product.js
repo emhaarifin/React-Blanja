@@ -235,7 +235,7 @@ const mapDispatchToProps = (dispatch) => {
     adjustQty: (id, value) => dispatch(adjustItemQty(id, value)),
     removeFromCart: (id) => dispatch(removeFromCart(id)),
     getPoductsId: (id) => dispatch(getPoductsById(id)),
-    addCart: (id, user_id) => dispatch(addToCart(id, user_id)),
+    addCart: (id, user_id, qty) => dispatch(addToCart(id, user_id, qty)),
   };
 };
 
