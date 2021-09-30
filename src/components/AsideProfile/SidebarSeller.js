@@ -6,7 +6,7 @@ import IconCart from '../../asset/profile/order.png';
 import { useSelector } from 'react-redux';
 
 function AsideProfile(props) {
-  const { avatar } = useSelector((state) => state?.user?.userData);
+  const { avatar, name } = useSelector((state) => state?.user?.userData);
 
   return (
     <>
@@ -24,7 +24,7 @@ function AsideProfile(props) {
             alt="user-profile-img"
           ></img>
           <div className="d-flex flex-column ps-3 pt-1">
-            <div className="text-black-16px font-semi-bold">{props.nameUser}</div>
+            <div className="text-black-16px font-semi-bold">{name}</div>
             <div className="text-black-14px text-black-50">
               <img src="../asset/img/icon/pensil.svg" alt=""></img> Ubah profile
             </div>
