@@ -107,3 +107,39 @@ export const getUserById = (id) => (dispatch) => {
       return swal('error', error?.response?.data?.message || 'Gagal', 'error');
     });
 };
+
+export const getAddress = () => (dispatch) => {
+  axios
+    .get(`/address`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('KEY_TOKEN')}`,
+      },
+    })
+    .then((result) => {
+      const data = result?.data?.result;
+      return dispatch({ type: 'GET_ADDRESS', payload: data });
+    })
+    .catch((error) => {
+      return swal('error', error?.response?.data?.message || 'Gagal', 'error');
+    });
+};
+
+export const postAddress = (data) => (dispatch) => {
+  axios
+    .post(`/address`, data, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('KEY_TOKEN')}`,
+      },
+    })
+    .then((result) => {
+      console.log(result);
+      const newData = result?.data?.result;
+      console.log(newData);
+      dispatch({ type: 'POST_ADDRESS', payload: [newData] });
+      return swal('success', 'Sukses Menambah Alamat', 'success');
+    })
+    .catch((error) => {
+      console.log(error);
+      return swal('error', error?.response?.data?.message || 'Gagal', 'error');
+    });
+};

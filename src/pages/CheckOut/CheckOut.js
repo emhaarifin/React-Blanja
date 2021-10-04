@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import './CheckOut.css';
@@ -5,14 +6,36 @@ import Gopay from '../../asset/checkout/gopay.png';
 import Mastercard from '../../asset/checkout/mastercard.png';
 import PosIndonesia from '../../asset/checkout/posindonesia.png';
 import axios from '../../configs/axiosConfig';
+
+import { postAddress, getAddress } from '../../redux/action/user';
 import swal from 'sweetalert';
 import { useSelector, useDispatch } from 'react-redux';
 function CheckOut() {
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.products);
+  const dataUser = useSelector((state) => state.user);
+
+  const sendData = {
+    id_user: dataUser?.userData?.id,
+    name_address: '',
+    name_recipient: '',
+    phone_recipient: '',
+    address: '',
+    postal_code: '',
+    city: '',
+  };
+
   const [payment, setPayment] = useState({
     payment_method: '',
   });
+
+  const [address, setAddress] = useState(sendData);
+  const changeAddress = (e) => {
+    setAddress({
+      ...address,
+      [e.target.name]: e.target.value,
+    });
+  };
   const changePayment = (e) => {
     setPayment({
       ...payment,
@@ -28,22 +51,9 @@ function CheckOut() {
     }
     document.title = 'Yuk Bayar!';
   }, [cart]);
-  // const sendData = {
-  //   id_user: '',
-  //   name_address: '',
-  //   name_recipient: '',
-  //   phone_recipient: '',
-  //   address: '',
-  //   postal_code: '',
-  //   city: '',
-  //   primary_address: '',
-  // };
 
   const handleCheckOut = async (e) => {
     e.preventDefault();
-
-    // await cart.map(async (dataOrder) => {
-    // console.log({ ...dataOrder, ...payment }, 'tes data');
     await axios
       .post(
         `/order`,
@@ -64,6 +74,12 @@ function CheckOut() {
     // });
   };
 
+  useEffect(() => {
+    if (dataUser?.userData?.id !== '') {
+      dispatch(getAddress());
+    }
+  }, [dispatch]);
+
   return (
     <div>
       <Navbar />
@@ -76,11 +92,21 @@ function CheckOut() {
                 <div className="shipping-adress">
                   <p className="title-adress">Shipping Adress</p>
                   <div className="adress">
-                    <p className="name-buyer">Andreas Jane</p>
-                    <p className="the-adress">
-                      Perumahan Sapphire Mediterania, Wiradadi, Kec. Sokaraja, Kabupaten Banyumas, Jawa Tengah, 53181
-                      [Tokopedia Note: blok c 16] Sokaraja, Kab. Banyumas, 53181
-                    </p>
+                    <p className="name-buyer">{dataUser?.userData?.name}</p>
+                    {dataUser?.address?.length ? (
+                      dataUser?.address?.map((item) => {
+                        return (
+                          <>
+                            <p className="the-adress" key={item.id_address}>
+                              {`${item.name_address}, ${item.name_recipient}, ${item.phone_recipient}, ${item.address},${item.city}, ${item.postal_code}
+                              `}
+                            </p>
+                          </>
+                        );
+                      })
+                    ) : (
+                      <p>Silahkan menambah alamat pengiriman</p>
+                    )}
                     <button data-bs-toggle="modal" data-bs-target="#change-another-adress" className="another-adress">
                       Choose another address
                     </button>
@@ -166,11 +192,21 @@ function CheckOut() {
                       </div>
                       <div className="modal__shipping-adress">
                         <div className="modal__adress">
-                          <p className="name-buyer">Andreas Jane</p>
-                          <p className="the-adress">
-                            Perumahan Sapphire Mediterania, Wiradadi, Kec. Sokaraja, Kabupaten Banyumas, Jawa Tengah,
-                            53181 [Tokopedia Note: blok c 16] Sokaraja, Kab. Banyumas, 53181
-                          </p>
+                          <p className="name-buyer">{dataUser?.userData?.name}</p>
+                          {dataUser?.address?.length ? (
+                            dataUser?.address?.map((item) => {
+                              return (
+                                <>
+                                  <p className="the-adress" key={item.id_address}>
+                                    {`${item.name_address}, ${item.name_recipient}, ${item.phone_recipient}, ${item.address},${item.city}, ${item.postal_code}
+                              `}
+                                  </p>
+                                </>
+                              );
+                            })
+                          ) : (
+                            <p>Silahkan menambah alamat pengiriman</p>
+                          )}
                           <button
                             type="button"
                             className="btn__add-address modal__change-adress"
@@ -331,36 +367,52 @@ function CheckOut() {
                           <div className="col-12">
                             <div className="form-input-address">
                               <p className="add-address-title">Save address as (ex : home address, office address)</p>
-                              <input type="text" className="input-item"></input>
+                              <input
+                                type="text"
+                                name="name_address"
+                                onChange={changeAddress}
+                                className="input-item"
+                              ></input>
                             </div>
                           </div>
                           <div className="col-6">
                             <div className="form-input-address">
                               <p className="add-address-title">Recipient's name</p>
-                              <input type="text" className="input-item"></input>
+                              <input
+                                type="text"
+                                name="name_recipient"
+                                onChange={changeAddress}
+                                className="input-item"
+                              ></input>
                             </div>
                             <div className="form-input-address">
                               <p className="add-address-title">Address</p>
-                              <input type="text" className="input-item"></input>
+                              <input type="text" name="address" onChange={changeAddress} className="input-item"></input>
                             </div>
                             <div className="form-input-address">
                               <p className="add-address-title">City of Subdistrict</p>
-                              <input type="text" className="input-item"></input>
+                              <input type="text" name="city" onChange={changeAddress} className="input-item"></input>
                             </div>
                           </div>
                           <div className="col-6">
                             <div className="form-input-address">
                               <p className="add-address-title">Recipient's telephone number</p>
-                              <input type="text" className="input-item"></input>
+                              <input
+                                type="text"
+                                name="phone_recipient"
+                                onChange={changeAddress}
+                                className="input-item"
+                              ></input>
                             </div>
                             <div className="form-input-address">
                               <p className="add-address-title">Postal Code</p>
-                              <input type="text" className="input-item"></input>
+                              <input
+                                type="text"
+                                name="postal_code"
+                                onChange={changeAddress}
+                                className="input-item"
+                              ></input>
                             </div>
-                          </div>
-                          <div className="col-12 primary-address">
-                            <input type="checkbox" className="set-primary-address"></input>
-                            <p className="correct">Make it primary address</p>
                           </div>
                         </div>
                       </div>
@@ -369,8 +421,11 @@ function CheckOut() {
                           Discard
                         </button>
                         <button
-                          onClick={() => console.log('halo')}
-                          // data-bs-dismiss="modal"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            dispatch(postAddress(address));
+                          }}
+                          data-bs-dismiss="modal"
                           type="button"
                           className="btn btn-primary"
                         >

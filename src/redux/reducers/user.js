@@ -2,6 +2,7 @@ const initialValue = {
   userData: {},
   userDataID: {},
   errorMsg: {},
+  address: [],
 };
 
 const userReducers = (state = initialValue, action) => {
@@ -30,6 +31,16 @@ const userReducers = (state = initialValue, action) => {
       return {
         ...state,
         userData: action.payload,
+      };
+    case 'GET_ADDRESS':
+      return {
+        ...state,
+        address: action.payload,
+      };
+    case 'POST_ADDRESS':
+      return {
+        ...state,
+        address: action.payload,
       };
     default:
       return state;

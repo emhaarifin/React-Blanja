@@ -17,6 +17,8 @@ function Home() {
   useEffect(() => {
     getAllProducts();
     getAllCategory();
+
+    document.title = 'Penuhi Kebutuhan Fashion di Blanja!';
   }, []);
 
   const getAllProducts = async () => {

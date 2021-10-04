@@ -13,6 +13,7 @@ const MyBag = ({ cart, productId, adjustQty, removeFromCart }) => {
   const [input, setInput] = useState();
   const isAuth = localStorage.getItem('KEY_TOKEN');
   useEffect(() => {
+    document.title = 'Keranjang belanja';
     let items = 0;
     let price = 0;
 
