@@ -136,7 +136,28 @@ export const postAddress = (data) => (dispatch) => {
       const newData = result?.data?.result;
       console.log(newData);
       dispatch({ type: 'POST_ADDRESS', payload: [newData] });
-      return swal('success', 'Sukses Menambah Alamat', 'success');
+      return swal('success', 'Success Add Address', 'success');
+    })
+    .catch((error) => {
+      console.log(error);
+      return swal('error', error?.response?.data?.message || 'Gagal', 'error');
+    });
+};
+
+export const updateAddress = (id, data) => async (dispatch) => {
+  console.log(id, data);
+  await axios
+    .put(`/address/${id}`, data, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('KEY_TOKEN')}`,
+      },
+    })
+    .then((result) => {
+      console.log(result);
+      const newData = result?.data?.result;
+      console.log(newData);
+      dispatch({ type: 'POST_ADDRESS', payload: [newData] });
+      return swal('success', 'Success Update Shipping Address', 'success');
     })
     .catch((error) => {
       console.log(error);

@@ -7,7 +7,7 @@ import Mastercard from '../../asset/checkout/mastercard.png';
 import PosIndonesia from '../../asset/checkout/posindonesia.png';
 import axios from '../../configs/axiosConfig';
 
-import { postAddress, getAddress } from '../../redux/action/user';
+import { postAddress, getAddress, updateAddress } from '../../redux/action/user';
 import swal from 'sweetalert';
 import { useSelector, useDispatch } from 'react-redux';
 function CheckOut() {
@@ -15,14 +15,16 @@ function CheckOut() {
   const { cart } = useSelector((state) => state.products);
   const dataUser = useSelector((state) => state.user);
 
+  const getDataAddress = dataUser?.address[0];
+
   const sendData = {
     id_user: dataUser?.userData?.id,
-    name_address: '',
-    name_recipient: '',
-    phone_recipient: '',
-    address: '',
-    postal_code: '',
-    city: '',
+    name_address: getDataAddress?.name_address,
+    name_recipient: getDataAddress?.name_recipient,
+    phone_recipient: getDataAddress?.phone_recipient,
+    address: getDataAddress?.address,
+    postal_code: getDataAddress?.postal_code,
+    city: getDataAddress?.city,
   };
 
   const [payment, setPayment] = useState({
@@ -98,17 +100,21 @@ function CheckOut() {
                         return (
                           <>
                             <p className="the-adress" key={item.id_address}>
-                              {`${item.name_address}, ${item.name_recipient}, ${item.phone_recipient}, ${item.address},${item.city}, ${item.postal_code}
+                              {`${item.name_address}, ${item.name_recipient}, ${item.phone_recipient}, ${item.address}, ${item.city}, ${item.postal_code}
                               `}
                             </p>
                           </>
                         );
                       })
                     ) : (
-                      <p>Silahkan menambah alamat pengiriman</p>
+                      <p>Please add shipping address</p>
                     )}
-                    <button data-bs-toggle="modal" data-bs-target="#change-another-adress" className="another-adress">
-                      Choose another address
+                    <button
+                      data-bs-toggle="modal"
+                      data-bs-target={dataUser?.address?.length ? '#add-address' : '#change-another-adress'}
+                      className="another-adress"
+                    >
+                      Choose shipping address
                     </button>
                   </div>
                 </div>
@@ -187,7 +193,7 @@ function CheckOut() {
                           data-bs-target="#add-address"
                           data-bs-dismiss="modal"
                         >
-                          Add new address
+                          Shipping address
                         </button>
                       </div>
                       <div className="modal__shipping-adress">
@@ -205,7 +211,7 @@ function CheckOut() {
                               );
                             })
                           ) : (
-                            <p>Silahkan menambah alamat pengiriman</p>
+                            <p>Please add shipping address</p>
                           )}
                           <button
                             type="button"
@@ -328,7 +334,12 @@ function CheckOut() {
                 <button
                   type="button"
                   disabled={
-                    `${localStorage.getItem('KEY_TOKEN')}` && payment.payment_method && cart.length ? false : true
+                    `${localStorage.getItem('KEY_TOKEN')}` &&
+                    payment.payment_method &&
+                    cart.length &&
+                    dataUser?.address?.length
+                      ? false
+                      : true
                   }
                   onClick={handleCheckOut}
                   className="btn-primary"
@@ -361,7 +372,7 @@ function CheckOut() {
                 <div className="row">
                   <div className="col-12">
                     <div className="modal-add-address">
-                      <p className="modal__title">Add new address</p>
+                      <p className="modal__title">Shipping address</p>
                       <div className="form-input">
                         <div className="row">
                           <div className="col-12">
@@ -370,6 +381,7 @@ function CheckOut() {
                               <input
                                 type="text"
                                 name="name_address"
+                                value={address.name_address}
                                 onChange={changeAddress}
                                 className="input-item"
                               ></input>
@@ -381,17 +393,30 @@ function CheckOut() {
                               <input
                                 type="text"
                                 name="name_recipient"
+                                value={address.name_recipient}
                                 onChange={changeAddress}
                                 className="input-item"
                               ></input>
                             </div>
                             <div className="form-input-address">
                               <p className="add-address-title">Address</p>
-                              <input type="text" name="address" onChange={changeAddress} className="input-item"></input>
+                              <input
+                                type="text"
+                                name="address"
+                                value={address.address}
+                                onChange={changeAddress}
+                                className="input-item"
+                              ></input>
                             </div>
                             <div className="form-input-address">
                               <p className="add-address-title">City of Subdistrict</p>
-                              <input type="text" name="city" onChange={changeAddress} className="input-item"></input>
+                              <input
+                                type="text"
+                                name="city"
+                                value={address.city}
+                                onChange={changeAddress}
+                                className="input-item"
+                              ></input>
                             </div>
                           </div>
                           <div className="col-6">
@@ -400,6 +425,7 @@ function CheckOut() {
                               <input
                                 type="text"
                                 name="phone_recipient"
+                                value={address.phone_recipient}
                                 onChange={changeAddress}
                                 className="input-item"
                               ></input>
@@ -409,6 +435,7 @@ function CheckOut() {
                               <input
                                 type="text"
                                 name="postal_code"
+                                value={address.postal_code}
                                 onChange={changeAddress}
                                 className="input-item"
                               ></input>
@@ -423,7 +450,9 @@ function CheckOut() {
                         <button
                           onClick={(e) => {
                             e.preventDefault();
-                            dispatch(postAddress(address));
+                            dataUser?.address?.length
+                              ? dispatch(updateAddress(getDataAddress.id_address, address))
+                              : dispatch(postAddress(address));
                           }}
                           data-bs-dismiss="modal"
                           type="button"

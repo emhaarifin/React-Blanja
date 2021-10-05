@@ -8,7 +8,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import SidebarCustommer from '../../components/AsideProfile/SidebarCustommer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getUserById, updateProfile } from '../../redux/action/user';
+import { getUserById, updateProfile, getAddress } from '../../redux/action/user';
 import swal from 'sweetalert';
 
 function ProfileCust() {
@@ -25,6 +25,12 @@ function ProfileCust() {
   const { phone_number, gender, email, name, avatar, id, date_of_birth } = useSelector(
     (state) => state?.user?.userData
   );
+
+  useEffect(() => {
+    if (id !== '') {
+      dispatch(getAddress());
+    }
+  }, []);
 
   const [form, setForm] = useState({
     name: name,

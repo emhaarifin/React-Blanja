@@ -35,8 +35,18 @@ input[type='search'] {
   border-color: unset !important;
   box-shadow: unset !important;
 }
-button:disabled {
-  cursor: not-allowed !important;
+
+button[disabled],
+button[disabled]:hover,
+button:disabled,
+button:disabled:hover {
+  background: #eee !important;
+  color: #aaa !important;
+  border-color: #aaa !important;
+  cursor: default !important;
+  text-shadow: none !important;
+  position: static !important;
+  box-shadow: none !important;
 }
 /*
 code {
@@ -45,8 +55,9 @@ code {
 }
 
 
+} */
 *,
 *:before,
 *:after {
   box-sizing: border-box;
-} */
+}
