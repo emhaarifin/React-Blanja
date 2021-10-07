@@ -10,6 +10,8 @@ import CustomRadio from './CustomRadio/CustomRadio';
 import Input from './input/input';
 import InputIncrement from './InputIncrement/InputIncrement';
 import Logo from './logo/logo';
+import CardProductLoader from './CardProduct/Loader';
+import CategoryProductLoader from './CategoryProduct/Loader';
 import SearchBar from './SearchBar/SearchBar';
 import CardProduct from './CardProduct/CardProduct';
 import TabButton from './TabButton/TabButton';
@@ -32,4 +34,6 @@ export {
   CardProduct,
   TabButton,
   Navbar,
+  CardProductLoader,
+  CategoryProductLoader,
 };

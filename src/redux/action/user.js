@@ -9,8 +9,6 @@ export const login = (body, toggleState, history) => (dispatch) => {
     .then((result) => {
       const roles = result.data.result.roles;
       const userData = result.data.result;
-      console.log(roles);
-
       if (roles === 'custommer' && toggleState === 1) {
         return (
           dispatch({ type: 'POST_LOGIN', payload: userData }),
@@ -18,6 +16,7 @@ export const login = (body, toggleState, history) => (dispatch) => {
           localStorage.setItem('id', userData.id),
           localStorage.setItem('name', userData.name),
           localStorage.setItem('roles', userData.roles),
+          localStorage.setItem('REFRESH_TOKEN', userData.refreshToken),
           history.push('/')
         );
       } else if (roles === 'seller' && toggleState === 2) {
@@ -27,6 +26,7 @@ export const login = (body, toggleState, history) => (dispatch) => {
           localStorage.setItem('id', userData.id),
           localStorage.setItem('name', userData.name),
           localStorage.setItem('roles', userData.roles),
+          localStorage.setItem('REFRESH_TOKEN', userData.refreshToken),
           history.push('/')
         );
       } else {

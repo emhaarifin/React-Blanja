@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './CardProduct.css';
 import Skeleton from 'react-loading-skeleton';
 
 function CardProduct(props) {
