@@ -30,7 +30,7 @@ function Home() {
       const allProducts = response.data.data;
 
       setProducts(allProducts);
-      // setLoadingProducts(false);
+       setLoadingProducts(false);
     } catch {
       console.error();
     }
@@ -42,7 +42,7 @@ function Home() {
       const response = await axios.get(`/category`);
       const allCategory = response.data.result;
       setCategory(allCategory);
-      // setLoadingCategory(false);
+       setLoadingCategory(false);
     } catch (error) {
       console.log(error);
     }
